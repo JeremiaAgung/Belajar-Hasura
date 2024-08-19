@@ -122,3 +122,46 @@ Contoh:
 ```
 DROP TABLE Users;
 ```
+
+## 1. Primary Key
+Primary key adalah kolom atau kombinasi kolom dalam sebuah tabel yang secara unik mengidentifikasi setiap baris dalam tabel tersebut. Setiap nilai dalam kolom primary key harus unik dan tidak boleh ada nilai yang NULL.
+Contoh:
+
+Misalkan kita memiliki tabel `Mahasiswa` seperti berikut:
+![image](https://github.com/user-attachments/assets/a30106f4-5665-400b-913e-cf5a11f4e477)
+
+Di sini, kolom `NIM` (Nomor Induk Mahasiswa) berfungsi sebagai primary key karena setiap NIM adalah unik untuk setiap mahasiswa.
+
+```
+CREATE TABLE Mahasiswa (
+    NIM INT PRIMARY KEY,
+    Nama VARCHAR(50),
+    Jurusan VARCHAR(50)
+);
+
+```
+
+## 2. Foreign Key
+Foreign key adalah kolom atau kombinasi kolom dalam sebuah tabel yang mengacu pada primary key di tabel lain. Foreign key digunakan untuk menjaga konsistensi data dan menjalin hubungan antar tabel.
+
+Contoh:
+
+Misalkan kita juga memiliki tabel `Pendaftaran` yang mencatat mata kuliah yang diambil oleh mahasiswa:
+
+![image](https://github.com/user-attachments/assets/3e196e3c-3ef0-48a1-b285-45ea9b0b7e66)
+
+Di sini, kolom `NIM` di tabel `Pendaftaran` adalah foreign key yang mengacu pada kolom `NIM` di tabel Mahasiswa.
+```
+CREATE TABLE Pendaftaran (
+    ID_Pendaftaran INT PRIMARY KEY,
+    NIM INT,
+    Mata_Kuliah VARCHAR(50),
+    FOREIGN KEY (NIM) REFERENCES Mahasiswa(NIM)
+);
+```
+
+**Penjelasan:**
+
+**Primary Key:** Menjamin bahwa setiap baris dalam tabel adalah unik dan dapat diidentifikasi secara khusus.
+
+**Foreign Key:** Menjaga integritas referensial antara tabel-tabel yang berbeda, memastikan bahwa setiap nilai foreign key di tabel anak (contoh: Pendaftaran) memiliki nilai yang sesuai di tabel induk (contoh: Mahasiswa).
