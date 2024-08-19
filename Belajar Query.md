@@ -12,23 +12,23 @@ Contoh:
 `SELECT UserName, UserID
 FROM Users;`
 
-3. WHERE
+2. WHERE
 Digunakan untuk memfilter hasil query berdasarkan kondisi tertentu.
 
 Sintaks:
-
-sql
-Copy code
+`
 SELECT column1, column2, ...
 FROM table_name
 WHERE condition;
+`
 Contoh:
 
-sql
-Copy code
+```
 SELECT UserName
 FROM Users
 WHERE UserID = 1;
+```
+
 3. ORDER BY
 Digunakan untuk mengurutkan hasil query berdasarkan satu atau lebih kolom.
 
