@@ -78,12 +78,19 @@ deluser: Menghapus pengguna.
 
 ## Manajemen Paket 
 apt-get (Debian/Ubuntu): Mengelola paket.
+
 **Update**: `sudo apt-get update`
+
 **Install**: `sudo apt-get install package`
+
 **Remove**: `sudo apt-get remove package`
+
 **yum** (Red Hat/CentOS): Mengelola paket.
+
 **Update**: `sudo yum update`
+
 **Install**: `sudo yum install package`
+
 **Remove**: `sudo yum remove package`
 
 ## Jaringan
