@@ -83,6 +83,66 @@ Menampilkan daftar volume yang ada di Docker.
 `docker inspect <container_id>`
 Menampilkan informasi detail tentang sebuah kontainer, termasuk konfigurasi, mount point, dan lain-lain.
 
+```
+Usage:  docker [OPTIONS] COMMAND [ARG...]
+
+A self-sufficient runtime for containers.
+
+Options:
+  -D, --debug              Enable debug mode
+  --help                    Print usage
+  -H, --host string         Daemon socket(s) to connect to
+  -l, --log-level string    Set the logging level
+  --tls                     Use TLS; implied by --tlsverify
+  --tlsverify               Use TLS and verify the remote
+  --version                 Print version information and quit
+
+Commands:
+  attach                   Attach to a running container
+  build                    Build an image from a Dockerfile
+  compose                  Docker Compose (see `docker compose --help`)
+  cp                       Copy files/folders between a container and the local filesystem
+  create                   Create a new container
+  diff                     Display changes to files and directories on a container’s filesystem
+  events                   Get real time events from the server
+  exec                     Run a command in a running container
+  export                   Export a container’s filesystem as a tar archive
+  history                  Show the history of an image
+  images                   List images
+  import                   Import the contents of a tarball to create a filesystem image
+  info                     Display system-wide information
+  inspect                  Return low-level information on Docker objects
+  kill                     Kill one or more running containers
+  load                     Load an image from a tar archive or STDIN
+  logs                     Fetch the logs of a container
+  network                  Manage Docker networks
+  node                     Manage Docker nodes (Swarm mode)
+  pause                    Pause one or more running containers
+  plugin                   Manage Docker plugins
+  port                     List port mappings or a specific mapping for the container
+  ps                       List containers
+  pull                     Pull an image or a repository from a registry
+  push                     Push an image or a repository to a registry
+  rename                   Rename a container
+  restart                  Restart one or more containers
+  rm                       Remove one or more containers
+  rmi                      Remove one or more images
+  run                      Run a command in a new container
+  save                     Save an image to a tar archive
+  search                   Search for an image in a registry
+  start                    Start one or more stopped containers
+  stats                    Display a live stream of container(s) resource usage statistics
+  stop                     Stop one or more running containers
+  tag                      Tag an image into a repository
+  top                      Display the running processes of a container
+  unpause                  Unpause one or more paused containers
+  update                   Update configurations of one or more containers
+  version                  Show the Docker version information
+  volume                   Manage Docker volumes
+  wait                     Block until one or more containers stop, then print their exit codes
+
+```
+
 
 
 
