@@ -1,17 +1,39 @@
-### DOCKER
-Docker adalah platform yang memungkinkan pengembang untuk mengotomatisasi penyebaran aplikasi dalam bentuk kontainer. Kontainer adalah unit perangkat lunak yang mengemas kode aplikasi dan semua dependensi yang diperlukan untuk menjalankannya sehingga aplikasi tersebut dapat berjalan secara konsisten di berbagai lingkungan, baik itu di mesin pengembangan lokal, server staging, atau produksi.
+# DOCKER
+Docker adalah platform untuk menjalankan aplikasi dalam kontainer, yang mengisolasi aplikasi dan semua dependensinya agar bisa berjalan konsisten di berbagai lingkungan.
 
 ### Cara Kerja Docker
-Kontainerisasi: Docker memanfaatkan teknologi kontainerisasi untuk mengisolasi aplikasi dan dependensinya dalam satu paket mandiri yang disebut kontainer. Kontainer ini bisa berjalan di mana saja tanpa perlu menyesuaikan sistem operasi atau lingkungan.
+Cara Kerja Docker:
+Kontainerisasi: Mengisolasi aplikasi dalam kontainer.
+Docker Image: Template yang digunakan untuk membuat kontainer.
+Docker Engine: Runtime yang menjalankan kontainer.
+Docker Hub: Tempat untuk menyimpan dan berbagi Docker image.
+Perintah Docker:
 
-Docker Engine: Ini adalah runtime yang mengelola kontainer Docker. Docker Engine memungkinkan Anda untuk membangun, menjalankan, dan mengelola kontainer.
+docker run [image]: Menjalankan kontainer dari sebuah image.
+Contoh: `docker run -d nginx`
 
-Dockerfile: Ini adalah file teks yang berisi instruksi untuk membangun image Docker. Setiap instruksi dalam Dockerfile akan dieksekusi secara berurutan untuk membuat image Docker yang bisa digunakan untuk menjalankan kontainer.
+docker ps: Menampilkan daftar kontainer yang sedang berjalan.
 
-Docker Image: Ini adalah snapshot dari sebuah aplikasi dan semua dependensinya, yang dibuat dari Dockerfile. Docker Image ini bersifat read-only, dan dari sinilah kontainer Docker dijalankan.
+docker build -t [image-name]: Membangun image dari Dockerfile.
+Contoh: `docker build -t myapp`
 
-Docker Hub: Ini adalah registry publik tempat Anda dapat menyimpan, berbagi, dan mengelola image Docker. Anda bisa menarik (pull) image dari Docker Hub atau mendorong (push) image Anda sendiri ke Docker Hub.
+docker pull [image]: Mengambil image dari Docker Hub.
+Contoh: `docker pull ubuntu`
 
-Docker Compose: Ini adalah alat yang memungkinkan Anda untuk mendefinisikan dan menjalankan aplikasi multi-kontainer. Anda dapat menggunakan file docker-compose.yml untuk mengkonfigurasi layanan, jaringan, dan volume yang dibutuhkan oleh aplikasi.
+docker push [image]: Mengirim image ke Docker Hub.
+Contoh: `docker push myapp`
 
-Docker Swarm: Ini adalah alat orkestrasi yang memungkinkan pengelolaan cluster kontainer Docker secara otomatis. Dengan Docker Swarm, Anda bisa mengelola banyak kontainer yang berjalan di berbagai host sebagai satu kesatuan.
+docker exec -it [container] [command]: Menjalankan perintah di dalam kontainer.
+Contoh: `docker exec -it mycontainer bash`
+
+`docker stop [container]`: Menghentikan kontainer yang sedang berjalan.
+
+`docker rm [container]`: Menghapus kontainer yang sudah dihentikan.
+
+`docker rmi [image]`: Menghapus image dari sistem lokal.
+
+
+
+
+
+
