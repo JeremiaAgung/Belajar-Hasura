@@ -2,11 +2,15 @@
 Docker adalah platform untuk menjalankan aplikasi dalam kontainer, yang mengisolasi aplikasi dan semua dependensinya agar bisa berjalan konsisten di berbagai lingkungan.
 
 ### Cara Kerja Docker
-Cara Kerja Docker:
-Kontainerisasi: Mengisolasi aplikasi dalam kontainer.
-Docker Image: Template yang digunakan untuk membuat kontainer.
-Docker Engine: Runtime yang menjalankan kontainer.
-Docker Hub: Tempat untuk menyimpan dan berbagi Docker image.
+
+**Kontainerisasi:** Mengisolasi aplikasi dalam kontainer.
+
+**Docker Image:** Template yang digunakan untuk membuat kontainer.
+
+**Docker Engine:** Runtime yang menjalankan kontainer.
+
+**Docker Hub:** Tempat untuk menyimpan dan berbagi Docker image.
+
 Perintah Docker:
 
 docker run [image]: Menjalankan kontainer dari sebuah image.
