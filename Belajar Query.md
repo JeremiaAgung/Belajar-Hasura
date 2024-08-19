@@ -2,17 +2,17 @@
 
 1. `SELECT`
 Digunakan untuk memilih data dari database. Data yang diambil akan ditampilkan dalam bentuk tabel.
+
 Sintaks:
-``
+```
 SELECT column1, column2, ...
 FROM table_name;
-``
+```
 Contoh:
-sql
-Copy code
-SELECT UserName, UserID
-FROM Users;
-2. WHERE
+`SELECT UserName, UserID
+FROM Users;`
+
+3. WHERE
 Digunakan untuk memfilter hasil query berdasarkan kondisi tertentu.
 
 Sintaks:
