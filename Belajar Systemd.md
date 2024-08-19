@@ -17,10 +17,15 @@ WantedBy=multi-user.target
 **Mengaktifkan dan Menonaktifkan**
 
 Aktifkan: `sudo systemctl enable myservice.service`
+
 Nonaktifkan: `sudo systemctl disable myservice.service`
+
 Mulai: `sudo systemctl start myservice.service`
+
 Hentikan: `sudo systemctl stop myservice.service`
+
 Periksa Status: `sudo systemctl status myservice.service`
+
 Reload Konfigurasi: `sudo systemctl daemon-reload`
 
 
