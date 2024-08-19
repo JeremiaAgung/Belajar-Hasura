@@ -36,51 +36,51 @@ Contoh: `docker exec -it mycontainer bash`
 
 `docker rmi [image]`: Menghapus image dari sistem lokal.
 
-Berikut adalah penjelasan dari beberapa perintah dan istilah terkait Docker:
+**Berikut adalah penjelasan dari beberapa perintah dan istilah terkait Docker:**
 
-docker ps
+`docker ps`
 Menampilkan daftar kontainer yang sedang berjalan. Jika ditambahkan flag -a, maka akan menampilkan semua kontainer, baik yang sedang berjalan maupun yang sudah berhenti.
 
-docker images
+`docker images`
 Menampilkan daftar image Docker yang tersimpan di lokal. Ini mencakup nama image, tag, dan ukuran image.
 
-docker pull <image_name>
-Mengunduh image dari Docker Hub atau registry lainnya ke lokal. Misalnya, docker pull ubuntu akan mengunduh image Ubuntu.
+`docker pull <image_name>`
+Mengunduh image dari Docker Hub atau registry lainnya ke lokal. Misalnya, `docker pull ubuntu` akan mengunduh image Ubuntu.
 
-docker run <image_name>
-Menjalankan sebuah kontainer baru berdasarkan image yang ditentukan. Misalnya, docker run ubuntu akan menjalankan kontainer Ubuntu.
+`docker run <image_name>`
+Menjalankan sebuah kontainer baru berdasarkan image yang ditentukan. Misalnya, `docker run ubuntu` akan menjalankan kontainer Ubuntu.
 
-docker exec -it <container_id> <command>
-Menjalankan perintah di dalam kontainer yang sedang berjalan. Misalnya, docker exec -it <container_id> bash akan membuka shell bash di dalam kontainer.
+`docker exec -it <container_id> <command>`
+Menjalankan perintah di dalam kontainer yang sedang berjalan. Misalnya, `docker exec -it <container_id>` bash akan membuka shell bash di dalam kontainer.
 
-docker stop <container_id>
+`docker stop <container_id>`
 Menghentikan kontainer yang sedang berjalan.
 
-docker rm <container_id>
-Menghapus kontainer yang sudah berhenti. Untuk menghapus kontainer yang sedang berjalan, gunakan -f (force): docker rm -f <container_id>.
+`docker rm <container_id>`
+Menghapus kontainer yang sudah berhenti. Untuk menghapus kontainer yang sedang berjalan, gunakan -f (force): `docker rm -f <container_id>`
 
-docker rmi <image_name>
+`docker rmi <image_name>`
 Menghapus image dari lokal. Jika image digunakan oleh satu atau lebih kontainer, image tersebut tidak bisa dihapus kecuali menggunakan flag -f.
 
-docker build -t <image_name> .
+`docker build -t <image_name>`
 Membangun image Docker dari Dockerfile yang ada di direktori saat ini (.). Flag -t digunakan untuk memberi nama pada image yang dibangun.
 
-docker-compose up
+`docker-compose up`
 Menjalankan semua layanan yang didefinisikan dalam file docker-compose.yml. Jika ditambahkan flag -d, layanan akan berjalan di latar belakang (detached mode).
 
-docker-compose down
+`docker-compose down`
 Menghentikan dan menghapus semua kontainer, jaringan, dan volume yang dibuat oleh docker-compose up.
 
-docker logs <container_id>
+`docker logs <container_id>`
 Menampilkan log dari kontainer yang sedang berjalan atau sudah berhenti.
 
-docker network ls
+`docker network ls`
 Menampilkan daftar jaringan (network) yang ada di Docker.
 
-docker volume ls
+`docker volume ls`
 Menampilkan daftar volume yang ada di Docker.
 
-docker inspect <container_id>
+`docker inspect <container_id>`
 Menampilkan informasi detail tentang sebuah kontainer, termasuk konfigurasi, mount point, dan lain-lain.
 
 
