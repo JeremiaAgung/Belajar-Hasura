@@ -55,7 +55,7 @@ VALUES (value1, value2, ...);`
 Contoh:
 ```
 INSERT INTO Users (UserID, UserName)
-VALUES (1, 'John Doe');
+VALUES (1, 'Jeremia');
 ```
 
 5. `UPDATE`
@@ -68,7 +68,7 @@ WHERE condition;`
 Contoh:
 ```
 UPDATE Users
-SET UserName = 'Jane Doe'
+SET UserName = 'Jeremia'
 WHERE UserID = 1;
 ```
 
