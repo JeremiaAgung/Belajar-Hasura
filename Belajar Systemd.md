@@ -105,6 +105,62 @@ apt-get (Debian/Ubuntu): Mengelola paket.
 `chown`: Mengubah pemilik dan grup file atau direktori.
 `chown user:group file`
 
+## Syntax pada terminal Linux
 
+`ls` - Menampilkan daftar file dan direktori
+
+`ls` - Menampilkan file dan direktori di direktori saat ini
+`ls -l` - Menampilkan daftar dengan detail tambahan
+`ls -a` - Menampilkan semua file, termasuk file tersembunyi
+
+`cd` - Mengubah direktori
+
+`cd /path/to/directory` - Berpindah ke direktori yang ditentukan
+`cd ..` - Kembali ke direktori parent
+`cd ~`- Pindah ke direktori home pengguna
+
+`pwd` - Menampilkan direktori kerja saat ini
+
+`cp` - Menyalin file atau direktori
+`cp source destination` - Menyalin file atau direktori dari sumber ke tujuan
+`cp -r source_dir destination_dir` - Menyalin direktori beserta isinya
+
+`mv` - Memindahkan atau mengganti nama file atau direktori
+`mv source destination` - Memindahkan atau mengganti nama file atau direktori
+
+`rm` - Menghapus file atau direktori
+rm file - Menghapus file
+rm -r directory - Menghapus direktori dan isinya
+
+`mkdir` - Membuat direktori baru
+`mkdir directory_name` - Membuat direktori baru dengan nama yang ditentukan
+
+`rmdir` - Menghapus direktori kosong
+`rmdir directory_name` - Menghapus direktori kosong
+
+`touch` - Membuat file kosong baru atau memperbarui timestamp file
+`touch file_name` - Membuat file baru atau memperbarui file yang sudah ada
+
+`cat` - Menampilkan isi file
+`cat file` - Menampilkan isi file ke terminal
+
+`grep` - Mencari teks dalam file
+`grep pattern file` - Mencari pola di dalam file
+
+`chmod` - Mengubah hak akses file atau direktori
+`chmod permissions file` - Mengatur hak akses file
+
+`chown` - Mengubah pemilik dan grup file atau direktori
+`chown owner:group file` - Mengubah pemilik dan grup file
+
+`ps` - Menampilkan informasi tentang proses yang berjalan
+ps` - Menampilkan proses untuk pengguna saat ini
+`ps aux` - Menampilkan semua proses
+
+`kill` - Menghentikan proses
+`kill PID` - Menghentikan proses dengan PID tertentu
+
+`man` - Menampilkan halaman manual untuk perintah
+`man command` - Menampilkan halaman manual untuk perintah yang diberikan
 
 
