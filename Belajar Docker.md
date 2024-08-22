@@ -16,7 +16,11 @@ Docker adalah platform untuk menjalankan aplikasi dalam kontainer, yang mengisol
 docker run [image]: Menjalankan kontainer dari sebuah image.
 Contoh: `docker run -d nginx`
 
+![image](https://github.com/user-attachments/assets/f94e9a8f-1221-4f4c-a09d-1409b70e42ec)
+
 docker ps: Menampilkan daftar kontainer yang sedang berjalan.
+
+![image](https://github.com/user-attachments/assets/bba834f2-8344-4b5e-88cf-3d6fcb44ec16)
 
 docker build -t [image-name]: Membangun image dari Dockerfile.
 Contoh: `docker build -t myapp`
@@ -74,8 +78,13 @@ Menghentikan dan menghapus semua kontainer, jaringan, dan volume yang dibuat ole
 `docker logs <container_id>`
 Menampilkan log dari kontainer yang sedang berjalan atau sudah berhenti.
 
+![image](https://github.com/user-attachments/assets/ea751cc0-d5c4-427f-9ef0-6a8104b1799d)
+
 `docker network ls`
 Menampilkan daftar jaringan (network) yang ada di Docker.
+
+![image](https://github.com/user-attachments/assets/12af0b6a-95c3-43c0-92d9-faaf75d43390)
+
 **Penjelasan Mengenai Docker Network**
 
 Docker Network adalah fitur yang memungkinkan kontainer dalam Docker untuk saling berkomunikasi. 
