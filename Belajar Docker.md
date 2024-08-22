@@ -76,9 +76,29 @@ Menampilkan log dari kontainer yang sedang berjalan atau sudah berhenti.
 
 `docker network ls`
 Menampilkan daftar jaringan (network) yang ada di Docker.
+**Penjelasan Mengenai Docker Network**
 
-`docker volume ls`
-Menampilkan daftar volume yang ada di Docker.
+Docker Network adalah fitur yang memungkinkan kontainer dalam Docker untuk saling berkomunikasi. 
+
+Ada beberapa jenis jaringan yang bisa digunakan:
+
+**Bridge**: Jaringan default yang digunakan untuk menghubungkan kontainer di satu host.
+
+**Host**: Kontainer menggunakan jaringan host langsung, tanpa isolasi.
+
+**Overlay**: Menghubungkan kontainer di berbagai host dalam Docker Swarm atau Kubernetes.
+
+**Macvlan**: Memberi kontainer MAC address sendiri untuk komunikasi langsung di jaringan fisik.
+
+**None**: Kontainer tanpa koneksi jaringan.
+
+Perintah dasar seperti docker network ls, create, connect, dan disconnect digunakan untuk mengelola jaringan ini.
+
+![image](https://github.com/user-attachments/assets/4d45fcb1-623e-4778-b953-61bb010ad27c)
+Berikut adalah gambar yang menggambarkan jenis-jenis Docker Network secara ringkas. Gambar ini menunjukkan bagaimana kontainer dalam jaringan Bridge, Host, Overlay, dan Macvlan berkomunikasi satu sama lain.
+
+
+`docker volume ls` Menampilkan daftar volume yang ada di Docker.
 
 `docker inspect <container_id>`
 Menampilkan informasi detail tentang sebuah kontainer, termasuk konfigurasi, mount point, dan lain-lain.
