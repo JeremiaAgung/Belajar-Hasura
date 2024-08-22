@@ -95,10 +95,48 @@ Ada beberapa jenis jaringan yang bisa digunakan:
 Perintah dasar seperti docker network ls, create, connect, dan disconnect digunakan untuk mengelola jaringan ini.
 
 ![image](https://github.com/user-attachments/assets/4d45fcb1-623e-4778-b953-61bb010ad27c)
+
 Berikut adalah gambar yang menggambarkan jenis-jenis Docker Network secara ringkas. Gambar ini menunjukkan bagaimana kontainer dalam jaringan Bridge, Host, Overlay, dan Macvlan berkomunikasi satu sama lain.
 
 
 `docker volume ls` Menampilkan daftar volume yang ada di Docker.
+
+konsep stateful dan stateless seringkali berkaitan dengan bagaimana aplikasi mengelola data dan bagaimana data tersebut dipertahankan atau tidak ketika kontainer dihentikan atau dihapus.
+
+**1. Stateful Containers**
+
+Stateful containers adalah kontainer yang mempertahankan data mereka bahkan setelah dihentikan atau dihapus. Untuk mencapai ini, Docker menggunakan volumes atau bind mounts yang memungkinkan data disimpan di luar siklus hidup kontainer. Data yang disimpan di volume Docker akan tetap ada bahkan jika kontainer yang menggunakannya dihentikan atau dihapus.
+
+**Ciri-ciri Stateful Containers:**
+
+Volume: Data disimpan di luar kontainer, biasanya di volume Docker. Data tetap ada setelah kontainer dihentikan atau dihapus.
+
+Persistence: Digunakan untuk aplikasi yang memerlukan penyimpanan data jangka panjang, seperti basis data, file log, atau file konfigurasi.
+Contoh: Database seperti MariaDB atau PostgreSQL yang menyimpan data di volume.
+
+**2. Stateless Containers**
+
+Stateless containers tidak menyimpan data apa pun yang tidak spesifik pada siklus hidup kontainer itu sendiri. Artinya, ketika kontainer dihentikan atau dihapus, semua data di dalamnya juga hilang. Data hanya ada selama kontainer aktif.
+
+**Ciri-ciri Stateless Containers:**
+
+No Volume: Tidak menggunakan volume atau bind mounts untuk penyimpanan data persisten.
+
+Ephemeral Data: Data hanya ada selama kontainer hidup, dan akan hilang ketika kontainer dihentikan.
+
+Contoh: Aplikasi web yang hanya memproses data sementara, seperti server HTTP yang hanya merespons permintaan dan tidak menyimpan data.
+
+**Stateful Container:**
+
+Sebuah gambar yang menunjukkan kontainer Docker dengan volume yang terhubung, di mana volume tersebut menyimpan data yang bertahan setelah kontainer dihentikan.
+
+Stateless Container:
+
+Sebuah gambar yang menunjukkan kontainer Docker tanpa volume, di mana semua data hilang ketika kontainer dihentikan.
+
+![image](https://github.com/user-attachments/assets/28523b00-6abf-43df-976d-baa2f46eb87b)
+
+Berikut adalah gambar yang menunjukkan perbedaan antara stateful dan stateless Docker containers. Pada sisi kiri, terlihat stateful container dengan volume yang terhubung, sementara di sisi kanan, terlihat stateless container tanpa volume yang terhubung. Ini menggambarkan bahwa data pada stateful container dipertahankan meskipun kontainer dihentikan, sedangkan pada stateless container data tidak bertahan setelah kontainer dihentikan.
 
 `docker inspect <container_id>`
 Menampilkan informasi detail tentang sebuah kontainer, termasuk konfigurasi, mount point, dan lain-lain.
