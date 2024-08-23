@@ -122,6 +122,56 @@ Contoh:
 ```
 DROP TABLE Users;
 ```
+10. `TRUNCATE TABLE`
+    
+Truncate adalah perintah SQL yang digunakan untuk menghapus semua data dari sebuah tabel secara cepat dan efisien, tetapi tetap mempertahankan struktur tabel tersebut. Perintah ini biasanya digunakan ketika Anda ingin mengosongkan tabel tanpa menghapus definisinya, seperti kolom, indeks, dan constraints.
+
+```
+CREATE TABLE karyawan (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nama VARCHAR(100),
+    posisi VARCHAR(50),
+    gaji DECIMAL(10,2)
+);
+```
+
+Setelah tabel dibuat, Anda dapat menambahkan beberapa data ke dalam tabel tersebut:
+
+```
+INSERT INTO karyawan (nama, posisi, gaji) VALUES 
+('Andi', 'Manajer', 15000000),
+('Budi', 'Asisten', 8000000),
+('Citra', 'Sekretaris', 7000000),
+('Dewi', 'Manajer', 16000000);
+
+```
+
+Melihat Isi Tabel `karyawan`
+Untuk melihat data yang sudah dimasukkan:
+
+```
+SELECT * FROM karyawan;
+
+```
+Output :
+
+![image](https://github.com/user-attachments/assets/10a0ace5-147d-44d4-a4f0-5e37993c616e)
+
+Menggunakan `TRUNCATE` untuk Menghapus Semua Data
+
+Jika Anda ingin menghapus semua data di tabel `karyawan` tanpa menghapus strukturnya, Anda bisa menggunakan perintah `TRUNCATE`:
+
+```
+TRUNCATE TABLE karyawan;
+
+```
+Setelah perintah ini dijalankan, tabel `karyawan` akan kosong, tetapi struktur tabel tetap ada.
+
+```
+SELECT * FROM karyawan;
+```
+
+![image](https://github.com/user-attachments/assets/85849ce8-b605-4064-a72e-5ba0acbec8a2)
 
 ## 1. Primary Key
 Primary key adalah kolom atau kombinasi kolom dalam sebuah tabel yang secara unik mengidentifikasi setiap baris dalam tabel tersebut. Setiap nilai dalam kolom primary key harus unik dan tidak boleh ada nilai yang NULL.
