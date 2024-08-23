@@ -216,7 +216,9 @@ CREATE TABLE Pendaftaran (
 
 **Foreign Key:** Menjaga integritas referensial antara tabel-tabel yang berbeda, memastikan bahwa setiap nilai foreign key di tabel anak (contoh: Pendaftaran) memiliki nilai yang sesuai di tabel induk (contoh: Mahasiswa).
 
-**One to One**
+
+## One to One ##
+
 Relasi one-to-one berarti bahwa setiap baris di tabel pertama terkait dengan tepat satu baris di tabel kedua, dan sebaliknya.
 
 Contoh Kasus:
@@ -267,6 +269,59 @@ Penjelasan Relasi:
 Relasi One-to-One:
 Dalam contoh ini, setiap pengguna memiliki satu profil, dan setiap profil hanya milik satu pengguna. Relasi ini direpresentasikan dengan menambahkan foreign key id_pengguna dalam tabel profil yang juga unik, memastikan bahwa hanya ada satu profil untuk setiap pengguna.
 
+## One to Many##
+
+Relasi one-to-many berarti bahwa setiap baris di tabel pertama dapat terkait dengan banyak baris di tabel kedua, tetapi setiap baris di tabel kedua hanya terkait dengan satu baris di tabel pertama.
+
+Contoh Kasus:
+
+Misalkan Anda memiliki dua tabel: pelanggan dan pesanan. Setiap pelanggan bisa memiliki banyak pesanan, tetapi setiap pesanan hanya terkait dengan satu pelanggan.
+
+Struktur Tabel:
+
+`pelanggan`: Tabel utama yang menyimpan data pelanggan.
+`pesanan`: Tabel yang menyimpan data pesanan yang dilakukan oleh pelanggan.
+
+```
+CREATE TABLE pelanggan (
+    id_pelanggan INT PRIMARY KEY,
+    nama VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL
+);
+
+CREATE TABLE pesanan (
+    id_pesanan INT PRIMARY KEY,
+    id_pelanggan INT,
+    tanggal_pesanan DATE NOT NULL,
+    total DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (id_pelanggan) REFERENCES pelanggan(id_pelanggan)
+);
+
+```
+
+Query GraphQL untuk Mengambil Data Relasi One-to-Many:
+
+```
+query {
+  pelanggan {
+    id_pelanggan
+    nama
+    email
+    pesanan {
+      id_pesanan
+      tanggal_pesanan
+      total
+    }
+  }
+}
+
+```
+![image](https://github.com/user-attachments/assets/9125f0c7-50e5-4c07-9efe-5acfc8911806)
+
+
+Relasi One-to-Many:
+
+Dalam contoh ini, seorang pelanggan dapat memiliki banyak pesanan, tetapi setiap pesanan hanya terkait dengan satu pelanggan. Relasi ini direpresentasikan dengan foreign key id_pelanggan dalam tabel pesanan.
 
 
 
