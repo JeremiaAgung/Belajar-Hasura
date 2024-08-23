@@ -215,3 +215,59 @@ CREATE TABLE Pendaftaran (
 **Primary Key:** Menjamin bahwa setiap baris dalam tabel adalah unik dan dapat diidentifikasi secara khusus.
 
 **Foreign Key:** Menjaga integritas referensial antara tabel-tabel yang berbeda, memastikan bahwa setiap nilai foreign key di tabel anak (contoh: Pendaftaran) memiliki nilai yang sesuai di tabel induk (contoh: Mahasiswa).
+
+**One to One**
+Relasi one-to-one berarti bahwa setiap baris di tabel pertama terkait dengan tepat satu baris di tabel kedua, dan sebaliknya.
+
+Contoh Kasus:
+Misalkan Anda memiliki dua tabel: `pengguna` dan `profil`. Setiap pengguna memiliki satu profil, dan setiap profil hanya terkait dengan satu pengguna.
+
+Struktur Tabel:
+`pengguna`: Tabel utama yang menyimpan data pengguna.
+`profil`: Tabel yang menyimpan data profil yang terkait dengan pengguna.
+
+```
+CREATE TABLE pengguna (
+    id_pengguna INT PRIMARY KEY,
+    nama VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL
+);
+
+CREATE TABLE profil (
+    id_profil INT PRIMARY KEY,
+    id_pengguna INT UNIQUE, -- Harus unik untuk memastikan one-to-one
+    alamat TEXT,
+    tanggal_lahir DATE,
+    FOREIGN KEY (id_pengguna) REFERENCES pengguna(id_pengguna)
+);
+
+```
+
+Query GraphQL untuk Mengambil Data Relasi One-to-One:
+```
+query {
+  pengguna {
+    id_pengguna
+    nama
+    email
+    profil {
+      alamat
+      tanggal_lahir
+    }
+  }
+}
+
+```
+
+![image](https://github.com/user-attachments/assets/e5c8fa61-c7fb-4a1d-9f6e-069a3fc5737b)
+
+
+Penjelasan Relasi:
+
+Relasi One-to-One:
+Dalam contoh ini, setiap pengguna memiliki satu profil, dan setiap profil hanya milik satu pengguna. Relasi ini direpresentasikan dengan menambahkan foreign key id_pengguna dalam tabel profil yang juga unik, memastikan bahwa hanya ada satu profil untuk setiap pengguna.
+
+
+
+
+
