@@ -316,8 +316,8 @@ query {
 }
 
 ```
-![image](https://github.com/user-attachments/assets/9125f0c7-50e5-4c07-9efe-5acfc8911806)
 
+![image](https://github.com/user-attachments/assets/3a37a354-fd4c-4073-88bf-909bfea265b0)
 
 Relasi One-to-Many:
 
