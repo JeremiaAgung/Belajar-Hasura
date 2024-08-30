@@ -152,6 +152,52 @@ kubectl scale deployment nginx-deployment --replicas=3
 
 **-Container Runtime:** Kubelet berinteraksi dengan container runtime (seperti Docker atau containerd) untuk menjalankan container sesuai dengan spesifikasi yang diberikan oleh control plane.
 
+### Berikut adalah beberapa contoh command yang dapat dijalankan dengan `kubelet`:
+
+**1. Menjalankan `kubelet` dengan parameter default:**
+```
+kubelet --config=/var/lib/kubelet/config.yaml
+```
+
+**2. Menentukan runtime container:**
+Jika menggunakan `containerd` sebagai container runtime, bisa mengatur dengan command berikut:
+```
+kubelet --container-runtime=remote --container-runtime-endpoint=unix:///run/containerd/containerd.sock
+
+```
+
+**3.Mengatur file konfigurasi Kubelet:**
+dapat menggunakan flag `--config` untuk menunjuk ke file konfigurasi YAML yang memuat semua pengaturan Kubelet.
+```
+kubelet --config=/etc/kubernetes/kubelet-config.yaml
+```
+**4.Menentukan direktori untuk pod-manifest:**
+Untuk menjalankan pod statis, Anda dapat menggunakan flag `--pod-manifest-path`:
+```
+kubelet --pod-manifest-path=/etc/kubernetes/manifests
+```
+**5.Menentukan server API Kubernetes:**
+Untuk menghubungkan kubelet ke API server, gunakan flag `--kubeconfig`:
+```
+kubelet --kubeconfig=/etc/kubernetes/kubelet.kubeconfig
+```
+**6.Menentukan Node IP secara manual:**
+Jika node memiliki lebih dari satu interface jaringan, Anda bisa menetapkan IP node secara manual:
+```
+kubelet --node-ip=192.168.1.100
+```
+**7.Mengaktifkan fitur tertentu:**
+Misalnya, untuk mengaktifkan fitur alpha tertentu, gunakan flag `--feature-gates`:
+```
+kubelet --feature-gates=SomeAlphaFeature=true
+```
+
+**8.Menentukan jaringan plugin:**
+Jika Anda menggunakan plugin jaringan seperti CNI, Anda dapat mengatur plugin tersebut dengan flag `--network-plugin`:
+```
+kubelet --network-plugin=cni --cni-conf-dir=/etc/cni/net.d --cni-bin-dir=/opt/cni/bin
+```
+
 ### Apa itu kubeadm?
 **Kubeadm** adalah alat yang digunakan untuk menginisialisasi dan mengelola cluster Kubernetes. Fungsi utamanya adalah untuk:
 
