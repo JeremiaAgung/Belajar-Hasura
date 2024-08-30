@@ -1,6 +1,6 @@
 # KUBERNETES(K8s)
 
-Kubernetes, sering disingkat sebagai k8s, adalah sebuah platform open-source yang dirancang untuk mengotomatisasi proses deployment, scaling, dan manajemen aplikasi yang terkontainerisasi. Berikut adalah penjelasan mengenai Kubernetes beserta kelebihan, kekurangan, konsep networking, volume, dan beberapa command yang umum digunakan pada Linux.
+Kubernetes, sering disingkat sebagai k8s, adalah sebuah platform open-source yang dirancang untuk mengotomatisasi proses deployment, scaling, dan manajemen aplikasi yang terkontainerisasi. 
 
 ### 1. Kubernetes (K8s)
 
