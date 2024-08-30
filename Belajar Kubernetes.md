@@ -216,3 +216,69 @@ kubelet --network-plugin=cni --cni-conf-dir=/etc/cni/net.d --cni-bin-dir=/opt/cn
 -Joining Nodes: Digunakan untuk menambahkan worker node ke cluster yang sudah ada dengan command kubeadm join.
 
 Dengan kubeadm, administrator dapat dengan mudah mengelola lifecycle dari sebuah cluster Kubernetes, mulai dari inisialisasi hingga maintenance.
+
+### Berikut adalah beberapa contoh command yang dapat dijalankan dengan `kubeadm`:
+
+**1.Inisialisasi Control Plane Node:**
+Untuk membuat node control plane pertama di sebuah kluster, gunakan:
+```
+sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+```
+`--pod-network-cidr` menentukan range CIDR untuk jaringan pod. Ini harus disesuaikan dengan plugin jaringan yang akan digunakan, misalnya Flannel.
+
+**2.Menambahkan Worker Node ke Cluster:**
+Setelah inisialisasi control plane, kubeadm akan memberikan command untuk menambahkan worker node ke cluster. Contoh command untuk menambahkan worker node:
+```
+sudo kubeadm join <control-plane-endpoint>:<port> --token <token> --discovery-token-ca-cert-hash sha256:<hash>
+```
+`<control-plane-endpoint>` adalah alamat IP atau DNS dari control plane node.
+`<token>` dan `<hash>` akan disediakan oleh `kubeadm init`.
+
+**3.Generate Kubeconfig File untuk Admin:**
+Untuk membuat file kubeconfig yang dapat digunakan oleh admin untuk berinteraksi dengan kluster:
+
+```
+kubeadm config view > $HOME/.kube/config
+```
+**4.Mencetak Token Join:**
+Untuk mencetak token baru yang dapat digunakan untuk bergabung ke kluster:
+```
+sudo kubeadm token create --print-join-command
+```
+
+**5.Reset Node:**
+Untuk menghapus semua konfigurasi Kubernetes dari node:
+```
+sudo kubeadm reset
+```
+
+**6.Menguji Versi Kubernetes yang Kompatibel:**
+dapat menguji versi Kubernetes yang kompatibel dengan menjalankan:
+```
+kubeadm upgrade plan
+```
+
+**7.Menambahkan Node Control Plane Lain:**
+Jika Anda ingin menambahkan node control plane lain, gunakan flag `--control-plane`:
+```
+sudo kubeadm join <control-plane-endpoint>:<port> --token <token> --discovery-token-ca-cert-hash sha256:<hash> --control-plane --certificate-key <key>
+```
+
+**8.Membuat Konfigurasi Cluster YAML:**
+Jika Anda ingin menyimpan konfigurasi `kubeadm` dalam file YAML untuk digunakan kemudian:
+```
+kubeadm config print init-defaults > kubeadm-config.yaml
+```
+
+**9.Menginisialisasi Kluster dengan Konfigurasi YAML:** 
+Setelah membuat dan mengedit file konfigurasi, bisa menginisialisasi kluster dengan:
+```
+sudo kubeadm init --config=kubeadm-config.yaml
+```
+
+**10.Upgrade Kluster:**
+Untuk melakukan upgrade ke versi Kubernetes yang lebih baru:
+```
+sudo kubeadm upgrade apply v1.25.0
+```
+Perintah `kubeadm` sangat fleksibel dan mendukung berbagai opsi untuk inisialisasi, pengelolaan, dan pengembangan kluster Kubernetes.
