@@ -79,14 +79,94 @@ Berbagai tipe volume mungkin memerlukan plugin atau konfigurasi tambahan.
 
 Berikut adalah beberapa command dasar yang sering digunakan dalam Kubernetes:
 
-**Membuat Deployment**
+**a. Membuat Deployment**
+
 ```
 kubectl create deployment [nama-deployment] --image=[nama-image]
 ```
 contoh
 
-`
+```
 kubectl create deployment nginx-deployment --image=nginx
+```
 
-`
+**b. Mengelola Pods**
 
+Melihat Pods yang Berjalan:
+
+```
+kubectl get pods
+
+```
+
+Menghapus Pod:
+
+```
+kubectl delete pod [nama-pod]
+```
+**c. Mengelola Services**
+
+Membuat Service:
+
+```
+kubectl expose deployment [nama-deployment] --type=[tipe-service] --port=[port]
+```
+
+**d.Melihat Logs Pod:**
+
+```
+kubectl logs [nama-pod]
+```
+
+**e. Mengganti Context Cluster**
+
+```
+kubectl config use-context [nama-context]
+```
+
+**f. Melakukan Scaling pada Deployment**
+
+```
+kubectl scale deployment [nama-deployment] --replicas=[jumlah-replicas]
+```
+contoh
+
+```
+kubectl scale deployment nginx-deployment --replicas=3
+```
+
+### Apa itu Kubelet?
+**Kubelet** adalah komponen penting dalam arsitektur Kubernetes yang berjalan pada setiap node dalam cluster. Fungsinya adalah untuk:
+
+-Mengambil instruksi dari control plane (melalui API server) dan menjalankan container yang ditentukan dalam Pod di node tersebut.
+
+-Memastikan bahwa container yang didefinisikan dalam Pod tetap berjalan dan sehat.
+
+-Melakukan monitoring pada resource yang digunakan oleh container di node tersebut.
+
+**Arsitektur:**
+
+**-Node:** Di dalam setiap node Kubernetes, terdapat Kubelet yang bertugas berkomunikasi dengan API server di control plane.
+
+**-Pods:** Kubelet bertanggung jawab untuk menjalankan Pods di dalam node tersebut.
+
+**-Container Runtime:** Kubelet berinteraksi dengan container runtime (seperti Docker atau containerd) untuk menjalankan container sesuai dengan spesifikasi yang diberikan oleh control plane.
+
+### Apa itu kubeadm?
+**Kubeadm** adalah alat yang digunakan untuk menginisialisasi dan mengelola cluster Kubernetes. Fungsi utamanya adalah untuk:
+
+-Memudahkan proses instalasi dan konfigurasi Kubernetes di server.
+
+-Membuat control plane dan worker node dengan cepat.
+
+-Memungkinkan upgrade cluster dan melakukan tindakan pemeliharaan lainnya.
+
+**Arsitektur:**
+
+-Bootstrap: kubeadm digunakan untuk bootstrap cluster Kubernetes.
+
+-Control Plane Initialization: Menginisialisasi komponen control plane seperti API server, scheduler, dan controller manager.
+
+-Joining Nodes: Digunakan untuk menambahkan worker node ke cluster yang sudah ada dengan command kubeadm join.
+
+Dengan kubeadm, administrator dapat dengan mudah mengelola lifecycle dari sebuah cluster Kubernetes, mulai dari inisialisasi hingga maintenance.
