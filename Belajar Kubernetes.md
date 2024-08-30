@@ -75,3 +75,18 @@ Setup persistent storage bisa rumit, terutama di lingkungan on-premise.
 
 Berbagai tipe volume mungkin memerlukan plugin atau konfigurasi tambahan.
 
+### Command-Command Kubernetes
+
+Berikut adalah beberapa command dasar yang sering digunakan dalam Kubernetes:
+
+**Membuat Deployment**
+```
+kubectl create deployment [nama-deployment] --image=[nama-image]
+```
+contoh
+
+`
+kubectl create deployment nginx-deployment --image=nginx
+
+`
+
