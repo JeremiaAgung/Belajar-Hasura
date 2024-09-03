@@ -92,10 +92,39 @@ YAML di atas adalah konfigurasi Kubernetes untuk mendefinisikan Deployment dan S
         * **POSTGRES_PASSWORD, POSTGRES_USER, POSTGRES_DB:** Variabel untuk mengatur kata sandi, nama pengguna, dan nama database dari PostgreSQL. Nilainya diambil                                                                 dari Secret Kubernetes.
           
       * **resources:** Mengatur batasan dan permintaan sumber daya CPU dan memori untuk kontainer.
+        Terdapat dua komponen utama: limits dan requests.
+        ## 1. Limits
+        memory: "512Mi": Membatasi penggunaan memori maksimum oleh kontainer hingga 512 MiB (Mebibytes). Jika kontainer mencoba menggunakan lebih dari 512 MiB,                Kubernetes akan mencoba menghentikan kontainer tersebut.
+        
+        cpu: "1": Membatasi penggunaan CPU maksimum oleh kontainer hingga 1 core CPU. Jika kontainer mencoba menggunakan lebih dari 1 core CPU, Kubernetes akan                mengekang penggunaan CPU-nya.
+
+        ## 2. Requests
+        memory: "256Mi": Menetapkan permintaan minimum memori sebesar 256 MiB. Ini adalah jumlah memori yang dijamin tersedia untuk kontainer. Jika tidak ada memori           sebanyak ini, Pod mungkin tidak akan dijadwalkan hingga memori yang cukup tersedia.
+        
+        cpu: "100m": Menetapkan permintaan minimum CPU sebesar 100 millicores (0.1 core CPU). Ini adalah jumlah CPU yang dijamin tersedia untuk kontainer.
+
+        Penjelasan Mengenai cpu 100m:
+        1 core CPU = 1000 millicores
+        100 millicores = 0.1 core CPU
+        Ini berarti ketika Anda menetapkan cpu: "100m" pada kontainer, Anda meminta agar kontainer dijamin dapat menggunakan 10% dari satu core CPU.
+        Dalam Kubernetes, CPU dialokasikan dalam satuan yang disebut millicores atau millicpu. Satu millicore setara dengan 1/1000 dari satu core CPU.
+
+        * **Requests** adalah sumber daya yang akan disediakan oleh Kubernetes saat menjalankan kontainer.
+        * **Limits** adalah batas keras yang tidak boleh dilampaui oleh kontainer selama beroperasi.
+        
       * **ports:** Mengekspos port 5432 dari kontainer, yang merupakan port default PostgreSQL.
+        Port 5432 biasanya digunakan oleh PostgreSQL,port ini yang akan digunakan untuk berkomunikasi dengan database PostgreSQL tersebut.
+        
       * **volumeMounts:** Menyambungkan volume bernama `data` ke direktori `/var/lib/postgresql/data` di dalam kontainer.
         
 * **volumes:** Menyambungkan PersistentVolumeClaim bernama `postgres` ke volume `data`, digunakan untuk penyimpanan data yang persisten.
+  Volume `data` digunakan untuk menyimpan data secara persisten di dalam Pod.
+
+  `PersistentVolumeClaim` adalah permintaan untuk penyimpanan yang persisten.
+
+  `claimName: postgres` mengacu pada PVC dengan nama `postgres`, yang akan menyediakan dan mengelola penyimpanan untuk volume ini.
+
+Dengan cara ini, `data` yang disimpan di volume data akan tetap ada meskipun Pod di-restart atau dipindahkan, asalkan PVC `postgres` tetap ada.
   
 ## Service
 
