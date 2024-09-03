@@ -90,9 +90,11 @@ YAML di atas adalah konfigurasi Kubernetes untuk mendefinisikan Deployment dan S
       * **env:** Variabel lingkungan yang diperlukan oleh PostgreSQL:
         * **PGDATA:** Menentukan direktori data PostgreSQL.
         * **POSTGRES_PASSWORD, POSTGRES_USER, POSTGRES_DB:** Variabel untuk mengatur kata sandi, nama pengguna, dan nama database dari PostgreSQL. Nilainya diambil                                                                 dari Secret Kubernetes.
-resources: Mengatur batasan dan permintaan sumber daya CPU dan memori untuk kontainer.
-ports: Mengekspos port 5432 dari kontainer, yang merupakan port default PostgreSQL.
-volumeMounts: Menyambungkan volume bernama data ke direktori /var/lib/postgresql/data di dalam kontainer.
+          
+      * **resources:** Mengatur batasan dan permintaan sumber daya CPU dan memori untuk kontainer.
+      * **ports:** Mengekspos port 5432 dari kontainer, yang merupakan port default PostgreSQL.
+      * **volumeMounts:** Menyambungkan volume bernama data ke direktori /var/lib/postgresql/data di dalam kontainer.
+        
 volumes: Menyambungkan PersistentVolumeClaim bernama postgres ke volume data, digunakan untuk penyimpanan data yang persisten.
 Service
 kind: Service: Membuat Service untuk mengakses Pod PostgreSQL.
