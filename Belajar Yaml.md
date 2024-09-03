@@ -75,11 +75,14 @@ YAML di atas adalah konfigurasi Kubernetes untuk mendefinisikan Deployment dan S
 
 ## Deployment
 
-kind: Deployment: Mengatur Deployment yang akan mengelola dan menjalankan Pod PostgreSQL.
-metadata.name: postgres: Memberi nama "postgres" untuk Deployment ini.
-selector: Digunakan untuk mencocokkan labels yang ada di Pod yang akan dijalankan.
-template: Bagian ini mendefinisikan Pod yang akan dibuat.
-metadata.labels: Memberi label app: postgres untuk Pod.
+* **kind: Deployment:** Mengatur Deployment yang akan mengelola dan menjalankan Pod PostgreSQL.
+  
+* **metadata.name:** postgres: Memberi nama "postgres" untuk Deployment ini.
+
+* **selector:** Digunakan untuk mencocokkan labels yang ada di Pod yang akan dijalankan.
+  
+* **template:** Bagian ini mendefinisikan Pod yang akan dibuat.
+  * **metadata.labels:** Memberi label `app: postgres` untuk Pod.
 spec: Mengatur spesifikasi dari kontainer di dalam Pod.
 containers: Daftar kontainer yang akan dijalankan di Pod ini. Dalam hal ini, hanya ada satu kontainer.
 name: postgres: Nama kontainernya.
