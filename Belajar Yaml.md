@@ -83,13 +83,13 @@ YAML di atas adalah konfigurasi Kubernetes untuk mendefinisikan Deployment dan S
   
 * **template:** Bagian ini mendefinisikan Pod yang akan dibuat.
   * **metadata.labels:** Memberi label `app: postgres` untuk Pod.
-spec: Mengatur spesifikasi dari kontainer di dalam Pod.
-containers: Daftar kontainer yang akan dijalankan di Pod ini. Dalam hal ini, hanya ada satu kontainer.
-name: postgres: Nama kontainernya.
-image: postgres:11.1: Menjalankan PostgreSQL versi 11.1 dari Docker image.
-env: Variabel lingkungan yang diperlukan oleh PostgreSQL:
-PGDATA: Menentukan direktori data PostgreSQL.
-POSTGRES_PASSWORD, POSTGRES_USER, POSTGRES_DB: Variabel untuk mengatur kata sandi, nama pengguna, dan nama database dari PostgreSQL. Nilainya diambil dari Secret Kubernetes.
+  * **spec:** Mengatur spesifikasi dari kontainer di dalam Pod.
+    * **containers:** Daftar kontainer yang akan dijalankan di Pod ini. Dalam hal ini, hanya ada satu kontainer.
+      * **name:** postgres: Nama kontainernya.
+      * **image:** postgres:11.1: Menjalankan PostgreSQL versi 11.1 dari Docker image.
+      * **env:** Variabel lingkungan yang diperlukan oleh PostgreSQL:
+        * **PGDATA:** Menentukan direktori data PostgreSQL.
+        * **POSTGRES_PASSWORD, POSTGRES_USER, POSTGRES_DB:** Variabel untuk mengatur kata sandi, nama pengguna, dan nama database dari PostgreSQL. Nilainya diambil                                                                 dari Secret Kubernetes.
 resources: Mengatur batasan dan permintaan sumber daya CPU dan memori untuk kontainer.
 ports: Mengekspos port 5432 dari kontainer, yang merupakan port default PostgreSQL.
 volumeMounts: Menyambungkan volume bernama data ke direktori /var/lib/postgresql/data di dalam kontainer.
