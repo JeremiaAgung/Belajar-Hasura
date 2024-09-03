@@ -1,12 +1,12 @@
 # Hasura-k8s-stack [postgres] 
 
-### .gitignore
+## .gitignore
 
 `.gitignore` adalah file yang digunakan dalam proyek Git untuk menentukan file atau direktori yang ingin diabaikan oleh Git, sehingga tidak akan dimasukkan ke dalam repository.
 
 Jika ada baris berisi `secret.prod.yaml` di dalam `.gitignore`, itu berarti Git akan mengabaikan file `secret.prod.yaml`, sehingga file tersebut tidak akan ditambahkan, diubah, atau dihapus dalam commit. Ini biasanya dilakukan untuk mencegah informasi sensitif, seperti kredensial atau konfigurasi produksi, tidak secara tidak sengaja dibagikan ke publik atau tim yang lebih luas.
 
-### deployment-service.yaml
+## deployment-service.yaml
 
 ```
 apiVersion: apps/v1
@@ -73,7 +73,7 @@ spec:
 ```
 YAML di atas adalah konfigurasi Kubernetes untuk mendefinisikan Deployment dan Service yang menjalankan PostgreSQL versi 11.1. Berikut penjelasan singkatnya:
 
-## Deployment
+### Deployment
 
 * **kind: Deployment:** Mengatur Deployment yang akan mengelola dan menjalankan Pod PostgreSQL.
   
@@ -126,7 +126,7 @@ YAML di atas adalah konfigurasi Kubernetes untuk mendefinisikan Deployment dan S
 
 Dengan cara ini, `data` yang disimpan di volume data akan tetap ada meskipun Pod di-restart atau dipindahkan, asalkan PVC `postgres` tetap ada.
   
-## Service
+### Service
 
 * **kind:** Service: Membuat Service untuk mengakses Pod PostgreSQL.
 * **metadata.name:** postgres: Memberi nama "postgres" untuk Service ini.
@@ -135,3 +135,34 @@ Dengan cara ini, `data` yang disimpan di volume data akan tetap ada meskipun Pod
   * **ports:** Mengekspos port 5432 di dalam Service, yang akan diarahkan ke port 5432 dari Pod.
     
 Secara keseluruhan, konfigurasi ini menjalankan database PostgreSQL di Kubernetes dengan penyimpanan data yang persisten dan eksposur port yang dapat diakses oleh aplikasi lain di dalam cluster Kubernetes.
+
+## pvc.yaml
+```
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: default
+  resources:
+    requests:
+      storage: 5Gi
+```
+
+Ini adalah konfigurasi Kubernetes untuk PersistentVolumeClaim (PVC). PVC digunakan untuk meminta penyimpanan berkelanjutan yang akan digunakan oleh pod di Kubernetes. Berikut adalah penjelasan dari setiap bagian:
+
+* **`apiVersion`:** v1: Menyatakan versi API yang digunakan untuk objek ini.
+* **`kind: PersistentVolumeClaim`:** Tipe objek Kubernetes yang mendeklarasikan permintaan untuk penyimpanan.
+* **`metadata`:**
+  * **`name: postgres`:** Nama dari PVC ini adalah "postgres".
+* **`spec`:** Spesifikasi dari PVC.
+  * **accessModes:**
+    * **ReadWriteOnce:** Menyatakan bahwa volume dapat diakses untuk dibaca dan ditulis hanya oleh satu pod pada satu waktu.
+  * **storageClassName:** default: Menyatakan kelas penyimpanan yang akan digunakan. Dalam hal ini, menggunakan kelas penyimpanan yang bernama "default".
+    * **resources:**
+      * **requests:**
+        * **storage: 5Gi:** Permintaan penyimpanan sebesar 5 gigabyte.
+          
+Dengan konfigurasi ini, PVC meminta 5GB penyimpanan yang dapat dibaca dan ditulis oleh satu pod, menggunakan kelas penyimpanan "default".
