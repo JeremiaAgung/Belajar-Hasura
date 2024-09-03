@@ -93,13 +93,16 @@ YAML di atas adalah konfigurasi Kubernetes untuk mendefinisikan Deployment dan S
           
       * **resources:** Mengatur batasan dan permintaan sumber daya CPU dan memori untuk kontainer.
       * **ports:** Mengekspos port 5432 dari kontainer, yang merupakan port default PostgreSQL.
-      * **volumeMounts:** Menyambungkan volume bernama data ke direktori /var/lib/postgresql/data di dalam kontainer.
+      * **volumeMounts:** Menyambungkan volume bernama `data` ke direktori `/var/lib/postgresql/data` di dalam kontainer.
         
-volumes: Menyambungkan PersistentVolumeClaim bernama postgres ke volume data, digunakan untuk penyimpanan data yang persisten.
-Service
-kind: Service: Membuat Service untuk mengakses Pod PostgreSQL.
-metadata.name: postgres: Memberi nama "postgres" untuk Service ini.
-spec: Menentukan spesifikasi Service.
-selector: Memilih Pod yang memiliki label app: postgres untuk di-expose melalui Service ini.
-ports: Mengekspos port 5432 di dalam Service, yang akan diarahkan ke port 5432 dari Pod.
+* **volumes:** Menyambungkan PersistentVolumeClaim bernama `postgres` ke volume `data`, digunakan untuk penyimpanan data yang persisten.
+  
+## Service
+
+* **kind:** Service: Membuat Service untuk mengakses Pod PostgreSQL.
+* **metadata.name:** postgres: Memberi nama "postgres" untuk Service ini.
+* **spec:** Menentukan spesifikasi Service.
+  * **selector:** Memilih Pod yang memiliki label `app: postgres` untuk di-expose melalui Service ini.
+  * **ports:** Mengekspos port 5432 di dalam Service, yang akan diarahkan ke port 5432 dari Pod.
+    
 Secara keseluruhan, konfigurasi ini menjalankan database PostgreSQL di Kubernetes dengan penyimpanan data yang persisten dan eksposur port yang dapat diakses oleh aplikasi lain di dalam cluster Kubernetes.
