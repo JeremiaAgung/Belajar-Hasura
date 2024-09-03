@@ -227,3 +227,12 @@ Berikut Gambar
         |                                            |
         +---------------------------------------------+
 ```
+Penjelasan Mengenai Gambar:
+
+**Master Node:** Mengelola cluster, berisi komponen seperti API Server, Controller Manager, dan Scheduler.
+  * **API Server:** Titik masuk untuk semua permintaan ke cluster.
+  * **Controller Manager:** Mengelola kontroler yang memantau dan mengelola status cluster.
+  * **Scheduler:** Menentukan di node mana pod akan dijadwalkan.
+  * **Worker Nodes:** Menjalankan aplikasi dalam bentuk pod.
+
+**Pod:** Unit terkecil dalam Kubernetes yang dapat menjalankan satu atau beberapa container.
