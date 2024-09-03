@@ -166,3 +166,63 @@ Ini adalah konfigurasi Kubernetes untuk PersistentVolumeClaim (PVC). PVC digunak
         * **storage: 5Gi:** Permintaan penyimpanan sebesar 5 gigabyte.
           
 Dengan konfigurasi ini, PVC meminta 5GB penyimpanan yang dapat dibaca dan ditulis oleh satu pod, menggunakan kelas penyimpanan "default".
+
+## secret.yaml
+
+File YAML yang diatas menunjukan definisi sebuah `Secret` di Kubernetes.`Secret` ini digunakan untuk menyimpan data sensitif seperti password, token, atau kunci. Berikut penjelasan setiap bagiannya:
+
+* **`apiVersion: v1` :** Versi API yang digunakan untuk membuat Secret. Versi ini menyatakan bahwa ini adalah objek Secret versi 1.
+* **`kind: Secret` :** Menunjukkan bahwa objek ini adalah sebuah Secret.
+* **`metadata` :**
+  * **`name: postgres` :** Nama dari Secret ini adalah postgres. Nama ini digunakan untuk merujuk ke Secret ini di dalam Kubernetes.
+* **`stringData` :**
+  * **`username: username` :** Menyimpan data sensitif dengan key `username` dan value `username`.
+  * **`password: password` :** Menyimpan data sensitif dengan key `password` dan value `password`.
+  * **`dbname: dbname` :** Menyimpan data sensitif dengan key `dbname` dan value `dbname`.
+`stringData` adalah cara untuk mendefinisikan data sensitif dengan format string. Kubernetes secara otomatis akan mengenkripsi data ini saat disimpan di cluster.
+`Secret` ini di dalam konfigurasi Pod atau Deployment untuk memberikan akses ke data sensitif seperti kredensial database.
+
+Penjelasan tambahan Mengenai **Cluster**
+**cluster** adalah kumpulan mesin (node) yang bekerja bersama untuk menjalankan aplikasi dan layanan. Cluster Kubernetes biasanya terdiri dari dua tipe node:
+
+* **Master Node:** Node ini mengelola cluster dan bertanggung jawab untuk pengaturan dan koordinasi, seperti menjalankan kontrol plane yang mengelola status cluster dan menugaskan beban kerja ke node lainnya.
+
+* **Worker Node:** Node ini menjalankan aplikasi yang dikemas dalam container. Mereka menjalankan pod (unit terkecil dalam Kubernetes yang bisa menjalankan satu atau beberapa container) dan mengelola container yang berada di dalamnya.
+
+**Cluster Kubernetes memiliki beberapa komponen penting:**
+
+  * **API Server:** Titik masuk utama untuk semua permintaan ke cluster.
+  * **Scheduler:** Menentukan node mana yang akan menjalankan pod.
+  * **Controller Manager:** Mengelola berbagai kontroler yang mengawasi keadaan sistem dan membuat perubahan jika diperlukan.
+  * **etcd:** Penyimpanan konfigurasi cluster yang terdistribusi.
+  * **Kubelet:** Agen yang berjalan di setiap node dan memastikan bahwa kontainer yang dijadwalkan oleh API Server berjalan dengan benar.
+  * **Kube-Proxy:** Mengelola komunikasi jaringan di dalam cluster, seperti load balancing dan routing trafik ke layanan yang benar.
+
+Berikut Gambar
+                      +------------------+
+                      |    Master Node   |
+                      +------------------+
+                              |
+       +--------------------------------------------------+
+       |                  Control Plane                  |
+       |                                                  |
+       |  +------------+  +------------------+  +-------+  |
+       |  | API Server |  | Controller Manager|  | Scheduler |  |
+       |  +------------+  +------------------+  +-------+  |
+       |                                                  |
+       +----------------+-------------------------------+
+                              |
+        +---------------------------------------------+
+        |               Worker Nodes                  |
+        |                                             |
+        | +------------------+ +-------------------+ |
+        | |      Node 1      | |       Node 2      | |
+        | |                  | |                   | |
+        | | +------------+   | | +------------+    | |
+        | | |   Pod 1    |   | | |   Pod 2    |    | |
+        | | |            |   | | |            |    | |
+        | | +------------+   | | +------------+    | |
+        | +------------------+ +-------------------+ |
+        |                                             |
+        +---------------------------------------------+
+
