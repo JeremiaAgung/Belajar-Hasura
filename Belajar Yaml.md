@@ -199,6 +199,7 @@ Penjelasan tambahan Mengenai **Cluster**
   * **Kube-Proxy:** Mengelola komunikasi jaringan di dalam cluster, seperti load balancing dan routing trafik ke layanan yang benar.
 
 Berikut Gambar
+```
                       +------------------+
                       |    Master Node   |
                       +------------------+
@@ -225,4 +226,4 @@ Berikut Gambar
         | +------------------+ +-------------------+ |
         |                                             |
         +---------------------------------------------+
-
+```
