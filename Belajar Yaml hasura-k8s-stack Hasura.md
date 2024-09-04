@@ -138,14 +138,14 @@ Penjelasan:
   * **name:** Nama dari objek Ingress, yaitu `hasura`.
   * **annotations:** Metadata tambahan untuk konfigurasi khusus:
     * **`kubernetes.io/ingress.class`:** Menentukan kelas Ingress yang digunakan, di sini "nginx".
-    * **`certmanager.k8s.io/issuer`:** Menunjukkan issuer sertifikat untuk TLS. Di sini menggunakan "letsencrypt-staging" untuk sertifikat dari Let’s Encrypt dalam mode staging (uji                                            coba). Anda bisa mengganti ke "letsencrypt-prod" untuk produksi.
+    * **`certmanager.k8s.io/issuer`:** Menunjukkan issuer sertifikat untuk TLS. Di sini menggunakan "letsencrypt-staging" untuk sertifikat dari Let’s Encrypt dalam mode staging (uji                                            coba). bisa mengganti ke "letsencrypt-prod" untuk produksi.
     * **`certmanager.k8s.io/acme-challenge-type`:** Tipe tantangan ACME yang digunakan untuk validasi sertifikat, yaitu `http01`.
 
 * **spec:**
   * **tls:** Bagian ini mengonfigurasi TLS (Transport Layer Security) untuk mengamankan komunikasi:
     * **hosts:** Daftar nama host yang akan menggunakan TLS, di sini `k8s-stack.hasura.app`.
     * **secretName:** Nama dari secret yang berisi sertifikat TLS dan kunci privatnya, yaitu `k8s-stack-hasura-app-tls`.
-* **rules:** Mengatur aturan untuk rute lalu lintas HTTP:
+* **rules:** Mengatur aturan untuk rute jaringan HTTP:
   * **host:** Nama host yang harus dicocokkan untuk aturan ini, yaitu `k8s-stack.hasura.app`.
   * **http:**
     * **paths:** Daftar jalur untuk menangani permintaan HTTP:
@@ -154,4 +154,28 @@ Penjelasan:
         * **serviceName:** Nama layanan yang akan menangani permintaan, yaitu `hasura`.
         * **servicePort:** Port pada layanan yang dituju, yaitu port 80.
           
-Secara keseluruhan, file ini mengatur Ingress untuk meneruskan lalu lintas dari k8s-stack.hasura.app ke layanan hasura di port 80 dan mengonfigurasi TLS untuk keamanan komunikasi.
+Secara keseluruhan, file ini mengatur Ingress untuk meneruskan lalu lintas dari `k8s-stack.hasura.app` ke layanan `hasura` di port 80 dan mengonfigurasi TLS untuk keamanan komunikasi.
+
+# secret.yaml
+```
+apiVersion: v1
+kind: Secret
+metadata:
+  name: hasura
+stringData:
+  accessKey: accessKey
+  # only change postgres username, password and dbname as set
+  # in postgres secret
+  dburl: postgres://username:password@postgres:5432/dbname
+```
+File `secret.yaml` adalah sebuah file konfigurasi Kubernetes untuk mendefinisikan sebuah Secret. Secret dalam Kubernetes digunakan untuk menyimpan data sensitif seperti password, token, atau kunci SSH. Berikut adalah penjelasan untuk setiap bagian dari file secret.yaml tersebut:
+
+* **`apiVersion: v1`** Menunjukkan versi API Kubernetes yang digunakan untuk objek ini. Versi v1 adalah versi stabil.
+* **`kind: Secret`** Menyatakan bahwa jenis objek Kubernetes ini adalah Secret.
+* **`metadata`** Bagian ini berisi metadata tentang objek Secret ini:
+  * **name: hasura** Nama Secret ini adalah hasura. Nama ini digunakan untuk mengidentifikasi dan merujuk Secret di dalam cluster Kubernetes.
+* **stringData** Bagian ini digunakan untuk mendefinisikan data sensitif sebagai string:
+  * **accessKey: accessKey** Ini adalah contoh nilai kunci akses. Biasanya, akan mengganti accessKey dengan nilai kunci akses yang sebenarnya.
+  * **dburl: postgres://username:password@postgres:5432/dbname** Ini adalah URL koneksi ke database PostgreSQL yang digunakan oleh aplikasi.                                                                      yang perlu mengganti username, password, dan dbname dengan nilai yang sesuai.
+
+file ini mendefinisikan `Secret` yang berisi informasi penting seperti kunci akses dan URL database untuk digunakan oleh aplikasi di Kubernetes.
