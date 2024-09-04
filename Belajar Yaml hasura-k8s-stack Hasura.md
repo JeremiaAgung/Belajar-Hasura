@@ -179,3 +179,5 @@ File `secret.yaml` adalah sebuah file konfigurasi Kubernetes untuk mendefinisika
   * **dburl: postgres://username:password@postgres:5432/dbname** Ini adalah URL koneksi ke database PostgreSQL yang digunakan oleh aplikasi.                                                                      yang perlu mengganti username, password, dan dbname dengan nilai yang sesuai.
 
 file ini mendefinisikan `Secret` yang berisi informasi penting seperti kunci akses dan URL database untuk digunakan oleh aplikasi di Kubernetes.
+
+**Migrations** dalam GitHub biasanya merujuk pada perubahan skema basis data yang dilacak dan dikelola melalui sistem kontrol versi. Ini membantu dalam mengelola evolusi skema basis data secara bersamaan dengan kode aplikasi
