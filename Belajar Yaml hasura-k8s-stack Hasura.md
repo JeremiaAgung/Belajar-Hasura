@@ -102,3 +102,56 @@ spec:
     * **targetPort: 8080:** Traffic yang diterima pada port 80 akan diteruskan ke port 8080 pada container.
       
 Secara keseluruhan, file ini mengonfigurasi Kubernetes untuk menjalankan Hasura GraphQL Engine dalam sebuah pod, kemudian mengeksposnya melalui sebuah Service yang mendengarkan pada port 80.
+
+# ingress.yaml
+```
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: hasura
+  annotations:
+    kubernetes.io/ingress.class: "nginx"    
+    certmanager.k8s.io/issuer: "letsencrypt-staging"
+    #certmanager.k8s.io/issuer: "letsencrypt-prod"
+    certmanager.k8s.io/acme-challenge-type: http01
+
+spec:
+  tls:
+  - hosts:
+    - k8s-stack.hasura.app
+    secretName: k8s-stack-hasura-app-tls
+  rules:
+  - host: k8s-stack.hasura.app
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: hasura
+          servicePort: 80
+```
+`ingress.yaml` adalah file konfigurasi untuk mengatur akses ke aplikasi di dalam klaster Kubernetes.
+
+Penjelasan:
+* **apiVersion:** Ini menentukan versi API Kubernetes yang digunakan. Di sini, `extensions/v1beta1` adalah versi lama untuk Ingress. Versi terbaru `networking.k8s.io/v1`
+* **kind:** Menyatakan jenis objek Kubernetes yang sedang didefinisikan, yaitu `Ingress`.
+* **metadata:**
+  * **name:** Nama dari objek Ingress, yaitu `hasura`.
+  * **annotations:** Metadata tambahan untuk konfigurasi khusus:
+    * **`kubernetes.io/ingress.class`:** Menentukan kelas Ingress yang digunakan, di sini "nginx".
+    * **`certmanager.k8s.io/issuer`:** Menunjukkan issuer sertifikat untuk TLS. Di sini menggunakan "letsencrypt-staging" untuk sertifikat dari Let’s Encrypt dalam mode staging (uji                                            coba). Anda bisa mengganti ke "letsencrypt-prod" untuk produksi.
+    * **`certmanager.k8s.io/acme-challenge-type`:** Tipe tantangan ACME yang digunakan untuk validasi sertifikat, yaitu `http01`.
+
+* **spec:**
+  * **tls:** Bagian ini mengonfigurasi TLS (Transport Layer Security) untuk mengamankan komunikasi:
+    * **hosts:** Daftar nama host yang akan menggunakan TLS, di sini `k8s-stack.hasura.app`.
+    * **secretName:** Nama dari secret yang berisi sertifikat TLS dan kunci privatnya, yaitu `k8s-stack-hasura-app-tls`.
+* **rules:** Mengatur aturan untuk rute lalu lintas HTTP:
+  * **host:** Nama host yang harus dicocokkan untuk aturan ini, yaitu `k8s-stack.hasura.app`.
+  * **http:**
+    * **paths:** Daftar jalur untuk menangani permintaan HTTP:
+      * **path:** Jalur yang akan diteruskan, di sini `/` yang berarti semua permintaan untuk host ini akan diteruskan.
+      * **backend:** Mengarahkan permintaan ke layanan backend:
+        * **serviceName:** Nama layanan yang akan menangani permintaan, yaitu `hasura`.
+        * **servicePort:** Port pada layanan yang dituju, yaitu port 80.
+          
+Secara keseluruhan, file ini mengatur Ingress untuk meneruskan lalu lintas dari k8s-stack.hasura.app ke layanan hasura di port 80 dan mengonfigurasi TLS untuk keamanan komunikasi.
