@@ -181,3 +181,7 @@ File `secret.yaml` adalah sebuah file konfigurasi Kubernetes untuk mendefinisika
 file ini mendefinisikan `Secret` yang berisi informasi penting seperti kunci akses dan URL database untuk digunakan oleh aplikasi di Kubernetes.
 
 **Migrations** dalam GitHub biasanya merujuk pada perubahan skema basis data yang dilacak dan dikelola melalui sistem kontrol versi. Ini membantu dalam mengelola evolusi skema basis data secara bersamaan dengan kode aplikasi
+
+**Perbedaan dalam .gitignore**
+**Hasura:** Lebih fokus pada file konfigurasi dan metadata yang dihasilkan oleh Hasura.
+**PostgreSQL:** Lebih fokus pada file dump, log, dan file terkait database lainnya.
