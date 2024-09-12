@@ -32,7 +32,8 @@ Rancher menyederhanakan penggunaan Kubernetes dengan antarmuka dan alat manajeme
 
 Pada kali ini saya akan menjelaskan bagaimana saya Deployment dan Service untuk **Hasura** yang terkoneksi dengan Rancher kubernetes
 
-Pertama kita hasura membuat deployment nya terlebih dahulu
+Pertama kita hasura membuat **deployment** nya terlebih dahulu
+
 ![image](https://github.com/user-attachments/assets/098ea80f-58ce-44b0-b5fa-ad9bf32bde21)
 yang berisikan yaml berikut
 ```
@@ -253,11 +254,359 @@ status:
   updatedReplicas: 1
 
 ```
-![image](https://github.com/user-attachments/assets/12630e13-78d8-4441-b8e6-85c949ab3c7a)
 
-Berikut Deployments yang telah berjalan 
+Setelah kita sudah membuat deployment lanjut ke pembuatan **service** nya dengan yaml sebagai berikut
 
+```
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    field.cattle.io/publicEndpoints: >-
+      [{"addresses":["10.100.14.5"],"port":8084,"protocol":"TCP","serviceName":"jeremi:hasura-jeremi","allNodes":false}]
+    metallb.universe.tf/ip-allocated-from-pool: default-pool
+  creationTimestamp: '2024-09-09T10:06:47Z'
+  managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:metallb.universe.tf/ip-allocated-from-pool: {}
+        f:status:
+          f:loadBalancer:
+            f:ingress: {}
+      manager: controller
+      operation: Update
+      subresource: status
+      time: '2024-09-09T10:06:47Z'
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            f:field.cattle.io/publicEndpoints: {}
+        f:spec:
+          f:allocateLoadBalancerNodePorts: {}
+          f:externalTrafficPolicy: {}
+          f:internalTrafficPolicy: {}
+          f:ports:
+            .: {}
+            k:{"port":8084,"protocol":"TCP"}:
+              .: {}
+              f:name: {}
+              f:port: {}
+              f:protocol: {}
+              f:targetPort: {}
+          f:selector: {}
+          f:sessionAffinity: {}
+          f:type: {}
+      manager: agent
+      operation: Update
+      time: '2024-09-11T05:53:47Z'
+  name: hasura-jeremi
+  namespace: jeremi
+  resourceVersion: '14393680'
+  uid: 51b4b0ed-21ab-4723-8402-f29206ddd5ed
+spec:
+  allocateLoadBalancerNodePorts: true
+  clusterIP: 10.111.172.176
+  clusterIPs:
+    - 10.111.172.176
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+    - name: hasura-jeremi
+      nodePort: 31207
+      port: 8084
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: hasura-graphql-data-connector
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+      - ip: 10.100.14.5
+```
 
+![image](https://github.com/user-attachments/assets/7aa9c424-2ac1-450a-972a-714196c45dac)
+Berikut service yang telah berjalan 
+Setelah sudah membuat **Deployment dan Service** langsung Kita jalankan Hasura sebagai berikut
+`http://10.100.14.5:8084/`
+
+![image](https://github.com/user-attachments/assets/5da94274-40ea-4f22-9c95-fb914d9f904d)
+Disini Kita sudah terhubung dengan hasura dan langsung saja kita membuat Password dari hasura tersebut
+
+![image](https://github.com/user-attachments/assets/fe1728ee-e91f-4254-8cf0-9e6eec27644b)
+
+Kemudian kita akan langsung mengkoneksikan Mysql di Hasura nya, sebelum kita mengkoneksikan terlebih dahulu kita membuat 1 namespace default yang berada di rancher tersebut
+sebagai berikut
+
+![image](https://github.com/user-attachments/assets/c65b9c5c-402f-4e06-9286-41e204e0c8e4)
+Berikut adalah gambaran bahwa kita telah membuat Deployment `hasura-graphql-data-connector` 
+
+`Deployment hasura-graphql-data-connector.yaml`
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: '1'
+    field.cattle.io/publicEndpoints: >-
+      [{"addresses":["10.100.14.9"],"port":8991,"protocol":"TCP","serviceName":"default:hasura-graphql-data-connector","allNodes":false},{"nodeName":":k8s-worker02.alldataint.local","addresses":["10.100.13.177"],"port":8081,"protocol":"TCP","podName":"default:hasura-graphql-data-connector-7f6bf5f9cb-kj47s","allNodes":false}]
+  creationTimestamp: '2024-09-11T07:23:00Z'
+  generation: 3
+  labels:
+    app: hasura-graphql-data-connector
+  managedFields:
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            f:field.cattle.io/publicEndpoints: {}
+          f:labels:
+            .: {}
+            f:app: {}
+        f:spec:
+          f:progressDeadlineSeconds: {}
+          f:replicas: {}
+          f:revisionHistoryLimit: {}
+          f:selector: {}
+          f:strategy:
+            f:rollingUpdate:
+              .: {}
+              f:maxSurge: {}
+              f:maxUnavailable: {}
+            f:type: {}
+          f:template:
+            f:metadata:
+              f:labels:
+                .: {}
+                f:app: {}
+            f:spec:
+              f:containers:
+                k:{"name":"hasura-graphql-data-connector"}:
+                  .: {}
+                  f:image: {}
+                  f:imagePullPolicy: {}
+                  f:name: {}
+                  f:ports:
+                    .: {}
+                    k:{"containerPort":8081,"protocol":"TCP"}:
+                      .: {}
+                      f:containerPort: {}
+                      f:hostPort: {}
+                      f:protocol: {}
+                  f:resources:
+                    .: {}
+                    f:limits:
+                      .: {}
+                      f:cpu: {}
+                      f:memory: {}
+                    f:requests:
+                      .: {}
+                      f:cpu: {}
+                      f:memory: {}
+                  f:terminationMessagePath: {}
+                  f:terminationMessagePolicy: {}
+              f:dnsPolicy: {}
+              f:restartPolicy: {}
+              f:schedulerName: {}
+              f:securityContext: {}
+              f:terminationGracePeriodSeconds: {}
+      manager: agent
+      operation: Update
+      time: '2024-09-11T07:37:21Z'
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:deployment.kubernetes.io/revision: {}
+        f:status:
+          f:availableReplicas: {}
+          f:conditions:
+            .: {}
+            k:{"type":"Available"}:
+              .: {}
+              f:lastTransitionTime: {}
+              f:lastUpdateTime: {}
+              f:message: {}
+              f:reason: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"Progressing"}:
+              .: {}
+              f:lastTransitionTime: {}
+              f:lastUpdateTime: {}
+              f:message: {}
+              f:reason: {}
+              f:status: {}
+              f:type: {}
+          f:observedGeneration: {}
+          f:readyReplicas: {}
+          f:replicas: {}
+          f:updatedReplicas: {}
+      manager: kube-controller-manager
+      operation: Update
+      subresource: status
+      time: '2024-09-11T07:37:21Z'
+  name: hasura-graphql-data-connector
+  namespace: default
+  resourceVersion: '14411152'
+  uid: fc0ee2bb-6550-4c83-bbcf-967d427a750a
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: hasura-graphql-data-connector
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: hasura-graphql-data-connector
+    spec:
+      containers:
+        - image: hasura/graphql-data-connector:v2.43.0
+          imagePullPolicy: IfNotPresent
+          name: hasura-graphql-data-connector
+          ports:
+            - containerPort: 8081
+              hostPort: 8081
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 250m
+              memory: 256Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 1
+  conditions:
+    - lastTransitionTime: '2024-09-11T07:33:53Z'
+      lastUpdateTime: '2024-09-11T07:33:53Z'
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: 'True'
+      type: Available
+    - lastTransitionTime: '2024-09-11T07:33:53Z'
+      lastUpdateTime: '2024-09-11T07:33:53Z'
+      message: >-
+        ReplicaSet "hasura-graphql-data-connector-7f6bf5f9cb" has successfully
+        progressed.
+      reason: NewReplicaSetAvailable
+      status: 'True'
+      type: Progressing
+  observedGeneration: 3
+  readyReplicas: 1
+  replicas: 1
+  updatedReplicas: 1
+
+```
+Setelah itu kita membuat service nya juga sebagai berikut
+
+`Service hasura-graphql-data-connector.yaml`
+```
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    field.cattle.io/publicEndpoints: >-
+      [{"addresses":["10.100.14.9"],"port":8991,"protocol":"TCP","serviceName":"default:hasura-graphql-data-connector","allNodes":false}]
+    metallb.universe.tf/ip-allocated-from-pool: default-pool
+  creationTimestamp: '2024-09-11T07:37:21Z'
+  managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            f:field.cattle.io/publicEndpoints: {}
+        f:spec:
+          f:allocateLoadBalancerNodePorts: {}
+          f:externalTrafficPolicy: {}
+          f:internalTrafficPolicy: {}
+          f:ports:
+            .: {}
+            k:{"port":8991,"protocol":"TCP"}:
+              .: {}
+              f:port: {}
+              f:protocol: {}
+              f:targetPort: {}
+          f:selector: {}
+          f:sessionAffinity: {}
+          f:type: {}
+      manager: agent
+      operation: Update
+      time: '2024-09-11T07:37:21Z'
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:metallb.universe.tf/ip-allocated-from-pool: {}
+        f:status:
+          f:loadBalancer:
+            f:ingress: {}
+      manager: controller
+      operation: Update
+      subresource: status
+      time: '2024-09-11T07:37:21Z'
+  name: hasura-graphql-data-connector
+  namespace: default
+  resourceVersion: '14411148'
+  uid: bccf8148-5318-4a28-9089-7103ee88f063
+spec:
+  allocateLoadBalancerNodePorts: true
+  clusterIP: 10.110.92.67
+  clusterIPs:
+    - 10.110.92.67
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+    - nodePort: 31569
+      port: 8991
+      protocol: TCP
+      targetPort: 8081
+  selector:
+    app: hasura-graphql-data-connector
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+      - ip: 10.100.14.9
+
+```
+
+![image](https://github.com/user-attachments/assets/1fd3fa05-bcc5-4aeb-a6bc-4b24295d2c38)
 
 
 
