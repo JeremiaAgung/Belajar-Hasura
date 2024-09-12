@@ -14,7 +14,6 @@
 **6.Monitoring & Alerting:** Pemantauan kluster dengan Prometheus/Grafana dan notifikasi masalah.
 
 Rancher menyederhanakan manajemen Kubernetes, mendukung multi-cloud, dan menyediakan kontrol akses serta pemantauan yang kuat.
-
 Di dalam Rancher, Kubernetes adalah platform utama yang dikelola. Rancher mempermudah pengelolaan kluster Kubernetes dengan fitur:
 
 **Manajemen Kluster:** Membuat dan memantau banyak kluster dari satu tempat.
