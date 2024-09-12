@@ -608,5 +608,7 @@ status:
 
 ![image](https://github.com/user-attachments/assets/1fd3fa05-bcc5-4aeb-a6bc-4b24295d2c38)
 
+Setelah itu langsung saja kita terhubung dengan Mysql di hasura
+![image](https://github.com/user-attachments/assets/43e07431-03d2-44ef-96f4-bcce59a46665)
 
 
