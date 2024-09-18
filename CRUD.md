@@ -2,6 +2,8 @@
 
 Di sini kita akan menggunakan tiga tabel: `todos`, `categories`, dan `users`.
 
+![image](https://github.com/user-attachments/assets/2568efe7-0bf4-48e9-bc7a-055a062b6755)
+
 **Tabel `users`**
 Tabel ini menyimpan data pengguna.
 ```
