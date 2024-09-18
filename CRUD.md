@@ -120,3 +120,22 @@ mutation {
   
 * **returning:** Menentukan kolom apa saja yang ingin Anda ambil dari baris yang diperbarui. Dalam contoh ini, id, title, dan due_date akan dikembalikan.
 
+ **operator filter di Hasura GraphQL.**
+ _eq: Sama dengan (=).
+ 
+_gt: Lebih besar dari (>).
+
+_gte: Lebih besar atau sama dengan (>=).
+
+_in: Termasuk dalam daftar.
+
+_is_null: Nilainya NULL.
+
+_lt: Lebih kecil dari (<).
+
+_lte: Lebih kecil atau sama dengan (<=).
+
+_neq: Tidak sama dengan (!=).
+
+_nin: Tidak termasuk dalam daftar.
+
