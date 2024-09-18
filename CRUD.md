@@ -96,6 +96,7 @@ mutation {
 
 ```
 ![image](https://github.com/user-attachments/assets/7138d44f-eb54-47c0-914b-0eaf8351e0a0)
+**Affected row** untuk mengetahui berapa baris yang terpengaruhi oleh mutase bisa tidak menggunakan affected row tetapi harus diganti setidaknya satu field pada output
 
 **Delete (Hapus Data)**
 Mutasi GraphQL untuk menghapus data dari `todos`:
@@ -107,5 +108,15 @@ mutation {
 ![image](https://github.com/user-attachments/assets/5a465333-5bd7-4a38-83c9-67cfbcacdc50)
 
 
+**Penjelasan Singkat**
 
+* **update_todos:** Nama mutasi yang digunakan untuk memperbarui data dalam tabel todos.
+  
+* **where:** Menentukan kondisi baris mana yang akan diperbarui. Dalam contoh ini, hanya baris dengan id sama dengan 1 yang akan diperbarui.
+  
+* **_set:** Menentukan kolom mana yang akan diubah dan nilai barunya. Di sini, kolom title diubah menjadi "Judul yang Diperbarui".
+  
+* **affected_rows:** Mengembalikan jumlah baris yang terpengaruh oleh mutasi ini.
+  
+* **returning:** Menentukan kolom apa saja yang ingin Anda ambil dari baris yang diperbarui. Dalam contoh ini, id, title, dan due_date akan dikembalikan.
 
