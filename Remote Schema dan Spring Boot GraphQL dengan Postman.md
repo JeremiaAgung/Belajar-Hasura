@@ -21,3 +21,15 @@ Berikut Sudah berjalan di Postman
 ![image](https://github.com/user-attachments/assets/c47048b9-3bc0-43df-8d4c-3bd7c9d97f2f)
 
 Dengan Postman, bisa menguji endpoint API (seperti GET, POST, dll.) untuk memverifikasi alur data, penanganan error, dan struktur responsnya. Intinya, ini memastikan Spring Boot dan Hasura berfungsi dengan baik dalam integrasi API.
+
+Berikut penjelasan singkat tentang metode HTTP utama:
+
+GET: Mengambil data dari server (baca data).
+
+POST: Mengirim data untuk membuat sumber daya baru di server.
+
+PUT: Memperbarui seluruh sumber daya atau membuatnya jika belum ada.
+
+PATCH: Memperbarui sebagian data dari sumber daya yang ada.
+
+DELETE: Menghapus sumber daya dari server. 
