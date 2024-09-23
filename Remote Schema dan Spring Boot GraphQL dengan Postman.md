@@ -130,3 +130,45 @@ query getAllAuthors {
 ```
 
 ![image](https://github.com/user-attachments/assets/5eae98fb-2b17-4645-86d6-cd81e75e33b5)
+
+
+## Analisa Mengenai Scalle
+Ketika scale layanan remote schema di Hasura diset ke 0, layanan tersebut tidak dapat diakses. Akibatnya, semua query/mutation yang bergantung pada remote schema akan gagal dengan error seperti service unavailable atau network error karena endpoint tidak aktif.
+
+![WhatsApp Image 2024-09-23 at 13 31 00](https://github.com/user-attachments/assets/57b061e0-d2bc-4433-9dc9-484ff4f3d342)
+
+![WhatsApp Image 2024-09-23 at 13 36 01](https://github.com/user-attachments/assets/529b5e4c-7b4a-42a8-a784-880de9f67522)
+
+```
+{
+  "errors": [
+    {
+      "message": "HTTP exception occurred while sending the request to \"http://10.100.14.10:8989/query\"",
+      "extensions": {
+        "path": "$",
+        "code": "remote-schema-error",
+        "internal": {
+          "message": "Connection failure: Network.Socket.connect: <socket: 40>: does not exist (Connection refused)",
+          "request": {
+            "host": "10.100.14.10",
+            "method": "POST",
+            "path": "/query",
+            "port": 8989,
+            "queryString": "",
+            "requestHeaders": {
+              "Content-Type": "application/json",
+              "User-Agent": "hasura-graphql-engine/v2.42.0",
+              "x-hasura-role": "admin"
+            },
+            "responseTimeout": "ResponseTimeoutMicro 60000000",
+            "secure": false
+          },
+          "type": "http_exception"
+        }
+      }
+    }
+  ]
+}
+```
+ Penyebab utamanya adalah Connection refused, yang berarti Hasura mencoba menghubungi service tersebut, tetapi tidak ada layanan yang berjalan di alamat dan port tersebut. 
+ 
