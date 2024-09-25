@@ -1,1 +1,16 @@
+# RESTified Endpoints
+**RESTified endpoints** adalah cara mudah untuk membuat endpoint REST tanpa perlu menulis kode.bisa mengubah kueri atau mutasi GraphQL menjadi endpoint REST secara otomatis, lengkap dengan parameter dan izin akses. Fitur ini juga memungkinkan untuk mengaktifkan endpoint CRUD (Create, Read, Update, Delete) hanya dengan beberapa klik. Selain itu, bisa mengekspor dokumentasi OpenAPI untuk mempermudah integrasi dengan layanan lain. Ini membuat Developer jadi lebih cepat dan sederhana.
+
+Berikut CreateREST
+
+![image](https://github.com/user-attachments/assets/7805bcf3-5828-4428-b2e4-a7d74f32cd39)
+
+Kemudian Output sebagai berikut
+![image](https://github.com/user-attachments/assets/1faa5533-1d30-4ca3-ad7f-dfe7ed433cb4)
+
+![image](https://github.com/user-attachments/assets/d1bb8993-1087-489a-ad1b-f2c6a40a346b)
+
+Dengan Cek Di Postman
+![image](https://github.com/user-attachments/assets/b6a4fc87-c25d-44b1-b7a7-629ed5e764ce)
+
 
