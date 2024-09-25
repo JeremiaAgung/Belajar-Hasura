@@ -3,7 +3,7 @@
 
 Berikut CreateREST
 
-![image](https://github.com/user-attachments/assets/7805bcf3-5828-4428-b2e4-a7d74f32cd39)
+![image](https://github.com/user-attachments/assets/1c147a4c-be83-4e93-bfa9-90a11b79242e)
 
 Kemudian Output sebagai berikut
 ![image](https://github.com/user-attachments/assets/1faa5533-1d30-4ca3-ad7f-dfe7ed433cb4)
