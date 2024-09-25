@@ -13,4 +13,6 @@ Kemudian Output sebagai berikut
 Dengan Cek Di Postman
 ![image](https://github.com/user-attachments/assets/b6a4fc87-c25d-44b1-b7a7-629ed5e764ce)
 
+Ketika header Key dan Value tidak kita buat akan seperti ini yang terjadi
+![image](https://github.com/user-attachments/assets/fe1608a2-7be2-4f57-930e-04e578ac8d66)
 
