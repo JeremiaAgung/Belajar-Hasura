@@ -16,3 +16,16 @@ Dengan Cek Di Postman
 Ketika header Key dan Value tidak kita buat akan seperti ini yang terjadi
 ![image](https://github.com/user-attachments/assets/fe1608a2-7be2-4f57-930e-04e578ac8d66)
 
+# OpenTelemetry Exporter
+
+OpenTelemetry adalah framework yang digunakan untuk mengumpulkan dan mengirimkan data observasi seperti logs, metrics, dan traces dari aplikasi.
+
+Pada bagian gambar ini menjelasan tentang bagaimana status kita buat menjadi enable disable dan variable dengan 
+
+Traces Endpoint  http://10.100.13.205:4317/v1/traces
+
+Metrics Endpoint http://10.100.13.205:4318/v1/metrics
+
+Logs Endpoint http://10.100.13.205:4319/v1/logs
+
+![image](https://github.com/user-attachments/assets/a751dbcb-d06b-4c45-a426-7641aa00114c)
