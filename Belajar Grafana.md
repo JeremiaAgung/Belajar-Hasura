@@ -1,6 +1,8 @@
 # GRAFANA
 Grafana terhubung ke Prometheus untuk visualisasi data metrics. Anda dapat membuat dashboard dan grafik menggunakan query PromQL untuk memantau aplikasi atau infrastruktur secara real-time, termasuk alerting berbasis metrics.
 
+## Dashboard Hasura HTTP GraphQL
+### Overview
 Pada Bagian Overview panel terdapat 7 dashborad  
 ![image](https://github.com/user-attachments/assets/67adbd98-57ba-4cd8-91ee-dfff17423822)
 
@@ -11,6 +13,9 @@ tampilan dashboard Grafana yang menunjukkan metrics terkait Hasura HTTP GraphQL,
 * **Total Mutations**: Ada 1 operasi mutasi yang telah dilakukan.
 * **Mutation Latency (P95)**: Latensi mutasi (P95) adalah 9,50 ms.
 * **Top Queries dan Top Mutations**: Tidak ada data spesifik yang ditampilkan di bagian ini selain servis `hasuraferdy` yang terdaftar.
-
+* **Top Error Rate**: Tidak ada data yang error
 Grafana memvisualisasikan data ini untuk memantau performa dan responsivitas Hasura.
+
+
+
 
