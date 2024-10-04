@@ -1,3 +1,4 @@
+![image](https://github.com/user-attachments/assets/ff8ad777-94e1-4fb4-8d9a-9aa501569a0e)
 # GRAFANA
 Grafana terhubung ke Prometheus untuk visualisasi data metrics. Anda dapat membuat dashboard dan grafik menggunakan query PromQL untuk memantau aplikasi atau infrastruktur secara real-time, termasuk alerting berbasis metrics.
 
@@ -16,6 +17,45 @@ tampilan dashboard Grafana yang menunjukkan metrics terkait Hasura HTTP GraphQL,
 * **Top Error Rate**: Tidak ada data yang error
 Grafana memvisualisasikan data ini untuk memantau performa dan responsivitas Hasura.
 
+### GraphQL Metrics
+**Query Request Rate**
 
+Untuk menampilkan request rate pada Grafana, biasanya data dikumpulkan dari Prometheus, yang memonitor aplikasi atau service. Langkah-langkah berikut bisa ikuti untuk membuat query request rate di Grafana:
+![image](https://github.com/user-attachments/assets/16e7e979-aafc-4680-a318-4f0d33198965)
 
+**Mutation Request rate**
 
+Mutation request rate adalah jumlah permintaan perubahan data (mutations) yang diterima server per waktu. Ini digunakan untuk memantau kinerja, beban server, dan perencanaan skala aplikasi.
+![image](https://github.com/user-attachments/assets/83aa5b00-611f-4ca8-8e74-a20a74af77fe)
+
+**Query Error Rate**
+Query error rate adalah persentase permintaan (queries) yang gagal atau menghasilkan error dibandingkan dengan total query yang dilakukan dalam suatu periode waktu. Metrik ini penting untuk memantau Healt dan kinerja sistem.
+![image](https://github.com/user-attachments/assets/bcc905ed-5533-4c23-ba25-58afb17a583b)
+
+**Mutation Error rate**
+
+Mutation error rate adalah persentase permintaan perubahan data (mutations) yang gagal atau menghasilkan error dibandingkan dengan total mutation yang dilakukan dalam periode waktu tertentu. Metrik ini membantu dalam memantau keandalan dan kinerja operasi yang mengubah data di aplikasi.
+![image](https://github.com/user-attachments/assets/2d6730fc-5e1b-4573-858b-c16aa7ee7b44)
+
+**Query Latency (P95) & Mutation Lacency (P95)**
+* **Query Latency (P95)** adalah waktu yang dibutuhkan untuk memproses 95% dari semua permintaan query, membantu mengidentifikasi permintaan yang berkinerja buruk.
+
+* **Mutation Latency** adalah waktu yang diperlukan untuk memproses permintaan perubahan data (mutations) hingga selesai. 
+
+Keduanya penting untuk memantau performa dan responsivitas sistem.
+![image](https://github.com/user-attachments/assets/fee9ec55-f1ab-4916-8107-14683e72010a)
+
+### General Metrics
+![image](https://github.com/user-attachments/assets/724e886b-f852-41f1-8dc4-26acef82a700)
+* **HTTP Connection**
+
+Metrik ini mencakup semua permintaan HTTP yang diterima oleh server Hasura, yang mengindikasikan aktivitas API GraphQL. Ini membantu Anda memahami bagaimana aplikasi berinteraksi dengan Hasura.
+
+* **Cache Request Rate**
+Cache Request Rate dalam metrik General Metrics di Hasura merujuk pada frekuensi permintaan yang dilayani dari cache dibandingkan dengan permintaan total.Cache Request Rate yang rendah dapat menunjukkan kebutuhan untuk mengoptimalkan strategi caching.
+
+* **HTTP Data Transfer**
+metrik yang mengukur jumlah dan efisiensi data yang ditransfer antara client dan server Hasura melalui permintaan HTTP. Dengan memahami data transfer, dapat mengidentifikasi masalah dan mengoptimalkan aplikasi untuk kinerja yang lebih baik.
+
+* **Action Data Transfer**
+pada metrik yang melacak jumlah dan ukuran data yang ditransfer terkait dengan Actions yang didefinisikan dalam Hasura. Actions adalah fungsi kustom yang dapat Anda buat di Hasura untuk menangani logika bisnis yang tidak dapat dilakukan hanya dengan kueri GraphQL standar.
