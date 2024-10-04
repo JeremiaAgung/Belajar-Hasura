@@ -1,4 +1,3 @@
-![image](https://github.com/user-attachments/assets/ff8ad777-94e1-4fb4-8d9a-9aa501569a0e)
 # GRAFANA
 Grafana terhubung ke Prometheus untuk visualisasi data metrics. Anda dapat membuat dashboard dan grafik menggunakan query PromQL untuk memantau aplikasi atau infrastruktur secara real-time, termasuk alerting berbasis metrics.
 
@@ -59,3 +58,27 @@ metrik yang mengukur jumlah dan efisiensi data yang ditransfer antara client dan
 
 * **Action Data Transfer**
 pada metrik yang melacak jumlah dan ukuran data yang ditransfer terkait dengan Actions yang didefinisikan dalam Hasura. Actions adalah fungsi kustom yang dapat Anda buat di Hasura untuk menangani logika bisnis yang tidak dapat dilakukan hanya dengan kueri GraphQL standar.
+
+
+## Dashboard Hasura Health
+![image](https://github.com/user-attachments/assets/d2094a88-f065-4981-95df-eda2536bfab5)
+
+Hasura Health di Grafana adalah cara untuk memantau kesehatan layanan Hasura GraphQL Engine
+
+**Metadata Status (CONSISTENT):** Ini menunjukkan bahwa metadata di Hasura dalam kondisi konsisten, yang berarti tidak ada masalah sinkronisasi atau ketidaksesuaian dalam metadata yang disimpan dan diakses oleh Hasura.
+
+**Health Check using infinity (OK):** Laporan ini menunjukkan bahwa pengecekan kesehatan layanan menggunakan sumber data atau metode infinity menunjukkan status OK, yang berarti layanan ini berjalan dengan normal.
+
+**Health Check using block (No data):** Pada bagian ini, ada informasi "No data" yang menandakan tidak ada data yang tersedia atau diambil untuk pengecekan kesehatan dengan metode atau sumber data block. Ini bisa berarti bahwa pengukuran belum dimulai atau tidak ada data yang diterima dari sumber tersebut.
+
+**Source Health Check:**
+
+* **default (hasuraferdy) OK:** Sumber health check yang dinamai default menunjukkan status OK, berarti layanan tersebut beroperasi dengan normal pada instance ini.
+
+* **testsejuta (hasuraferdy) OK:** Sumber health check lain yang disebut testsejuta juga menunjukkan status OK, yang berarti tidak ada masalah dalam layanan yang diuji.
+
+**Metadata Version (292):** Ini menunjukkan versi metadata yang sedang digunakan oleh Hasura saat ini, yaitu versi 292. Versi ini penting untuk memastikan kompatibilitas dan integritas fitur-fitur Hasura.
+
+**Health Check Latency:** Tidak ada data yang ditampilkan pada bagian ini, yang mungkin berarti latensi belum diukur atau belum ada data latensi yang diterima.
+
+**Postgres Connections:** Bagian ini juga menunjukkan "No data", yang menunjukkan bahwa koneksi ke database PostgreSQL belum dilaporkan atau tidak ada data koneksi yang tersedia pada saat itu.
