@@ -117,7 +117,7 @@ Hasura DDN v3 adalah langkah maju dari Hasura yang memperkenalkan pendekatan jar
 * **RBAC:**  Kontrol akses granular berdasarkan peran.
 * **Tidak ada Caching Global dan Edge Computing.** 
 
-Hasura DDN v3:
+**Hasura DDN v3:** 
 * **Global Data Caching & Distribution:**  Caching terdistribusi dan pengiriman data global.
 * **Edge Computing:**  Pemrosesan permintaan lebih dekat dengan pengguna untuk latensi rendah.
 * **Multi-Region Deployment:**  Dukungan pengiriman data di berbagai wilayah.
@@ -125,3 +125,42 @@ Hasura DDN v3:
 * **Tidak ada Event Triggers dan fitur database-centric lainnya.** 
 
 v2 fokus pada otomatisasi API database, sementara v3 fokus pada performa global dan pengiriman data cepat.
+
+### keunggulan dan kekurangan dari Hasura v2 dan Hasura DDN v3:
+
+**Hasura v2:**
+
+**Keunggulan:**
+
+* **Otomatisasi API:** Cepat membuat GraphQL API dari database relasional.
+* **Event Triggers:** Bisa memicu webhook berdasarkan perubahan data.
+* **Actions & Remote Schemas:** Mendukung logika kustom dan integrasi dengan API lain.
+* **Kontrol Akses (RBAC):** Izin akses granular berbasis peran pengguna.
+* **Observability:** Integrasi monitoring yang kuat dengan alat seperti Prometheus dan Jaeger.
+
+**Kekurangan:**
+
+* **Tidak ada Caching Global:** Tidak ada caching bawaan untuk mempercepat pengiriman data di seluruh dunia.
+* **Tidak ada Edge Computing:** Permintaan pengguna selalu diproses di pusat, sehingga latensi bisa lebih tinggi untuk pengguna global.
+* **Kurang optimal untuk multi-region:** Tidak dirancang khusus untuk distribusi data global atau pengiriman lintas wilayah.
+
+**Hasura DDN v3:**
+
+**Keunggulan:**
+
+* **Global Data Caching:** Cache terdistribusi secara global untuk mempercepat pengiriman data.
+* **Edge Computing:** Pemrosesan lebih dekat dengan pengguna untuk latensi rendah.
+* **Multi-Region Deployment:** Mendukung pengiriman data yang optimal di berbagai wilayah dunia.
+* **Skalabilitas & Kinerja:** Sangat cocok untuk aplikasi skala besar dengan pengguna global.
+* **Keamanan Tingkat Lanjut:** Mendukung kepatuhan seperti HIPAA dan GDPR.
+
+**Kekurangan:**
+
+* **Kurang fleksibel untuk operasi database spesifik:** Fitur seperti event triggers atau pengelolaan logika database lebih terbatas.
+* **Kompleksitas deployment:** Tidak mendukung deployment lokal secara penuh, sehingga lebih cocok untuk aplikasi berbasis cloud.
+* **Fokus pada performa global:** Bisa berlebihan untuk aplikasi yang tidak membutuhkan distribusi global.
+
+**Rangkuman:**
+Hasura v2 unggul dalam otomatisasi API dan fleksibilitas database, tetapi kurang optimal untuk pengiriman data global.
+
+Hasura DDN v3 unggul dalam performa global, dengan caching dan edge computing, tetapi memiliki keterbatasan dalam fitur database spesifik.
