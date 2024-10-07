@@ -48,52 +48,57 @@ Arsitektur ini memberikan fleksibilitas dan kecepatan bagi pengembang, memungkin
 ### Hasura v2 dan Hasura Data Delivery Network (DDN) v3
 merupakan dua versi dari platform Hasura yang berfokus pada kemampuan GraphQL, tetapi ada perbedaan besar dalam arsitektur dan fitur yang disediakan oleh masing-masing versi.
 
-**Hasura v2:**
+#### **Hasura v2:**
 
 **1.GraphQL API:**
 
-* **Fokus utama Hasura v2 adalah** mengotomatisasi pembuatan GraphQL API berbasis database relasional, seperti PostgreSQL dan MySQL. Setiap perubahan pada database (seperti penambahan tabel atau kolom) secara otomatis menghasilkan endpoint GraphQL yang sesuai.
+* Fokus utama Hasura v2 adalah mengotomatisasi pembuatan GraphQL API berbasis database relasional, seperti PostgreSQL dan MySQL. Setiap perubahan pada database (seperti penambahan tabel atau kolom) secara otomatis menghasilkan endpoint GraphQL yang sesuai.
 
-2.Remote Schemas & Actions:
+**2.Remote Schemas & Actions:**
 
-* **Pada Hasura v2, Anda dapat menghubungkan remote schemas untuk menggabungkan berbagai sumber GraphQL ke dalam satu endpoint.
+* Pada Hasura v2, Anda dapat menghubungkan remote schemas untuk menggabungkan berbagai sumber GraphQL ke dalam satu endpoint.
 Actions juga ditambahkan untuk memungkinkan penanganan logika kustom (custom business logic) yang tidak hanya terbatas pada operasi CRUD.
 
-3.Event Triggers:
+**3.Event Triggers:**
 
-* **Mendukung event triggers, memungkinkan pengguna untuk mendefinisikan peristiwa berbasis database (misalnya, insert atau update) yang kemudian dapat memicu webhook eksternal atau menjalankan fungsi serverless.
+* Mendukung event triggers, memungkinkan pengguna untuk mendefinisikan peristiwa berbasis database (misalnya, insert atau update) yang kemudian dapat memicu webhook eksternal atau menjalankan fungsi serverless.
 
-4.Role-Based Access Control (RBAC):
+**4.Role-Based Access Control (RBAC):**
 
-* **Memungkinkan pengguna untuk mendefinisikan izin berdasarkan role, sehingga setiap query dan mutation GraphQL dibatasi berdasarkan siapa yang mengaksesnya.
+* Memungkinkan pengguna untuk mendefinisikan izin berdasarkan role, sehingga setiap query dan mutation GraphQL dibatasi berdasarkan siapa yang mengaksesnya.
 
-5.Konektivitas dengan Postgres:
+**5.Konektivitas dengan Postgres:**
 
-* **Di Hasura v2, PostgreSQL tetap menjadi database inti, dengan MySQL ditambahkan sebagai database sekunder dalam beberapa versi.
+* Di Hasura v2, PostgreSQL tetap menjadi database inti, dengan MySQL ditambahkan sebagai database sekunder dalam beberapa versi.
 
-6.Deployment & Monitoring:
+**6.Deployment & Monitoring:**
 
-* **Hasura v2 memungkinkan pengguna untuk mendesain aplikasi dengan men-deploy di cloud maupun on-premise, serta bisa diintegrasikan dengan observability tools seperti
-*
-* 7.Prometheus dan Jaeger.
-Hasura Data Delivery Network (DDN) v3:
+* Hasura v2 memungkinkan pengguna untuk mendesain aplikasi dengan men-deploy di cloud maupun on-premise, serta bisa diintegrasikan dengan observability tools seperti Prometheus dan Jaeger.
+
+### **Hasura Data Delivery Network (DDN) v3:**
+
 Hasura DDN v3 adalah langkah maju dari Hasura yang memperkenalkan pendekatan jaringan global untuk mengoptimalkan pengiriman data dari database ke klien.
 
-Global Data Distribution:
+**1.Global Data Distribution:**
 
-DDN adalah jaringan global yang memungkinkan pengiriman data yang lebih cepat dan optimal dari lokasi database ke klien. Fokusnya adalah untuk meminimalkan latensi dengan mendistribusikan permintaan secara cerdas berdasarkan lokasi pengguna.
-Caching Layer:
+* DDN adalah jaringan global yang memungkinkan pengiriman data yang lebih cepat dan optimal dari lokasi database ke klien. Fokusnya adalah untuk meminimalkan latensi dengan mendistribusikan permintaan secara cerdas berdasarkan lokasi pengguna.
 
-Salah satu fitur penting dari DDN adalah caching yang terdistribusi secara global. Permintaan GraphQL yang sering digunakan akan di-cache untuk mempercepat pengiriman data, sehingga mengurangi beban pada database dan server pusat.
-Multi-Region Deployment:
+**2.Caching Layer:**
 
-DDN mendukung multi-region deployments, memungkinkan pengiriman data lintas wilayah dengan latensi yang sangat rendah. Hal ini sangat penting untuk aplikasi global yang melayani pengguna di berbagai belahan dunia.
-Edge Computing:
+* Salah satu fitur penting dari DDN adalah caching yang terdistribusi secara global. Permintaan GraphQL yang sering digunakan akan di-cache untuk mempercepat pengiriman data, sehingga mengurangi beban pada database dan server pusat.
 
-Hasura DDN v3 menggunakan edge computing untuk memproses permintaan lebih dekat ke lokasi pengguna, mengurangi waktu perjalanan data dari klien ke server, dan mengurangi latensi.
-Scaling & Reliability:
+**3.Multi-Region Deployment:**
 
-Dengan DDN, Hasura menjadi lebih andal dan terukur dalam hal kinerja dan uptime, karena menggunakan infrastruktur jaringan global untuk mendistribusikan beban permintaan.
-Advanced Security & Compliance:
+* DDN mendukung multi-region deployments, memungkinkan pengiriman data lintas wilayah dengan latensi yang sangat rendah. Hal ini sangat penting untuk aplikasi global yang melayani pengguna di berbagai belahan dunia.
 
-DDN v3 juga memberikan tingkat keamanan dan kepatuhan yang lebih tinggi, yang dirancang untuk memenuhi persyaratan industri seperti HIPAA, GDPR, dan lainnya.
+**4.Edge Computing:**
+
+* Hasura DDN v3 menggunakan edge computing untuk memproses permintaan lebih dekat ke lokasi pengguna, mengurangi waktu perjalanan data dari klien ke server, dan mengurangi latensi.
+
+**5.Scaling & Reliability:**
+
+* Dengan DDN, Hasura menjadi lebih andal dan terukur dalam hal kinerja dan uptime, karena menggunakan infrastruktur jaringan global untuk mendistribusikan beban permintaan.
+
+**6.Advanced Security & Compliance:**
+
+* DDN v3 juga memberikan tingkat keamanan dan kepatuhan yang lebih tinggi, yang dirancang untuk memenuhi persyaratan industri seperti HIPAA, GDPR, dan lainnya.
