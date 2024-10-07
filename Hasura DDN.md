@@ -53,22 +53,29 @@ merupakan dua versi dari platform Hasura yang berfokus pada kemampuan GraphQL, t
 **1.GraphQL API:**
 
 * **Fokus utama Hasura v2 adalah** mengotomatisasi pembuatan GraphQL API berbasis database relasional, seperti PostgreSQL dan MySQL. Setiap perubahan pada database (seperti penambahan tabel atau kolom) secara otomatis menghasilkan endpoint GraphQL yang sesuai.
-Remote Schemas & Actions:
 
-Pada Hasura v2, Anda dapat menghubungkan remote schemas untuk menggabungkan berbagai sumber GraphQL ke dalam satu endpoint.
+2.Remote Schemas & Actions:
+
+* **Pada Hasura v2, Anda dapat menghubungkan remote schemas untuk menggabungkan berbagai sumber GraphQL ke dalam satu endpoint.
 Actions juga ditambahkan untuk memungkinkan penanganan logika kustom (custom business logic) yang tidak hanya terbatas pada operasi CRUD.
-Event Triggers:
 
-Mendukung event triggers, memungkinkan pengguna untuk mendefinisikan peristiwa berbasis database (misalnya, insert atau update) yang kemudian dapat memicu webhook eksternal atau menjalankan fungsi serverless.
-Role-Based Access Control (RBAC):
+3.Event Triggers:
 
-Memungkinkan pengguna untuk mendefinisikan izin berdasarkan role, sehingga setiap query dan mutation GraphQL dibatasi berdasarkan siapa yang mengaksesnya.
-Konektivitas dengan Postgres:
+* **Mendukung event triggers, memungkinkan pengguna untuk mendefinisikan peristiwa berbasis database (misalnya, insert atau update) yang kemudian dapat memicu webhook eksternal atau menjalankan fungsi serverless.
 
-Di Hasura v2, PostgreSQL tetap menjadi database inti, dengan MySQL ditambahkan sebagai database sekunder dalam beberapa versi.
-Deployment & Monitoring:
+4.Role-Based Access Control (RBAC):
 
-Hasura v2 memungkinkan pengguna untuk mendesain aplikasi dengan men-deploy di cloud maupun on-premise, serta bisa diintegrasikan dengan observability tools seperti Prometheus dan Jaeger.
+* **Memungkinkan pengguna untuk mendefinisikan izin berdasarkan role, sehingga setiap query dan mutation GraphQL dibatasi berdasarkan siapa yang mengaksesnya.
+
+5.Konektivitas dengan Postgres:
+
+* **Di Hasura v2, PostgreSQL tetap menjadi database inti, dengan MySQL ditambahkan sebagai database sekunder dalam beberapa versi.
+
+6.Deployment & Monitoring:
+
+* **Hasura v2 memungkinkan pengguna untuk mendesain aplikasi dengan men-deploy di cloud maupun on-premise, serta bisa diintegrasikan dengan observability tools seperti
+*
+* 7.Prometheus dan Jaeger.
 Hasura Data Delivery Network (DDN) v3:
 Hasura DDN v3 adalah langkah maju dari Hasura yang memperkenalkan pendekatan jaringan global untuk mengoptimalkan pengiriman data dari database ke klien.
 
