@@ -161,6 +161,7 @@ v2 fokus pada otomatisasi API database, sementara v3 fokus pada performa global 
 * **Fokus pada performa global:** Bisa berlebihan untuk aplikasi yang tidak membutuhkan distribusi global.
 
 **Rangkuman:**
+
 Hasura v2 unggul dalam otomatisasi API dan fleksibilitas database, tetapi kurang optimal untuk pengiriman data global.
 
 Hasura DDN v3 unggul dalam performa global, dengan caching dan edge computing, tetapi memiliki keterbatasan dalam fitur database spesifik.
