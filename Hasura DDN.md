@@ -49,9 +49,10 @@ Arsitektur ini memberikan fleksibilitas dan kecepatan bagi pengembang, memungkin
 merupakan dua versi dari platform Hasura yang berfokus pada kemampuan GraphQL, tetapi ada perbedaan besar dalam arsitektur dan fitur yang disediakan oleh masing-masing versi.
 
 **Hasura v2:**
+
 **1.GraphQL API:**
 
-*Fokus utama Hasura v2 adalah mengotomatisasi pembuatan GraphQL API berbasis database relasional, seperti PostgreSQL dan MySQL. Setiap perubahan pada database (seperti penambahan tabel atau kolom) secara otomatis menghasilkan endpoint GraphQL yang sesuai.
+* **Fokus utama Hasura v2 adalah** mengotomatisasi pembuatan GraphQL API berbasis database relasional, seperti PostgreSQL dan MySQL. Setiap perubahan pada database (seperti penambahan tabel atau kolom) secara otomatis menghasilkan endpoint GraphQL yang sesuai.
 Remote Schemas & Actions:
 
 Pada Hasura v2, Anda dapat menghubungkan remote schemas untuk menggabungkan berbagai sumber GraphQL ke dalam satu endpoint.
