@@ -102,3 +102,8 @@ Hasura DDN v3 adalah langkah maju dari Hasura yang memperkenalkan pendekatan jar
 **6.Advanced Security & Compliance:**
 
 * DDN v3 juga memberikan tingkat keamanan dan kepatuhan yang lebih tinggi, yang dirancang untuk memenuhi persyaratan industri seperti HIPAA, GDPR, dan lainnya.
+
+### Perbandingan Utama:
+**Hasura v2** adalah platform GraphQL yang fokus pada otomatisasi API dengan database relasional seperti Postgres dan MySQL, serta menawarkan fitur seperti RBAC, triggers, dan remote schemas.
+
+**Hasura DDN v3** menambahkan layer distribusi global dan caching untuk mengoptimalkan pengiriman data, meminimalkan latensi, dan mendukung skenario multi-region dengan caching berbasis edge.
