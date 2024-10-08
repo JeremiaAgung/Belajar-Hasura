@@ -82,9 +82,11 @@ Hasura DDN v3 adalah langkah maju dari Hasura yang memperkenalkan pendekatan jar
 * **13. Multi-cloud & Hybrid Cloud Support:** Dukungan untuk infrastruktur multi-cloud dan hybrid.
 
 ### Perbandingan Utama:
-**Hasura v2** adalah platform GraphQL yang fokus pada otomatisasi API dengan database relasional seperti Postgres dan MySQL, serta menawarkan fitur seperti RBAC, triggers, dan remote schemas.
+**Hasura v2:** Fokus pada pengelolaan GraphQL API berbasis database dengan fitur-fitur pengembangan standar seperti migrasi database, kontrol akses, dan event triggers.
 
-**Hasura DDN v3** menambahkan layer distribusi global dan caching untuk mengoptimalkan pengiriman data, meminimalkan latensi, dan mendukung skenario multi-region dengan caching berbasis edge.
+**Hasura v3 (DDN):** Dibangun untuk distribusi data global dengan performa optimal, caching di edge, dan kemampuan manajemen data di multi-region dengan latensi rendah dan keamanan tingkat tinggi.
+
+**v2 cocok untuk aplikasi berbasis database lokal atau regional, sedangkan v3 sangat ideal untuk aplikasi berskala global yang memerlukan latensi rendah, keandalan, dan keamanan tinggi.**
 
 ### Fitur yang ada dan tidak ada pada V2 dan v3 
 
