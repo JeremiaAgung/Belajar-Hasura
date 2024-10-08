@@ -48,60 +48,38 @@ Arsitektur ini memberikan fleksibilitas dan kecepatan bagi pengembang, memungkin
 ### Hasura v2 dan Hasura Data Delivery Network (DDN) v3
 merupakan dua versi dari platform Hasura yang berfokus pada kemampuan GraphQL, tetapi ada perbedaan besar dalam arsitektur dan fitur yang disediakan oleh masing-masing versi.
 
-#### **Hasura v2:**
+#### **Hasura GraphQL Engine v2:**
 
-**1.GraphQL API:**
-
-* Fokus utama Hasura v2 adalah mengotomatisasi pembuatan GraphQL API berbasis database relasional, seperti PostgreSQL dan MySQL. Setiap perubahan pada database (seperti penambahan tabel atau kolom) secara otomatis menghasilkan endpoint GraphQL yang sesuai.
-
-**2.Remote Schemas & Actions:**
-
-* Pada Hasura v2, Anda dapat menghubungkan remote schemas untuk menggabungkan berbagai sumber GraphQL ke dalam satu endpoint.
-Actions juga ditambahkan untuk memungkinkan penanganan logika kustom (custom business logic) yang tidak hanya terbatas pada operasi CRUD.
-
-**3.Event Triggers:**
-
-* Mendukung event triggers, memungkinkan pengguna untuk mendefinisikan peristiwa berbasis database (misalnya, insert atau update) yang kemudian dapat memicu webhook eksternal atau menjalankan fungsi serverless.
-
-**4.Role-Based Access Control (RBAC):**
-
-* Memungkinkan pengguna untuk mendefinisikan izin berdasarkan role, sehingga setiap query dan mutation GraphQL dibatasi berdasarkan siapa yang mengaksesnya.
-
-**5.Konektivitas dengan Postgres:**
-
-* Di Hasura v2, PostgreSQL tetap menjadi database inti, dengan MySQL ditambahkan sebagai database sekunder dalam beberapa versi.
-
-**6.Deployment & Monitoring:**
-
-* Hasura v2 memungkinkan pengguna untuk mendesain aplikasi dengan men-deploy di cloud maupun on-premise, serta bisa diintegrasikan dengan observability tools seperti Prometheus dan Jaeger.
+* **1. Auto-Generated GraphQL API:** GraphQL API otomatis dari database tanpa perlu menulis kode.
+* **2. Real-time Subscriptions:** Mendukung data real-time melalui subscription.
+* **3. Role-based Access Control (RBAC):** Kontrol akses berbasis peran untuk keamanan data.
+* **4. Remote Schemas:** Integrasi dengan API GraphQL eksternal.
+* **5. Actions:** Menambahkan custom business logic melalui HTTP resolvers.
+* **6. Event Triggers:** Memicu event berbasis perubahan data di database.
+* **7. Remote Joins:** Menggabungkan data dari berbagai sumber (database & API eksternal).
+* **8. Custom Business Logic:** Menambahkan logika bisnis dengan SQL functions dan actions.
+* **9. Scheduled Triggers:** Menjadwalkan event untuk eksekusi di masa depan.
+* **10. Database Migrations:** Otomasi migrasi skema database dengan CLI.
+* **11. Monitoring & Observability:** Dukungan observability dengan OpenTelemetry.
+* **12. Multi-database Support:** Mendukung beberapa database dalam satu instance.
 
 ### **Hasura Data Delivery Network (DDN) v3:**
 
 Hasura DDN v3 adalah langkah maju dari Hasura yang memperkenalkan pendekatan jaringan global untuk mengoptimalkan pengiriman data dari database ke klien.
 
-**1.Global Data Distribution:**
-
-* DDN adalah jaringan global yang memungkinkan pengiriman data yang lebih cepat dan optimal dari lokasi database ke klien. Fokusnya adalah untuk meminimalkan latensi dengan mendistribusikan permintaan secara cerdas berdasarkan lokasi pengguna.
-
-**2.Caching Layer:**
-
-* Salah satu fitur penting dari DDN adalah caching yang terdistribusi secara global. Permintaan GraphQL yang sering digunakan akan di-cache untuk mempercepat pengiriman data, sehingga mengurangi beban pada database dan server pusat.
-
-**3.Multi-Region Deployment:**
-
-* DDN mendukung multi-region deployments, memungkinkan pengiriman data lintas wilayah dengan latensi yang sangat rendah. Hal ini sangat penting untuk aplikasi global yang melayani pengguna di berbagai belahan dunia.
-
-**4.Edge Computing:**
-
-* Hasura DDN v3 menggunakan edge computing untuk memproses permintaan lebih dekat ke lokasi pengguna, mengurangi waktu perjalanan data dari klien ke server, dan mengurangi latensi.
-
-**5.Scaling & Reliability:**
-
-* Dengan DDN, Hasura menjadi lebih andal dan terukur dalam hal kinerja dan uptime, karena menggunakan infrastruktur jaringan global untuk mendistribusikan beban permintaan.
-
-**6.Advanced Security & Compliance:**
-
-* DDN v3 juga memberikan tingkat keamanan dan kepatuhan yang lebih tinggi, yang dirancang untuk memenuhi persyaratan industri seperti HIPAA, GDPR, dan lainnya.
+* **1. Global Data Distribution:** Distribusi data dengan latensi rendah di berbagai lokasi.
+* **2. Edge Caching & CDN Integration:** Caching di edge nodes dan integrasi dengan CDN untuk mempercepat pengiriman data.
+* **3. Data Routing:** Routing dinamis query ke database atau wilayah yang sesuai.
+* **4. Multi-region Replication & Failover:** Replikasi data lintas wilayah dan failover otomatis.
+* **5. Intelligent Query Optimization:** Optimasi otomatis untuk performa query yang lebih baik.
+* **6. API Rate Limiting:** Pembatasan jumlah query untuk pengguna atau aplikasi.
+* **7. Real-time Data Delivery:** Pengiriman data real-time melalui subscription.
+* **8. Distributed Event Triggers:** Pemrosesan event triggers secara terdistribusi.
+* **9. Edge Data Transformations:** Transformasi data di edge nodes sebelum dikirimkan.
+* **10. GraphQL Query Scheduling:** Penjadwalan query untuk eksekusi di masa depan.
+* **11. Cross-region Data Joins:** Penggabungan data lintas wilayah dalam satu query.
+* **12. Zero Downtime Deployments:** Pembaruan tanpa downtime.
+* **13. Multi-cloud & Hybrid Cloud Support:** Dukungan untuk infrastruktur multi-cloud dan hybrid.
 
 ### Perbandingan Utama:
 **Hasura v2** adalah platform GraphQL yang fokus pada otomatisasi API dengan database relasional seperti Postgres dan MySQL, serta menawarkan fitur seperti RBAC, triggers, dan remote schemas.
@@ -111,20 +89,56 @@ Hasura DDN v3 adalah langkah maju dari Hasura yang memperkenalkan pendekatan jar
 ### Fitur yang ada dan tidak ada pada V2 dan v3 
 
 **Hasura v2:**
-* **GraphQL API Otomatis:**  Otomatisasi API GraphQL untuk database relasional (PostgreSQL, MySQL).
-* **Event Triggers:** Memicu peristiwa berbasis perubahan data.
-* **Custom Actions & Remote Schemas:** Logika kustom dan penggabungan sumber GraphQL lain.
-* **RBAC:**  Kontrol akses granular berdasarkan peran.
-* **Tidak ada Caching Global dan Edge Computing.** 
+
+**Fitur yang Ada di v2 tetapi Tidak Ada di v3**
+
+* **1. Scheduled Triggers:** V2 memiliki Scheduled Triggers yang memungkinkan event dijadwalkan untuk dijalankan di masa depan, namun pada DDN v3, fitur ini diakomodasi secara lebih komprehensif melalui query scheduling yang berbeda konteks.
+
+* **2. Database Migrations:** Fitur migrasi database otomatis menggunakan CLI dan mendukung versioning skema adalah bagian integral dari Hasura v2, sementara v3 lebih terfokus pada penyajian data global dan tidak secara langsung menangani migrasi database.
 
 **Hasura DDN v3:** 
-* **Global Data Caching & Distribution:**  Caching terdistribusi dan pengiriman data global.
-* **Edge Computing:**  Pemrosesan permintaan lebih dekat dengan pengguna untuk latensi rendah.
-* **Multi-Region Deployment:**  Dukungan pengiriman data di berbagai wilayah.
-* **Skalabilitas & Keamanan Tinggi.** 
-* **Tidak ada Event Triggers dan fitur database-centric lainnya.** 
+**Fitur yang Ada di v3 tetapi Tidak Ada di v2**
 
-v2 fokus pada otomatisasi API database, sementara v3 fokus pada performa global dan pengiriman data cepat.
+**1.Global Data Distribution:**
+* Fitur distribusi data global dengan latensi rendah dan distribusi otomatis berdasarkan lokasi pengguna hanya tersedia di v3 (Hasura DDN).
+
+**2.Edge Caching & CDN Integration:**
+* V3 mendukung integrasi caching di edge nodes dan CDN untuk meningkatkan kecepatan pengiriman data, tidak tersedia di v2.
+
+**3. Data Routing:**
+* Kemampuan routing dinamis query ke database yang berbeda atau wilayah berdasarkan aturan bisnis hanya ada di v3.
+
+**4. Multi-region Replication & Failover:**
+* Replikasi data lintas wilayah dan failover otomatis jika terjadi gangguan di satu wilayah hanya ada di v3.
+
+**5. Intelligent Query Optimization:**
+* Optimasi query otomatis dengan performa yang ditingkatkan hanya tersedia di v3.
+
+**6. API Rate Limiting:**
+* Fitur pembatasan jumlah query yang dapat dilakukan oleh pengguna atau aplikasi ada di v3, tidak tersedia di v2.
+
+**7. Distributed Event Triggers:**
+* Pemrosesan event triggers secara terdistribusi di berbagai wilayah hanya ada di v3.
+
+**8. Edge Data Transformations:**
+* Transformasi data di edge nodes sebelum dikirimkan ke pengguna hanya ada di v3.
+
+**9. Global-scale Failover and Replication:**
+* Fitur failover otomatis dan replikasi global hanya tersedia di v3 untuk memastikan ketersediaan tinggi.
+
+**10. Cross-region Data Joins:**
+* Penggabungan data dari berbagai wilayah secara efisien dalam satu query adalah fitur v3.
+
+**11. GraphQL Query Scheduling:**
+* V3 mendukung penjadwalan query GraphQL untuk eksekusi di masa depan, fitur ini tidak ada di v2.
+
+**12. Edge Security Features:**
+* V3 memiliki keamanan edge seperti enkripsi di edge dan kepatuhan standar keamanan (GDPR, HIPAA, SOC2) yang lebih terfokus dibandingkan v2.
+
+**13. Zero Downtime Deployments:**
+* Hasura DDN v3 menjamin tidak ada downtime saat pembaruan, sementara v2 lebih mengandalkan strategi tradisional untuk menangani downtime.
+
+**Hasura GraphQL Engine v2 fokus pada otomatisasi API database, sementara Hasura DDN v3 fokus pada performa global dan pengiriman data cepat.**
 
 ### keunggulan dan kekurangan dari Hasura v2 dan Hasura DDN v3:
 
@@ -162,6 +176,6 @@ v2 fokus pada otomatisasi API database, sementara v3 fokus pada performa global 
 
 **Rangkuman:**
 
-Hasura v2 unggul dalam otomatisasi API dan fleksibilitas database, tetapi kurang optimal untuk pengiriman data global.
+* **Hasura v2 unggul dalam otomatisasi API dan fleksibilitas database, tetapi kurang optimal untuk pengiriman data global.**
 
-Hasura DDN v3 unggul dalam performa global, dengan caching dan edge computing, tetapi memiliki keterbatasan dalam fitur database spesifik.
+* **Hasura DDN v3 unggul dalam performa global, dengan caching dan edge computing, tetapi memiliki keterbatasan dalam fitur database spesifik.**
