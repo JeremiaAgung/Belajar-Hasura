@@ -14,26 +14,6 @@ Hasura DDN memperkenalkan metode baru yang lebih cepat dan skalabel untuk pembua
 
 Hasura DDN dibangun di atas konsep supergraf data, yang memungkinkan pengembangan dan pengelolaan API dengan cepat dan efisien. Supergraf ini menghubungkan berbagai sumber data yang berbeda, dan memungkinkan integrasi data secara mulus ke dalam satu lapisan API.
 
-Berikut adalah gambaran umum cara kerjanya:
-
-**1.Deklaratif dan Otomatis**
-DDN menggunakan pendekatan deklaratif untuk membangun API. Ini berarti pengembang cukup mendeklarasikan skema data, sumber data, dan aturan izin yang diperlukan, dan DDN secara otomatis akan menghasilkan API yang dapat diakses. Hal ini mengurangi banyak langkah manual dalam pembuatan API tradisional.
-
-**2.Integrasi Multi-Sumber Data**
-DDN memungkinkan komposabilitas data lintas domain yang berbeda, menghubungkan beberapa sumber data seperti database SQL, NoSQL, API REST, layanan eksternal, dan lainnya. Pengembang dapat mengakses dan mengelola data dari berbagai sumber melalui satu API terpadu.
-
-**3.Keamanan dan Kontrol Izin yang Mudah**
-Dengan DDN, pengaturan izin dan keamanan API lebih mudah karena mendukung pengontrolan akses granular. Pengembang dapat menentukan siapa yang bisa mengakses data tertentu atau melakukan tindakan tertentu dengan aturan yang jelas, memastikan bahwa API tetap aman.
-
-**4.Performa dan Skalabilitas Tinggi**
-DDN dirancang untuk mengoptimalkan kinerja dengan minimal overhead operasional. API yang dibangun dengan DDN dapat menangani berbagai skala aplikasi, dari aplikasi kecil hingga yang berskala global, dengan topologi yang terdistribusi. DDN memanfaatkan edge computing untuk memastikan API tersedia dengan latensi rendah di seluruh dunia.
-
-**5.Federasi CI/CD dan Stabilitas Operasional**
-DDN mendukung federasi pipeline CI/CD, yang berarti setiap tim dalam organisasi dapat bekerja secara independen untuk merilis fitur baru tanpa mempengaruhi tim lain. Ini juga memungkinkan pembaruan dilakukan tanpa downtime atau gangguan terhadap aplikasi yang sedang berjalan.
-
-**6.Penemuan dan Pemodelan Domain Data**
-DDN menyediakan alat untuk penemuan domain data dengan cepat, memungkinkan pengembang memahami relasi antar domain data dan mempercepat proses onboarding bagi anggota tim baru. Ini juga memfasilitasi pemodelan domain data yang lebih kaya dan komprehensif.
-
 **Cara Kerja Utama:**
 
 * **Koneksi ke Berbagai Sumber Data:** DDN menghubungkan berbagai jenis sumber data (SQL, NoSQL, REST API) dan menyediakan skema API terpadu yang memudahkan pengembang untuk mengakses dan memanipulasi data tanpa perlu membuat API terpisah untuk setiap sumber data.
