@@ -19,7 +19,7 @@ Grafana memvisualisasikan data ini untuk memantau performa dan responsivitas Has
 ### GraphQL Metrics
 **Query Request Rate**
 
-Untuk menampilkan request rate pada Grafana, biasanya data dikumpulkan dari Prometheus, yang memonitor aplikasi atau service. Langkah-langkah berikut bisa ikuti untuk membuat query request rate di Grafana:
+Untuk menampilkan request rate pada Grafana, biasanya data dikumpulkan dari Prometheus, yang memonitor aplikasi atau service.
 ![image](https://github.com/user-attachments/assets/16e7e979-aafc-4680-a318-4f0d33198965)
 
 **Mutation Request rate**
