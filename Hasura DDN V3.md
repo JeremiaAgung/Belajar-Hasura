@@ -1,5 +1,5 @@
 # Hasura DDN 
-**Hasura DDN dan Supergraph**
+**Hasura DDN Subgraphs dan Supergraphs**
 
 **Hasura Data Delivery Network (DDN)** memperkenalkan konsep "supergraph" untuk mengatasi masalah fragmentasi data ini. Supergraph adalah kerangka kerja yang menggabungkan berbagai sumber data ke dalam satu API yang aman dan konsisten. Dengan supergraph, dapat menggabungkan:
 
@@ -9,6 +9,17 @@
 * **Layanan dan logika bisnis khusus**
 Supergraph ini memungkinkan aplikasi untuk bekerja dengan mulus meskipun mereka mengandalkan banyak sumber data dan layanan yang berbeda.
 
+**Subgraphs** dan **supergraphs** di Hasura Data Delivery Network (DDN) memungkinkan pengelolaan GraphQL API yang modular dan skalabel:
+* **Subgraphs:** Bagian dari supergraph yang menangani domain tertentu (misalnya, produk, pengguna, pesanan). Setiap subgraph memiliki schema GraphQL sendiri dan dapat dikelola secara terpisah.
+
+* **Supergraphs:** Gabungan dari semua subgraph, menyediakan satu endpoint GraphQL yang mengakses data dari berbagai subgraph. Supergraph mengelola skema gabungan dan merutekan query ke subgraph yang sesuai.
+
+**Keuntungannya:**
+
+* Modularitas dan skalabilitas
+* Mempermudah pengelolaan API besar dengan banyak domain
+* Memungkinkan tim berbeda bekerja pada subgraph yang berbeda
+* 
 ## Core Concept Hasura V3
 
 ![image](https://github.com/user-attachments/assets/20852889-54d2-4e5f-8050-66e48159a12f)
