@@ -48,6 +48,7 @@ Ketiga elemen ini berinteraksi dengan Hasura, yang menyediakan data secara real-
 Secara keseluruhan, diagram ini menunjukkan bagaimana Hasura digunakan untuk menyatukan berbagai sumber data melalui konektor dan menyajikannya melalui API GraphQL kepada berbagai aplikasi atau layanan yang membutuhkan data tersebut.
 
 ## Arsitektur Control Plane & Data Plane
+
 ![image](https://github.com/user-attachments/assets/819e505b-bd2a-43b3-9240-815966a2c1ea)
 
 **Control Plane**
@@ -60,6 +61,7 @@ Data plane Hasura v3 Engine adalah komponen yang memproses permintaan GraphQL se
 
 ## Authentication 
 **Using JWTs**
+
 ![image](https://github.com/user-attachments/assets/4a89c4dd-27ec-4497-a883-188c6fe9a535)
 
 Pada gambar ini menjelaskan cara mengonfigurasi Hasura agar menggunakan JSON Web Token (JWT) untuk autentikasi. JWT ini diberikan oleh layanan autentikasi (seperti login) dan dikirimkan oleh klien ke Hasura melalui header permintaan.
@@ -71,6 +73,7 @@ ID pengguna (x-hasura-user-id): Untuk mengidentifikasi pengguna.
 Dengan cara ini, Hasura dapat menentukan akses pengguna ke data berdasarkan informasi dalam JWT. untuk membantu mengonfigurasi integrasi antara Hasura dan penyedia autentikasi (seperti Auth0, AWS Cognito, Firebase, atau Clerk).
 
 **Using a Webhook**
+
 ![image](https://github.com/user-attachments/assets/c3a2af89-6408-466d-a1a0-d4cf5992160e)
 
 Pada Gambar ini  mode webhook untuk autentikasi, 
@@ -85,3 +88,5 @@ berikut langkah-langkah:
 * **Menguji dan Debugging:** Lakukan uji coba untuk memastikan respons webhook diterima dengan benar dan Hasura mendapatkan informasi sesi yang sesuai.
 
 Dengan pendekatan ini, autentikasi dapat dikelola secara terpisah, memberikan fleksibilitas dalam mengelola identitas dan peran pengguna.
+
+## Custom Business Logic Hasura V3
