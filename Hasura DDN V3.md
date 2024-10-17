@@ -90,3 +90,42 @@ berikut langkah-langkah:
 Dengan pendekatan ini, autentikasi dapat dikelola secara terpisah, memberikan fleksibilitas dalam mengelola identitas dan peran pengguna.
 
 ## Custom Business Logic Hasura V3
+
+![image](https://github.com/user-attachments/assets/b1ce7b27-a02c-4830-aa61-28567230f97f)
+
+Di Hasura v3, Custom Business Logic Hasura V3 dapat ditulis langsung di dalam Hasura menggunakan bahasa seperti Go, TypeScript, atau Python. Logika ini disimpan dalam metadata Hasura dan terintegrasi langsung, tanpa perlu menghubungkan layanan eksternal. Ini mempermudah pengelolaan dan meningkatkan keamanan, karena semua logika dikelola dalam Hasura.
+
+## Private Deployment
+
+**Hasura-Hosted (VPC)**
+
+![image](https://github.com/user-attachments/assets/7469cec1-024f-4f5b-a955-3a97057a913a)
+
+**Hasura-Hosted (VPC)** adalah layanan Hasura yang mengelola deployment, uptime, dan ketersediaan data plane untuk Anda. Layanan ini tersedia di cloud seperti GCP, AWS, dan Azure, dan bisa dideploy di berbagai wilayah untuk mengurangi latensi ke klien Anda.
+
+Data plane beroperasi di infrastruktur komputasi dan jaringan yang terisolasi untuk meningkatkan keamanan dan kepatuhan. Anda bisa menghubungkan jaringan pribadi menggunakan opsi seperti VPC Network Peering atau Private Link untuk keamanan ekstra.
+
+**Self-Hosted (BYOC)**
+
+![image](https://github.com/user-attachments/assets/da14780d-3e89-4cfe-8034-0beb9f64008f)
+
+**Dalam Hasura DDN Self-Hosted:**
+
+https://hasura.io/docs/3.0/deployment/private/self-hosted
+
+* **Data Plane** berjalan di infrastruktur private (misalnya Kubernetes), menangani trafik API dan data tanpa keluar dari jaringan internal. memiliki kendali sepenuhnya terhadap uptime dan updates.
+
+* **Control Plane** mengelola konfigurasi dan metadata sistem, dengan komunikasi terbatas dengan data plane untuk skenario tertentu. Data tidak pernah keluar dari data plane.
+
+![image](https://github.com/user-attachments/assets/78eb02a1-9228-4e4a-b3ab-dec11c65d764)
+
+Menggambarkan interaksi antara `data plane` dan `control plane` dalam konteks Hasura-Managed Data Plane:
+
+* Data Plane mengakses bucket penyimpanan metadata untuk mengambil artefak build yang diperlukan untuk menjalankan aplikasi.
+* Data Plane juga mengakses API control plane untuk mendapatkan informasi terkait build yang diterapkan, yang berguna untuk routing data.
+* Data Plane mengirimkan data observability (seperti log dan metrik) ke control plane agar data tersebut dapat divisualisasikan di console untuk monitoring dan analisis.
+* Control plane mengelola workload data plane melalui interaksi dengan cluster Kubernetes (khusus untuk Hasura-Managed Data Plane), memastikan aplikasi berjalan dengan baik.
+  
+Pada intinya, control plane bertanggung jawab untuk mengelola data plane, sedangkan data plane berfungsi untuk menangani aplikasi dan observabilitas.
+
+
