@@ -58,5 +58,30 @@ Dalam Hasura Data Delivery Network (DDN), Developer menggunakan Control Plane un
 Data plane Hasura v3 Engine adalah komponen yang memproses permintaan GraphQL secara efisien dan skalabel. Ini menggunakan runtime serverless, data plane Hasura tidak menyimpan konfigurasi atau data permintaan secara permanen. Data connector juga mengelola connection pool on-demand untuk efisiensi. Data plane dapat dideploy di berbagai wilayah untuk mengoptimalkan latency dengan Anycast IP, dan tersedia di GCP, AWS, Azure, serta self-hosted jika mendukung jaringan yang diperlukan.
 * **Data plane: Menangani eksekusi query GraphQL terhadap database, menggunakan metadata yang disediakan oleh control plane.**
 
+## Authentication 
+**Using JWTs**
+![image](https://github.com/user-attachments/assets/4a89c4dd-27ec-4497-a883-188c6fe9a535)
 
+Pada gambar ini menjelaskan cara mengonfigurasi Hasura agar menggunakan JSON Web Token (JWT) untuk autentikasi. JWT ini diberikan oleh layanan autentikasi (seperti login) dan dikirimkan oleh klien ke Hasura melalui header permintaan.
 
+Hasura akan memverifikasi dan membaca token tersebut untuk mengambil informasi penting, seperti:
+
+Peran pengguna (x-hasura-role): Untuk menentukan apa yang bisa diakses pengguna.
+ID pengguna (x-hasura-user-id): Untuk mengidentifikasi pengguna.
+Dengan cara ini, Hasura dapat menentukan akses pengguna ke data berdasarkan informasi dalam JWT. untuk membantu mengonfigurasi integrasi antara Hasura dan penyedia autentikasi (seperti Auth0, AWS Cognito, Firebase, atau Clerk).
+
+**Using a Webhook**
+![image](https://github.com/user-attachments/assets/c3a2af89-6408-466d-a1a0-d4cf5992160e)
+
+Pada Gambar ini  mode webhook untuk autentikasi, 
+berikut langkah-langkah:
+
+* **Membuat Layanan Webhook:** Layanan ini menerima permintaan HTTP dari Hasura dengan header autentikasi dan mengembalikan informasi sesi pengguna dalam respons JSON, seperti X-Hasura-User-Id, X-Hasura-Role, dan lainnya.
+
+* **Mengonfigurasi Hasura:** Di Hasura Console, pilih metode autentikasi Webhook, lalu masukkan URL webhook yang sudah disiapkan.
+
+* **Memastikan Header Permintaan Dikirim ke Webhook:** Hasura mengirimkan header autentikasi (misalnya, Authorization) ke webhook untuk memverifikasi status autentikasi pengguna.
+
+* **Menguji dan Debugging:** Lakukan uji coba untuk memastikan respons webhook diterima dengan benar dan Hasura mendapatkan informasi sesi yang sesuai.
+
+Dengan pendekatan ini, autentikasi dapat dikelola secara terpisah, memberikan fleksibilitas dalam mengelola identitas dan peran pengguna.
