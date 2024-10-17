@@ -1,7 +1,7 @@
 # Hasura DDN 
 **Hasura DDN dan Supergraph**
 
-**Hasura Data Delivery Network (DDN)** memperkenalkan konsep "supergraph" untuk mengatasi masalah fragmentasi data ini. Supergraph adalah kerangka kerja yang menggabungkan berbagai sumber data ke dalam satu API yang aman dan konsisten. Dengan supergraph, Anda dapat menggabungkan:
+**Hasura Data Delivery Network (DDN)** memperkenalkan konsep "supergraph" untuk mengatasi masalah fragmentasi data ini. Supergraph adalah kerangka kerja yang menggabungkan berbagai sumber data ke dalam satu API yang aman dan konsisten. Dengan supergraph, dapat menggabungkan:
 
 * **Database relasional**
 * **Database non-relasional (NoSQL)**
