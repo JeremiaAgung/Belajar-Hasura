@@ -1,25 +1,24 @@
 # Hasura DDN 
-**Hasura DDN Subgraphs dan Supergraphs**
+**Arsitektur Hasura DDN**
 
-**Hasura Data Delivery Network (DDN)** memperkenalkan konsep "supergraph" untuk mengatasi masalah fragmentasi data ini. Supergraph adalah kerangka kerja yang menggabungkan berbagai sumber data ke dalam satu API yang aman dan konsisten. Dengan supergraph, dapat menggabungkan:
+**Hasura Data Delivery Network (DDN)** memperkenalkan konsep "supergraph" untuk mengatasi masalah fragmentasi data ini. Supergraph adalah kerangka kerja yang menggabungkan berbagai sumber data ke dalam satu API yang aman dan konsisten.
 
-* **Database relasional**
-* **Database non-relasional (NoSQL)**
-* **API pihak ketiga**
-* **Layanan dan logika bisnis khusus**
-Supergraph ini memungkinkan aplikasi untuk bekerja dengan mulus meskipun mereka mengandalkan banyak sumber data dan layanan yang berbeda.
+* **Hasura Runtime Engine:** proses mengedit dan membangun metadata (seperti skema API, pengaturan data, dan peraturan akses) dilakukan secara terpisah dari waktu API dijalankan untuk melayani permintaan pengguna. Hasura DDN mengoptimalkan cara API dimulai dan dijalankan, sehingga API bisa mulai dengan sangat cepat dan tetap tersedia tanpa gangguan meskipun ada perubahan atau pembaruan. 
 
-**Subgraphs** dan **supergraphs** di Hasura Data Delivery Network (DDN) memungkinkan pengelolaan GraphQL API yang modular dan skalabel:
+* **Native Data Connector (NDC) Specification:** bahwa Hasura DDN tidak lagi membatasi pada sumber data yang disebut "native" (seperti PostgreSQL, MySQL, atau database yang secara langsung didukung oleh Hasura). Sebaliknya, Hasura kini mendukung koneksi ke berbagai jenis sumber data, baik itu database maupun API, menggunakan Connector yang dirancang untuk menyediakan query native, push-down capabilities, dan connection pooling,.
+
+* **Supergraph:** Sebuah arsitektur yang menggabungkan beberapa data domain (subgraphs) menjadi satu grafik, memungkinkan skalabilitas dan modularitas pada aplikasi atau sistem yang kompleks.
+
 * **Subgraphs:** Bagian dari supergraph yang menangani domain tertentu (misalnya, produk, pengguna, pesanan). Setiap subgraph memiliki schema GraphQL sendiri dan dapat dikelola secara terpisah.
 
-* **Supergraphs:** Gabungan dari semua subgraph, menyediakan satu endpoint GraphQL yang mengakses data dari berbagai subgraph. Supergraph mengelola skema gabungan dan merutekan query ke subgraph yang sesuai.
+* **Hasura Cloud:** Menyediakan lapisan cloud untuk API global dengan kinerja tinggi dan alat untuk mengelola proyek, subgraph, dan build.
 
-**Keuntungannya:**
+* **DDN CLI:** Alat baris perintah yang mempermudah pengelolaan metadata, build, dan deployment API di cloud.
 
-* Modularitas dan skalabilitas
-* Mempermudah pengelolaan API besar dengan banyak domain
-* Memungkinkan tim berbeda bekerja pada subgraph yang berbeda
-* 
+* **DDN Console:** Platform visual untuk onboarding cepat, pengujian, dan pemantauan, dengan fitur-fitur seperti API explorer dan dashboard kesehatan operasional.
+
+* **Builds:** Setiap perubahan metadata menghasilkan build atomik yang dapat di-deploy langsung tanpa kesalahan, dengan versi kontrol otomatis.
+  
 ## Core Concept Hasura V3
 
 ![image](https://github.com/user-attachments/assets/20852889-54d2-4e5f-8050-66e48159a12f)
@@ -98,6 +97,7 @@ Di Hasura v3, Custom Business Logic Hasura V3 dapat ditulis langsung di dalam Ha
 ## Private Deployment
 
 **Hasura-Hosted (VPC)**
+https://hasura.io/docs/3.0/deployment/private/hasura-hosted
 
 ![image](https://github.com/user-attachments/assets/7469cec1-024f-4f5b-a955-3a97057a913a)
 
@@ -128,4 +128,16 @@ Menggambarkan interaksi antara `data plane` dan `control plane` dalam konteks Ha
   
 Pada intinya, control plane bertanggung jawab untuk mengelola data plane, sedangkan data plane berfungsi untuk menangani aplikasi dan observabilitas.
 
+## Keuntungan Menggunakan Hasura Data Delivery Network
 
+* Peningkatan manajemen metadata: Metadata dikelola lebih cepat dengan perubahan instan dan tanpa masalah cold-start.
+* Penerapan cepat: Deployment CI/CD bisa dilakukan dalam hitungan detik, tanpa downtime.
+* Alur kerja berbasis kode: Perkakas pembuat kode yang canggih dengan spesifikasi tunggal untuk API.
+* Kontrol penuh: Pembuatan metadata deklaratif dan kontrol skema API.
+* Tanpa basis data metadata: Mengurangi beban manajemen.
+* Integrasi data: Menghubungkan ke berbagai sumber data dan logika bisnis dengan konektor asli.
+* Supergraf terhubung: Menggabungkan API dan data menjadi satu supergraf yang kuat.
+* Kolaborasi tim: Kontrol versi dan fitur kolaborasi untuk bekerja lebih efisien.
+* Performa tinggi: Eksekusi kueri yang dioptimalkan dan caching untuk skalabilitas.
+* API global: Latensi rendah dan performa tinggi melalui jaringan pengiriman data (DDN).
+* Penggunaan bahasa pilihan: Menyusun logika bisnis menggunakan TypeScript dan lainnya
