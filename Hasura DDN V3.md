@@ -144,4 +144,5 @@ Pada intinya, control plane bertanggung jawab untuk mengelola data plane, sedang
 
 ## Feature API V2 Dan V3
 
-![WhatsApp Image 2024-10-18 at 12 21 08](https://github.com/user-attachments/assets/0d3205e7-cf07-4b9b-9a4b-5cb5996a82c1)
+![Feature API V2   V3](https://github.com/user-attachments/assets/6faa9f1f-1f88-45b0-8e27-84a3fb62bc90)
+
