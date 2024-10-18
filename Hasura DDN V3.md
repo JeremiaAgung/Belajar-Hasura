@@ -141,3 +141,7 @@ Pada intinya, control plane bertanggung jawab untuk mengelola data plane, sedang
 * Performa tinggi: Eksekusi kueri yang dioptimalkan dan caching untuk skalabilitas.
 * API global: Latensi rendah dan performa tinggi melalui jaringan pengiriman data (DDN).
 * Penggunaan bahasa pilihan: Menyusun logika bisnis menggunakan TypeScript dan lainnya
+
+## Feature API V2 Dan V3
+
+![WhatsApp Image 2024-10-18 at 12 21 08](https://github.com/user-attachments/assets/0d3205e7-cf07-4b9b-9a4b-5cb5996a82c1)
