@@ -170,3 +170,17 @@ Pada intinya, control plane bertanggung jawab untuk mengelola data plane, sedang
 * **Relay API & RESTified Endpoints:** Tersedia di v3, tetapi RESTified endpoints sedang dalam pengembangan.
 * **Schema Registry & Read Replica:** Tersedia di kedua versi, dengan Read Replica di Enterprise v2.
 * **Caching:** Dalam pengembangan di v3.
+
+**Tabel dari segi Tooling**
+
+![image](https://github.com/user-attachments/assets/909ae43e-6c62-44db-8637-1d30339e3c4c)
+
+**Fitur Hasura DDN (Dibandingkan dengan v2):**
+
+* **Console:** DDN menggunakan console untuk mengeksplorasi, mengelola, dan mendepploy API, bukan untuk membuatnya. Console kini menawarkan analitik yang lebih baik dan fitur kolaborator.
+* **CLI:** CLI sekarang menjadi alat utama untuk membangun API, membuat metadata, dan mengotomatisasi deployment. CLI terintegrasi dengan VS Code untuk mempermudah pengelolaan metadata.
+* **Integrasi IDE:** Diperkenalkan untuk memudahkan pengelolaan metadata langsung di editor kode, dimulai dengan VS Code.
+* **Migrasi Database:** DDN tidak mendukung migrasi database secara native, tetapi menyarankan alternatif seperti Flyway atau Liquibase.
+* **Prometheus:** Didukung secara native dan gratis untuk mesin dan konektor data.
+* **OpenTelemetry:** Didukung secara native untuk tracing dan observabilitas, gratis untuk mesin dan konektor data.
+
