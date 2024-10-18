@@ -144,5 +144,29 @@ Pada intinya, control plane bertanggung jawab untuk mengelola data plane, sedang
 
 ## Feature API V2 Dan V3
 
+**Tabel Dari Segi API**
+
 ![Feature API V2   V3](https://github.com/user-attachments/assets/6faa9f1f-1f88-45b0-8e27-84a3fb62bc90)
 
+* EE: Fitur hanya tersedia di Cloud dan Enterprise edition.
+* C: Didukung oleh connector tertentu.
+* WIP: Fitur masih dalam tahap pengembangan (Work In Progress)
+
+### Berikut penjelasan singkat mengenai fitur yang ada di Hasura v2 dan Hasura DDN (v3):
+
+* **Instant GraphQL API:** Keduanya mendukung pembuatan API GraphQL secara instan.
+* **Multiple Data Sources:** Mendukung berbagai sumber data, baik di v2 maupun v3.
+* **Query, Mutation, Subscription:** Semua tersedia, tetapi di v3 beberapa fitur seperti subscription dan streaming masih dalam pengembangan.
+* **Aggregate Query:** Tersedia di keduanya, namun di v3 lebih dioptimalkan (C berarti fitur lanjutan).
+* **Native Mutation:** Hanya tersedia di v3.
+* **Action:** Di v3 digantikan oleh Lambda Connectors.
+* **Event Trigger dan Cron Trigger:** Event trigger sedang dikerjakan di v3, dan cron trigger tidak ada di v3.
+* **Remote Schema:** Lebih mudah dikelola di v3.
+* **CI/CD:** Sepenuhnya didukung di kedua versi.
+* **Federation & Apollo Federation:** Sepenuhnya didukung di kedua versi.
+* **API Limits & Allow Lists:** API limits dalam pengembangan di v3, sementara allow lists tetap ada.
+* **Permissions & Authentication Integrations:** Sama di kedua versi.
+* **Admin Secret:** Diganti dengan admin-level token di v3.
+* **Relay API & RESTified Endpoints:** Tersedia di v3, tetapi RESTified endpoints sedang dalam pengembangan.
+* **Schema Registry & Read Replica:** Tersedia di kedua versi, dengan Read Replica di Enterprise v2.
+* **Caching:** Dalam pengembangan di v3.
