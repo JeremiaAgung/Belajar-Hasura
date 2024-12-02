@@ -58,7 +58,7 @@ Server membaca tiket layanan menggunakan kunci rahasianya sendiri. Jika tiket va
 * **Server/Layanan:** Memverifikasi tiket layanan dan memberikan akses.
 Semua komunikasi aman karena menggunakan enkripsi berbasis kunci rahasia dan tiket yang hanya dapat dibaca oleh pihak yang sah.
 
-# **Thick Client**
+## **Thick Client**
 adalah aplikasi yang menjalankan sebagian besar prosesnya di sisi perangkat klien, sehingga hanya memanfaatkan server untuk fungsi terbatas seperti penyimpanan data atau autentikasi.
 
 * **Karakteristik:**
@@ -77,13 +77,13 @@ adalah aplikasi yang menjalankan sebagian besar prosesnya di sisi perangkat klie
   * Membutuhkan perangkat keras mahal.
   * Sulit dikelola karena pembaruan manual di setiap perangkat.
 
-# **Thin Client**
+## **Thin Client**
 adalah perangkat atau aplikasi yang mengandalkan server untuk sebagian besar pemrosesan dan penyimpanan data, dengan perangkat klien hanya berfungsi sebagai antarmuka.
 
 * **Karakteristik:**
-Pemrosesan di server: Sebagian besar tugas dilakukan di server.
-Ketergantungan tinggi pada server: Klien bergantung pada server untuk menjalankan aplikasi.
-Perangkat keras sederhana: Klien membutuhkan spesifikasi rendah.
+  * Pemrosesan di server: Sebagian besar tugas dilakukan di server.
+  * Ketergantungan tinggi pada server: Klien bergantung pada server untuk menjalankan aplikasi.
+  * Perangkat keras sederhana: Klien membutuhkan spesifikasi rendah.
 
 * **Keuntungan:**
   * Mudah dikelola
