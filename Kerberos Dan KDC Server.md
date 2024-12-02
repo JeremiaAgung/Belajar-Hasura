@@ -10,6 +10,7 @@
 * **Service/Server:** Layanan atau server yang ingin diakses oleh klien.
 
 **Proses kerja mekanisme Kerberos** 
+
 **1. Autentikasi Awal ke Authentication Server (AS)**
 * **Permintaan dari Klien (AS Request):**
 Klien mengirimkan permintaan ke Authentication Server (AS) yang ada di KDC untuk membuktikan identitasnya. Permintaan ini meliputi:
@@ -21,6 +22,19 @@ AS memeriksa identitas klien dengan mencocokkan kredensial yang diterimanya deng
   * AS mengirimkan Ticket Granting Ticket (TGT) ke klien. TGT ini dienkripsi dengan kunci rahasia KDC sehingga hanya KDC yang dapat membaca isinya.
   * AS juga mengirimkan kunci sesi untuk digunakan antara klien dan KDC. Kunci ini dienkripsi dengan kunci rahasia klien
 
+**2. Permintaan Tiket Layanan ke Ticket Granting Server (TGS)**
+* **Permintaan dari Klien (TGS Request):**
+Jika klien ingin mengakses layanan tertentu, ia mengirimkan permintaan ke Ticket Granting Server (TGS), meliputi:
+
+  * TGT yang diterima dari AS.
+  * Informasi tentang layanan yang ingin diakses.
+  * Stempel waktu untuk memastikan permintaan masih valid.
+
+* **Respons dari TGS (TGS Response):**
+TGS memverifikasi TGT (membaca isinya menggunakan kunci rahasia KDC) dan memeriksa apakah klien diizinkan untuk mengakses layanan tersebut. Jika valid:
+
+  * TGS memberikan tiket layanan yang dienkripsi dengan kunci rahasia layanan tujuan.
+  *Tiket layanan ini hanya dapat dibaca oleh layanan yang dimaksud.
 
 **Kesimpulan**
 * **AS:** Memberikan TGT setelah autentikasi awal.
