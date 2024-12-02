@@ -50,7 +50,7 @@ Server membaca tiket layanan menggunakan kunci rahasianya sendiri. Jika tiket va
   * Membuka sesi komunikasi yang aman dengan klien menggunakan kunci sesi.
   * Memberikan akses ke layanan yang diminta.
 
-**Kesimpulan**
+# **Kesimpulan**
 * **AS:** Memberikan TGT setelah autentikasi awal.
 * **TGS:** Memberikan tiket layanan untuk akses ke layanan spesifik.
 * **Server/Layanan:** Memverifikasi tiket layanan dan memberikan akses.
