@@ -1,5 +1,7 @@
 **Kerberos** adalah protokol otentikasi jaringan yang dirancang untuk menyediakan keamanan dalam lingkungan jaringan yang tidak aman. Protokol ini bekerja dengan prinsip "trusted third-party authentication," yaitu menggunakan server pusat untuk memverifikasi identitas pengguna dan layanan.
 
+**KDC (Key Distribution Center)** adalah komponen utama dalam sistem Kerberos, sebuah protokol otentikasi jaringan yang dirancang untuk menyediakan komunikasi yang aman di jaringan yang tidak aman. Data yang dikirimkan antara dua pihak (misalnya, antara pengguna dan server) tetap terlindungi meskipun jaringan yang digunakan rentan terhadap ancaman, seperti penyadapan (eavesdropping), modifikasi data, atau serangan lainnya. KDC bertanggung jawab untuk mengelola dan mendistribusikan tiket keamanan yang digunakan untuk memverifikasi identitas pengguna atau layanan dalam jaringan.
+
 # **Mekanisme Kerberos**
 **Komponen Utama Kerberos:**
 
