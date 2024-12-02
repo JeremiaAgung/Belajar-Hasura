@@ -57,3 +57,22 @@ Server membaca tiket layanan menggunakan kunci rahasianya sendiri. Jika tiket va
 * **TGS:** Memberikan tiket layanan untuk akses ke layanan spesifik.
 * **Server/Layanan:** Memverifikasi tiket layanan dan memberikan akses.
 Semua komunikasi aman karena menggunakan enkripsi berbasis kunci rahasia dan tiket yang hanya dapat dibaca oleh pihak yang sah.
+
+# **Thick Client**
+adalah aplikasi yang menjalankan sebagian besar prosesnya di sisi perangkat klien, sehingga hanya memanfaatkan server untuk fungsi terbatas seperti penyimpanan data atau autentikasi.
+
+* **Karakteristik:**
+
+  * Pemrosesan lokal: Data diproses di perangkat klien.
+  * Ketergantungan rendah pada server: Server hanya pendukung.
+  * Kinerja tinggi: Operasi lebih cepat karena lokal.
+  * Memerlukan perangkat keras kuat: CPU, RAM, dan penyimpanan tinggi.
+
+* **Keuntungan:**
+  * Tidak tergantung pada koneksi internet.
+  * Cepat dalam pemrosesan lokal.
+  * Tetap dapat digunakan tanpa server.
+
+* **Kekurangan:**
+  * Membutuhkan perangkat keras mahal.
+  * Sulit dikelola karena pembaruan manual di setiap perangkat.
