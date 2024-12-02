@@ -36,10 +36,22 @@ TGS memverifikasi TGT (membaca isinya menggunakan kunci rahasia KDC) dan memerik
   * TGS memberikan tiket layanan yang dienkripsi dengan kunci rahasia layanan tujuan.
   *Tiket layanan ini hanya dapat dibaca oleh layanan yang dimaksud.
 
+**3. Akses ke Layanan**
+
+* **Permintaan dari Klien ke Layanan:**
+Klien mengirim tiket layanan ke server atau layanan tujuan, meliputi:
+
+  * Tiket layanan yang diterima dari TGS.
+  * Stempel waktu untuk membuktikan bahwa tiket masih valid.
+
+* **Verifikasi oleh Server/Layanan:**
+Server membaca tiket layanan menggunakan kunci rahasianya sendiri. Jika tiket valid dan cocok dengan kebijakan akses, server:
+
+  * Membuka sesi komunikasi yang aman dengan klien menggunakan kunci sesi.
+  * Memberikan akses ke layanan yang diminta.
+
 **Kesimpulan**
 * **AS:** Memberikan TGT setelah autentikasi awal.
 * **TGS:** Memberikan tiket layanan untuk akses ke layanan spesifik.
 * **Server/Layanan:** Memverifikasi tiket layanan dan memberikan akses.
 Semua komunikasi aman karena menggunakan enkripsi berbasis kunci rahasia dan tiket yang hanya dapat dibaca oleh pihak yang sah.
-
-
