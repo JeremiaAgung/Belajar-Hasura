@@ -13,8 +13,8 @@
 **1. Autentikasi Awal ke Authentication Server (AS)**
 * **Permintaan dari Klien (AS Request):**
 Klien mengirimkan permintaan ke Authentication Server (AS) yang ada di KDC untuk membuktikan identitasnya. Permintaan ini meliputi:
- * **Nama pengguna (Client ID).**
- * **Stempel waktu yang terenkripsi dengan kunci rahasia klien (biasanya berasal dari password klien).**
+  * **Nama pengguna (Client ID).**
+  * **Stempel waktu yang terenkripsi dengan kunci rahasia klien (biasanya berasal dari password klien).**
 
 * **Respons dari AS (AS Response):**
 AS memeriksa identitas klien dengan mencocokkan kredensial yang diterimanya dengan yang ada di database. Jika cocok:
