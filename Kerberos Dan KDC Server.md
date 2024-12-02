@@ -76,3 +76,20 @@ adalah aplikasi yang menjalankan sebagian besar prosesnya di sisi perangkat klie
 * **Kekurangan:**
   * Membutuhkan perangkat keras mahal.
   * Sulit dikelola karena pembaruan manual di setiap perangkat.
+
+# **Thin Client**
+adalah perangkat atau aplikasi yang mengandalkan server untuk sebagian besar pemrosesan dan penyimpanan data, dengan perangkat klien hanya berfungsi sebagai antarmuka.
+
+* **Karakteristik:**
+Pemrosesan di server: Sebagian besar tugas dilakukan di server.
+Ketergantungan tinggi pada server: Klien bergantung pada server untuk menjalankan aplikasi.
+Perangkat keras sederhana: Klien membutuhkan spesifikasi rendah.
+
+* **Keuntungan:**
+  * Mudah dikelola
+  * Biaya perangkat keras lebih rendah
+  * Keamanan lebih tinggi (data tidak disimpan di klien)
+
+* **Kekurangan:**
+   * Bergantung pada koneksi jaringan dan server
+   * Jika server atau jaringan bermasalah, klien tidak dapat berfungsi.
