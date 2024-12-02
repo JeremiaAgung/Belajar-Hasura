@@ -9,7 +9,7 @@
 * **Client:** Entitas (biasanya pengguna atau perangkat) yang meminta akses ke layanan.
 * **Service/Server:** Layanan atau server yang ingin diakses oleh klien.
 
-**Proses kerja mekanisme Kerberos** 
+# **Proses kerja mekanisme Kerberos** 
 
 **1. Autentikasi Awal ke Authentication Server (AS)**
 * **Permintaan dari Klien (AS Request):**
