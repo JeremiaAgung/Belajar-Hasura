@@ -9,6 +9,8 @@ Menggunakan HIT pada Hasura di Postman `http://10.100.14.5:8084/v1/graphql`
 
 ![image](https://github.com/user-attachments/assets/ee818dc3-9da9-4385-b9a6-0ac7caeea537)
 
+![image](https://github.com/user-attachments/assets/8bf61976-83a8-43c4-b16b-1d145fca86f9)
+
 ### **Status Success di Elastic Metrics**
 ```
 {
