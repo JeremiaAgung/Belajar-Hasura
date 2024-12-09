@@ -5,7 +5,7 @@ Saya Menggunakan Elastic untuk mengecek logs dan Metrics
 
 Menggunakan HIT pada Hasura di Postman `http://10.100.14.5:8084/v1/graphql`
 
-**Status Success di Elastic Metrics**
+### **Status Success di Elastic Metrics**
 ```
 {
   "_index": ".ds-metrics-generic-default-2024.12.06-000001",
@@ -74,7 +74,7 @@ Menggunakan HIT pada Hasura di Postman `http://10.100.14.5:8084/v1/graphql`
 Penjelasan:
 Metrik menunjukkan bahwa layanan Hasura berjalan normal (success) di host hasura-jeremi-6896c47b9b-p2s7g:8080, tetapi belum ada event cron atau one-off yang dijalankan atau diproses (0).
 
-**Status Failed di Elastic Metrics**
+### **Status Failed di Elastic Metrics**
 ```
 {
   "_index": ".ds-metrics-generic-default-2024.12.06-000001",
@@ -142,7 +142,7 @@ Metrik menunjukkan bahwa layanan Hasura berjalan normal (success) di host hasura
 ```
 Penjelasan Dari Metrics tersebut diketahui bahwa Log ini menunjukkan pada 6 Desember 2024, tidak ada event cron atau one-off yang diproses atau dipanggil oleh Hasura, dan status sistemnya adalah "failed" (gagal).
 
-**Status Miss di Elastic Metrics**
+### **Status Miss di Elastic Metrics**
 
 ```
 {
@@ -200,7 +200,7 @@ Penjelasan Dari Metrics tersebut diketahui bahwa Log ini menunjukkan pada 6 Dese
 Penjelasan :
 Log ini mencatat bahwa pada waktu tertentu, layanan Hasura tidak menemukan data di cache (status "miss") dan tidak ada permintaan cache yang tercatat (nilai 0).
 
-**Status Miss di Elastic Metrics**
+### **Status Miss di Elastic Metrics**
 
 ```
 {
