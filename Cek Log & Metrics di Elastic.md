@@ -3,6 +3,8 @@ adalah search engine dan sistem analitik terdistribusi berbasis open-source yang
 
 Saya Menggunakan Elastic untuk mengecek logs dan Metrics
 
+![image](https://github.com/user-attachments/assets/ae22d159-1560-43af-b5cb-2e77f21bd8f0)
+
 Menggunakan HIT pada Hasura di Postman `http://10.100.14.5:8084/v1/graphql`
 
 ### **Status Success di Elastic Metrics**
