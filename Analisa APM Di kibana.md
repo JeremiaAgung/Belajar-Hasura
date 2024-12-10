@@ -81,4 +81,45 @@ Penjelasan:
 
 Dari grafik, dapat dilihat bahwa tingkat kegagalan transaksi mendekati 0% selama periode waktu tersebut. Ini mengindikasikan bahwa aplikasi berjalan dengan baik tanpa banyak transaksi yang gagal.
 
+### **Traces Samples**
+
+![image](https://github.com/user-attachments/assets/12de1735-f4c6-42a8-ae9d-4a42d584ed3a)
+
+Gambar ini adalah tampilan dari trace di APM Kibana untuk endpoint /v1/graphql pada Hasura. Berikut adalah penjelasan rinci mengenai data yang ditampilkan:
+
+**1. Latency Distribution**
+
+* **Histogram Latency:**
+Grafik ini menunjukkan distribusi latensi dari total 19.250 transaksi. Sumbu X menunjukkan waktu latensi (dalam milidetik), dan sumbu Y menunjukkan jumlah transaksi pada rentang waktu tertentu. Distribusi yang lebih tinggi di sisi kiri menunjukkan bahwa mayoritas transaksi selesai dalam waktu latensi rendah (0–100 ms). 
+95p: Titik persentil ke-95 menunjukkan bahwa 95% dari transaksi selesai dalam waktu sekitar rentang ini. Ini merupakan metrik penting untuk memantau performa aplikasi.
+
+### **Timeline**
+
+![image](https://github.com/user-attachments/assets/775ebe71-63e2-4596-ba0b-a72387e58f42)
+
+**Timeline**
+/v1/graphql (4.3 ms): Total waktu yang diperlukan untuk menyelesaikan satu permintaan adalah 4.3 ms.
+Ini termasuk semua langkah di bawahnya seperti parsing, eksekusi query, dan interaksi dengan backend.
+
+**Parse GraphQL (55 µs):
+Waktu yang dihabiskan untuk mem-parse kueri GraphQL yang diterima. Ini adalah langkah awal untuk memahami kueri sebelum mengeksekusinya. 
+
+**Resolve Query Execution Plan (188 µs):**
+Proses menyusun rencana eksekusi kueri. Dalam konteks ini, Hasura menentukan bagaimana kueri akan diterjemahkan ke query SQL ke database.
+
+**Parse Query (81 µs):**
+Langkah parsing untuk menyiapkan query SQL yang akan dikirim ke backend database. 
+
+**Resolve Execution Step for "transaks1" (58 µs):**
+Menunjukkan langkah-langkah spesifik dalam eksekusi kueri untuk entitas atau tabel bernama transaks1.
+
+**Data Connector Backend Query (3.7 ms):**
+Waktu yang dibutuhkan untuk berkomunikasi dengan backend database (misalnya MySQL). Terlihat bahwa sebagian besar waktu dihabiskan pada langkah ini, karena menghubungkan dengan database sering menjadi bottleneck.
+
+**QueryResponse Reshaping (34 µs):**
+Proses mengubah data yang diterima dari backend agar sesuai dengan format respon GraphQL. Proses ini sangat cepat dan tidak signifikan dalam total waktu.
+
+**Process Remote Joins (1 µs):**
+Jika ada relasi lintas sumber data (remote joins), langkah ini akan menangani mereka. Dalam kasus ini, langkah ini hampir tidak memakan waktu.
+
 
