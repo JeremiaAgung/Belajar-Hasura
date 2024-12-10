@@ -1,18 +1,18 @@
-#APM
+# APM
 
 ## **APM (Application Performance Monitoring)** 
 di Kibana adalah modul yang digunakan untuk memantau kinerja aplikasi secara real-time. Dengan APM, dapat melacak permintaan, latensi, error, dan performa aplikasi secara mendalam, sehingga membantu dalam:
 
 * **Mengidentifikasi Bottleneck**
-* 
+  
 Dapat melihat bagian mana dari aplikasi yang memperlambat sistem, seperti query lambat, fungsi mahal, atau masalah lain yang memengaruhi performa.
 
 * **Monitoring End-to-End**
-* 
+
 APM memungkinkan melacak alur lengkap dari suatu permintaan, mulai dari frontend hingga backend dan database, sehingga Anda memahami perjalanan permintaan secara keseluruhan.
 
 * **Mendeteksi Error**
-* 
+
 dapat menangkap error atau exception yang terjadi di aplikasi dan melihat trace-nya untuk memahami akar penyebabnya.
 
 ## **Cara Kerja APM di Kibana**
@@ -53,7 +53,6 @@ Berikut adalah penjelasan dari masing-masing metrik yang ditampilkan:
 ### **1. Latency**
 
 * **Grafik kiri (Latency):**
-  
 Menunjukkan waktu rata-rata (Average Latency) yang dibutuhkan oleh endpoint /v1/graphql untuk memproses permintaan (dalam milidetik).
 Lonjakan (spike) di awal menunjukkan waktu latensi yang lebih tinggi dari biasanya, yang mungkin terjadi karena beban awal atau kueri kompleks.
 Grafik turun menunjukkan waktu latensi kembali ke angka yang lebih rendah, yang idealnya menandakan bahwa performa sistem membaik setelah beban tinggi selesai.
