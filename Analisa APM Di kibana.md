@@ -5,7 +5,7 @@ di Kibana adalah modul yang digunakan untuk memantau kinerja aplikasi secara rea
 
 **Mengidentifikasi Bottleneck** Dapat melihat bagian mana dari aplikasi yang memperlambat sistem, seperti query lambat, fungsi mahal, atau masalah lain yang memengaruhi performa.
 
-**Monitoring End-to-End** APM memungkinkan melacak alur lengkap dari suatu permintaan, mulai dari frontend hingga backend dan database, sehingga Anda memahami perjalanan permintaan secara keseluruhan.
+**Monitoring End-to-End** APM memungkinkan melacak alur lengkap dari suatu permintaan, mulai dari frontend hingga backend dan database, sehingga memahami perjalanan permintaan secara keseluruhan.
 
 **Mendeteksi Error** dapat menangkap error atau exception yang terjadi di aplikasi dan melihat trace-nya untuk memahami akar penyebabnya.
 
@@ -26,9 +26,13 @@ Data yang sudah disimpan di Elasticsearch ditampilkan melalui Kibana dalam bentu
 ## **Fitur Utama APM di Kibana**
 
 **Transaction Monitoring:** Melihat performa berbagai transaksi aplikasi.
-**Service Map:** Visualisasi hubungan antar layanan di aplikasi Anda.
+
+**Service Map:** Visualisasi hubungan antar layanan di aplikasi.
+
 **Trace:** Melihat detail langkah-langkah yang diambil suatu permintaan.
+
 **Error Monitoring:** Laporan error beserta konteksnya.
+
 **Metrics:** Memonitor metrik sistem seperti CPU dan memori.
 
 
