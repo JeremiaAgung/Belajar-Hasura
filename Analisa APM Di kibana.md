@@ -73,3 +73,12 @@ Dalam grafik ini, terlihat bahwa lonjakan throughput tidak selalu diiringi oleh 
 
 **Debugging:** Gunakan insight ini untuk menelusuri masalah pada waktu tertentu menggunakan log atau tracing dari APM.
 
+### **Failed transaction rate**
+
+![image](https://github.com/user-attachments/assets/a865846f-8675-4643-bf1b-64f7f1a0df92)
+
+Penjelasan:
+
+Dari grafik, dapat dilihat bahwa tingkat kegagalan transaksi mendekati 0% selama periode waktu tersebut. Ini mengindikasikan bahwa aplikasi berjalan dengan baik tanpa banyak transaksi yang gagal.
+
+
