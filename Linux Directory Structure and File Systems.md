@@ -217,3 +217,18 @@ Sintaks dasar perintah Linux adalah:
 - `# ls -l directory_name`  
   Satu opsi, satu argumen eksplisit.
 
+# Perintah `ls` di Linux
+
+Perintah `ls` digunakan untuk menampilkan daftar file dan direktori di Linux. Berikut adalah beberapa opsi yang sering digunakan:
+
+| Opsi  | Deskripsi |
+|-------|-----------|
+| `-a`  | Menampilkan file dan direktori tersembunyi (dimulai dengan `.`). |
+| `-l`  | Menampilkan daftar rinci, termasuk tipe file, izin akses, pemilik, grup, ukuran, dan waktu modifikasi. |
+| `-ld` | Menampilkan rincian tentang direktori tanpa menampilkan isinya. |
+| `-lh` | Menampilkan rincian dengan ukuran file yang lebih mudah dibaca (misalnya dalam KB, MB). |
+| `-lt` | Mengurutkan file berdasarkan tanggal dan waktu, file terbaru di atas. |
+| `-ltr` | Mengurutkan file berdasarkan tanggal dan waktu, file terlama di atas (urutan terbalik). |
+| `-R`  | Menampilkan isi direktori dan subdirektorinya secara rekursif. |
+
+Hal 111 Printing
