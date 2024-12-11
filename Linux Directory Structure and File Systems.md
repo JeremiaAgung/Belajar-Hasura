@@ -273,11 +273,7 @@ Untuk mengetahui jalur absolut perintah yang dijalankan, dapat menggunakan perin
 
 ---
 
-## Melihat Informasi Sistem di RHEL
-
-Pada sistem RHEL (Red Hat Enterprise Linux), terdapat berbagai elemen yang dapat menunjukkan informasi mengenai sistem operasi, perangkat keras, kernel, penyimpanan, jaringan, dan lainnya.
-
-## 1. Melihat Informasi Sistem
+### Melihat Informasi Sistem
 
 Perintah `uname` digunakan untuk mengetahui informasi dasar tentang sistem, termasuk nama host.
 
@@ -292,4 +288,33 @@ Perintah `uname` digunakan untuk mengetahui informasi dasar tentang sistem, term
 bash $ uname -a
 Linux server1.example.com 4.18.0-80.el8.x86_64 #1 SMP Wed Mar 13 12:02:46 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux
 ```
-117
+## Mengakses Manual Pages di Linux
+
+Manual pages (`man`) adalah dokumentasi yang menyediakan informasi tentang perintah dan aplikasi di Linux. Berikut adalah beberapa navigasi dasar yang dapat digunakan saat membaca manual pages:
+
+### Navigasi Manual Pages:
+- **Enter / Down arrow**: Memindahkan ke baris berikutnya.
+- **Up arrow**: Memindahkan ke baris sebelumnya.
+- **f / Spacebar / Page down**: Memindahkan satu halaman ke depan.
+- **b / Page up**: Memindahkan satu halaman ke belakang.
+- **d / u**: Memindahkan setengah halaman ke bawah / ke atas.
+- **g / G**: Pergi ke awal / akhir halaman man.
+- **:f**: Menampilkan nomor baris dan byte yang sedang dilihat.
+- **q**: Keluar dari manual page.
+- **/pattern**: Mencari ke depan untuk pola yang ditentukan.
+- **?pattern**: Mencari ke belakang untuk pola yang ditentukan.
+- **n / N**: Menemukan pencarian berikutnya / sebelumnya dari pola.
+- **h**: Menampilkan bantuan tentang tombol navigasi.
+
+## Perintah `info` dan `pinfo`
+
+Berikut adalah beberapa perintah yang dapat digunakan dalam `info` dan `pinfo` untuk menjelajah dokumentasi:
+
+- **Down / Up arrows**: Pindah satu baris ke bawah / ke atas.
+- **Spacebar / Del**: Pindah satu halaman ke depan / ke belakang.
+- **q**: Keluar dari tutorial.
+- **[ / ]**: Pindah ke node sebelumnya / selanjutnya dalam dokumen.
+- **t**: Pindah ke node paling atas dalam dokumen.
+- **s**: Mencari string ke depan.
+- **{ / }**: Mencari kemunculan string sebelumnya / selanjutnya.
+
