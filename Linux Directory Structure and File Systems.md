@@ -1,56 +1,91 @@
-Sistem file Linux diatur secara hierarkis untuk memudahkan administrasi dan pengenalan struktur. Red Hat Enterprise Linux mengikuti Filesystem Hierarchy Standard (FHS), yang menentukan nama, lokasi, dan izin untuk berbagai tipe file dan direktori. Struktur direktori Linux mirip dengan pohon terbalik, di mana akar (root) berada di atas dan diwakili oleh karakter garis miring (/). Setiap cabang adalah subdirektori, dan setiap daun adalah file. Garis miring juga digunakan sebagai pemisah direktori dalam sebuah jalur, misalnya `/etc/rc.d/init.d/functions`.
+# Linux Filesystem Hierarchy
+
+Sistem file Linux diatur secara hierarkis untuk memudahkan administrasi dan pengenalan struktur. **Red Hat Enterprise Linux** mengikuti Filesystem Hierarchy Standard (**FHS**), yang menentukan nama, lokasi, dan izin untuk berbagai tipe file dan direktori.
+
+Struktur direktori Linux mirip dengan pohon terbalik, di mana akar (**root**) berada di atas dan diwakili oleh karakter garis miring (`/`). Setiap cabang adalah subdirektori, dan setiap daun adalah file. Garis miring juga digunakan sebagai pemisah direktori dalam sebuah jalur, misalnya:
+
+```
+/etc/rc.d/init.d/functions
+```
 
 Pada jalur tersebut:
 
-Direktori etc adalah subdirektori dari root (/).
+1. **Direktori `etc`**
+   - Subdirektori dari root (`/`).
 
-Direktori `rc.d` adalah anak dari `etc`.
+2. **Direktori `rc.d`**
+   - Anak dari `etc`.
 
-Direktori `init.d` adalah anak dari `rc.d`.
+3. **Direktori `init.d`**
+   - Anak dari `rc.d`.
 
-File functions adalah "daun" di bawah `init.d`.
+4. **File `functions`**
+   - Merupakan "daun" di bawah `init.d`.
 
-## Top-Level Directories
+## Visualisasi Hierarki Direktori
+Berikut adalah representasi visual dari jalur tersebut:
 
-Di sistem Linux, ada beberapa direktori utama yang berada di bawah direktori root `(/)`. Direktori ini dibagi menjadi dua jenis berdasarkan isi datanya:
+```
+/
+├── etc
+    ├── rc.d
+        ├── init.d
+            ├── functions
+```
 
-**Data Statis**
-
-Data statis adalah data yang tidak berubah dengan sendirinya, kecuali diubah secara manual oleh pengguna atau admin. Contohnya:
-
-Perintah (command) seperti file program di `/bin` atau `/usr/bin`.
-
-File konfigurasi di `/etc` yang digunakan untuk mengatur sistem.
-
-Library di `/lib` atau `/usr/lib` yang berisi fungsi pendukung untuk program.
-
-File kernel di `/boot` yang digunakan saat sistem menyala.
-
-File perangkat (device files) di `/dev` untuk menghubungkan hardware.
+## Penjelasan
+- **`/`**: Root dari sistem file.
+- **`etc`**: Direktori untuk file konfigurasi sistem.
+- **`rc.d`**: Subdirektori dari `etc` yang biasanya menyimpan skrip inisialisasi.
+- **`init.d`**: Subdirektori dari `rc.d`, digunakan untuk menyimpan skrip start/stop layanan.
+- **`functions`**: File yang berisi fungsi yang dapat dipanggil oleh skrip lain dalam direktori `init.d`.
 
 
-**Data Dinamis (atau Variabel)**
+# Direktori Utama dalam Sistem Linux
 
-Data dinamis adalah data yang sering berubah karena aktivitas sistem atau aplikasi. Contohnya:
+Pada sistem Linux, direktori utama di bawah direktori root (`/`) dibagi menjadi dua jenis berdasarkan isi datanya:
 
-Log file di `/var/log`, yang mencatat aktivitas sistem atau aplikasi.
+## **Data Statis**
 
-File status di `/proc`, yang memberikan informasi real-time tentang proses sistem.
+Data statis adalah data yang tidak berubah dengan sendirinya, kecuali jika diubah secara manual oleh pengguna atau admin. Contoh direktori dengan data statis:
 
-File sementara (temporary files) di `/tmp`, yang dibuat untuk penggunaan jangka pendek oleh program.
+- **`/bin` atau `/usr/bin`**: Berisi file program atau perintah (command) yang digunakan oleh sistem dan pengguna.
+- **`/etc`**: Berisi file konfigurasi untuk mengatur sistem.
+- **`/lib` atau `/usr/lib`**: Berisi library (fungsi pendukung) yang digunakan oleh program.
+- **`/boot`**: Berisi file kernel dan file yang diperlukan saat sistem menyala.
+- **`/dev`**: Berisi file perangkat (device files) untuk menghubungkan hardware.
+
+## **Data Dinamis (atau Variabel)**
+
+Data dinamis adalah data yang sering berubah karena aktivitas sistem atau aplikasi. Contoh direktori dengan data dinamis:
+
+- **`/var/log`**: Berisi log file yang mencatat aktivitas sistem atau aplikasi.
+- **`/proc`**: Berisi file status yang memberikan informasi real-time tentang proses sistem.
+- **`/tmp`**: Berisi file sementara (temporary files) yang dibuat untuk penggunaan jangka pendek oleh program.
 
 Singkatnya, **direktori statis** menyimpan file penting yang sifatnya tetap, sementara **direktori dinamis** menyimpan file yang selalu diperbarui oleh sistem.
 
-## File System Categories
+---
 
-Terdapat tiga jenis utama sistem file yang didukung di RHEL: berbasis `disk`, berbasis `jaringan`, dan berbasis `memori`.
+# Kategori Sistem File di Linux
 
-**Sistem file berbasis disk:** Dibuat di media fisik seperti hard drive atau flash drive USB. Data disimpan secara permanen.
+Terdapat tiga jenis utama sistem file yang didukung di RHEL (Red Hat Enterprise Linux):
 
-**Sistem file berbasis jaringan:** Sistem file berbasis disk yang dibagikan melalui jaringan untuk akses jarak jauh.
+## **1. Sistem File Berbasis Disk**
+Sistem file ini dibuat di media fisik seperti hard drive atau flash drive USB. Data yang disimpan bersifat permanen, kecuali dihapus secara manual. Contohnya adalah partisi `root` dan `boot` yang dibuat selama instalasi RHEL.
 
-**Sistem file berbasis memori:** Virtual, dibuat otomatis saat sistem dinyalakan, dan dihapus saat sistem dimatikan. Data di sini tidak disimpan secara permanen (hilang setelah reboot).
+## **2. Sistem File Berbasis Jaringan**
+Sistem file ini berbasis disk, tetapi dibagikan melalui jaringan untuk akses jarak jauh oleh perangkat lain. Contohnya adalah Network File System (NFS).
 
-Selama instalasi RHEL dengan partisi default, dua sistem file berbasis disk akan dibuat, yaitu `root` dan `boot`. Selain itu, beberapa sistem file berbasis memori juga penting untuk operasi sistem RHEL.
+## **3. Sistem File Berbasis Memori**
+Sistem file ini bersifat virtual, dibuat secara otomatis saat sistem menyala, dan akan dihapus saat sistem dimatikan. Data di dalamnya tidak disimpan secara permanen (hilang setelah reboot). Contohnya adalah direktori `/proc` dan `/tmp`.
+
+---
+
+# Ringkasan
+- **Direktori Statis**: Berisi file yang tidak berubah seperti file konfigurasi dan program.
+- **Direktori Dinamis**: Berisi file yang selalu diperbarui oleh sistem, seperti log file dan file status.
+- **Sistem File Linux**: Terdiri dari tiga jenis utama yaitu berbasis disk, jaringan, dan memori.
+
 
 ## The Root File System (/), Disk-Based
