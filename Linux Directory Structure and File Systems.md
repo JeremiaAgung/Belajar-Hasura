@@ -33,7 +33,7 @@ Berikut adalah representasi visual dari jalur tersebut:
             ├── functions
 ```
 
-## Penjelasan
+### Penjelasan
 - **`/`**: Root dari sistem file.
 - **`etc`**: Direktori untuk file konfigurasi sistem.
 - **`rc.d`**: Subdirektori dari `etc` yang biasanya menyimpan skrip inisialisasi.
@@ -41,11 +41,11 @@ Berikut adalah representasi visual dari jalur tersebut:
 - **`functions`**: File yang berisi fungsi yang dapat dipanggil oleh skrip lain dalam direktori `init.d`.
 
 
-# Direktori Utama dalam Sistem Linux
+## Direktori Utama dalam Sistem Linux
 
 Pada sistem Linux, direktori utama di bawah direktori root (`/`) dibagi menjadi dua jenis berdasarkan isi datanya:
 
-## **Data Statis**
+### **Data Statis**
 
 Data statis adalah data yang tidak berubah dengan sendirinya, kecuali jika diubah secara manual oleh pengguna atau admin. Contoh direktori dengan data statis:
 
@@ -55,7 +55,7 @@ Data statis adalah data yang tidak berubah dengan sendirinya, kecuali jika diuba
 - **`/boot`**: Berisi file kernel dan file yang diperlukan saat sistem menyala.
 - **`/dev`**: Berisi file perangkat (device files) untuk menghubungkan hardware.
 
-## **Data Dinamis (atau Variabel)**
+### **Data Dinamis (atau Variabel)**
 
 Data dinamis adalah data yang sering berubah karena aktivitas sistem atau aplikasi. Contoh direktori dengan data dinamis:
 
@@ -67,7 +67,7 @@ Singkatnya, **direktori statis** menyimpan file penting yang sifatnya tetap, sem
 
 ---
 
-# Kategori Sistem File di Linux
+## Kategori Sistem File di Linux
 
 Terdapat tiga jenis utama sistem file yang didukung di RHEL (Red Hat Enterprise Linux):
 
@@ -88,11 +88,11 @@ Sistem file ini bersifat virtual, dibuat secara otomatis saat sistem menyala, da
 - **Sistem File Linux**: Terdiri dari tiga jenis utama yaitu berbasis disk, jaringan, dan memori.
 
 
-# Sistem File Root (/)
+## Sistem File Root (/)
 
 Sistem File Root (/) adalah direktori tingkat atas dalam Filesystem Hierarchy Standard (FHS) yang berisi direktori utama untuk menyimpan informasi tertentu. Berikut beberapa direktori penting:
 
-## Direktori Penting
+### Direktori Penting
 
 - **/etc**: Berisi file konfigurasi sistem, termasuk subdirektori seperti:
   - `systemd`: Untuk konfigurasi layanan sistem.
@@ -104,25 +104,25 @@ Sistem File Root (/) adalah direktori tingkat atas dalam Filesystem Hierarchy St
 
 - **/mnt**: Digunakan untuk memasang (*mount*) sistem file sementara.
 
-## Ukuran Sistem File Root
+### Ukuran Sistem File Root
 
 Ukuran sistem file root biasanya ditentukan otomatis oleh program installer berdasarkan ruang disk yang tersedia. Namun, ukuran ini dapat diubah sesuai kebutuhan.
 
-# File Sistem /boot pada Linux
+## File Sistem /boot pada Linux
 
 File sistem **/boot** adalah tempat penyimpanan kernel Linux, file pendukung booting, dan konfigurasi boot. Ukuran file sistem ini secara default ditentukan secara otomatis oleh program installer berdasarkan ruang disk yang tersedia. Namun, ukuran ini dapat diatur ulang baik selama proses instalasi maupun setelah instalasi sesuai kebutuhan.
 
-# Penjelasan Direktori-direktori di Sistem UNIX/Linux
+## Penjelasan Direktori-direktori di Sistem UNIX/Linux
 
 Berikut adalah penjelasan singkat mengenai beberapa direktori di sistem UNIX/Linux:
 
-## Direktori Home (/home)
+### Direktori Home (/home)
 Direktori ini digunakan untuk menyimpan direktori home pengguna dan file pribadi mereka. Setiap pengguna memiliki direktori home sendiri untuk menyimpan file dan dapat membatasi akses pengguna lain ke dalamnya.
 
-## Direktori Opsional (/opt)
+### Direktori Opsional (/opt)
 Direktori ini digunakan untuk menyimpan perangkat lunak tambahan yang diinstal pada sistem. Setiap perangkat lunak yang diinstal akan memiliki subdirektori tersendiri.
 
-## Direktori Sumber Daya Sistem UNIX (/usr)
+### Direktori Sumber Daya Sistem UNIX (/usr)
 Direktori ini berisi sebagian besar file sistem penting. Beberapa subdirektorinya adalah:
 
 - **/usr/bin:** Menyimpan file eksekusi penting untuk pengguna.
@@ -135,11 +135,11 @@ Direktori ini berisi sebagian besar file sistem penting. Beberapa subdirektoriny
 
 Direktori-direktori ini memiliki fungsi yang berbeda untuk mengelola sistem dan perangkat lunak di dalamnya, serta menyediakan ruang untuk file pengguna dan program sistem yang diperlukan.
 
-# Direktori `/var` dalam Sistem Linux
+## Direktori `/var` dalam Sistem Linux
 
 Direktori `/var` menyimpan data yang sering berubah selama sistem berjalan. File-file dalam direktori ini berisi data yang dinamis seperti log, status, spool, lock, dan lainnya. Beberapa subdirektori umum di bawah `/var` adalah:
 
-## `/var/log`
+### `/var/log`
 Direktori ini menyimpan sebagian besar file log sistem, seperti:
 - Log sistem
 - Log boot
@@ -150,45 +150,45 @@ Direktori ini menyimpan sebagian besar file log sistem, seperti:
 - Log email
 - Dan banyak lagi.
 
-## `/var/opt`
+### `/var/opt`
 Direktori ini menyimpan file log, status, dan data variabel lainnya untuk perangkat lunak tambahan yang diinstal di direktori `/opt`.
 
-## `/var/spool`
+### `/var/spool`
 Direktori ini berisi direktori yang menyimpan pekerjaan yang antre, seperti:
 - Pekerjaan cetak
 - Pekerjaan cron
 - Pesan email
 - Dan item yang antre lainnya yang akan dikirim ke tujuan mereka.
 
-## `/var/tmp`
+### `/var/tmp`
 Direktori ini menyimpan file sementara yang lebih besar atau file sementara yang perlu ada untuk waktu yang lebih lama daripada yang biasanya diizinkan di direktori sementara lain seperti `/tmp`. File-file ini akan bertahan setelah reboot sistem dan akan dihapus secara otomatis jika tidak diakses atau dimodifikasi dalam periode 30 hari.
 
-# Penjelasan Sistem File Virtual di Linux
+## Penjelasan Sistem File Virtual di Linux
 
-## Direktori Temporary (/tmp)
+### Direktori Temporary (/tmp)
 Direktori ini digunakan untuk menyimpan file sementara yang dibuat oleh berbagai program saat runtime atau instalasi. File ini akan bertahan meskipun sistem melakukan reboot dan akan dihapus otomatis jika tidak diakses atau dimodifikasi dalam waktu 10 hari.
 
-## File Sistem Perangkat (/dev), Virtual
+### File Sistem Perangkat (/dev), Virtual
 Direktori `/dev` menyimpan file perangkat untuk perangkat keras fisik dan perangkat virtual. Kernel Linux berkomunikasi dengan perangkat ini melalui node perangkat yang ada di direktori ini. Node perangkat dikelola oleh layanan `udevd`.
 
 Terdapat dua jenis file perangkat:
 - **Perangkat Karakter (Character devices)**: Diakses secara serial, contoh seperti keyboard, printer, dan terminal.
 - **Perangkat Blok (Block devices)**: Diakses secara paralel, contoh seperti hard disk, optical drives, dan printer paralel.
 
-## File Sistem Procfs (/proc), Virtual
+### File Sistem Procfs (/proc), Virtual
 Direktori `/proc` menyimpan informasi tentang status kernel yang sedang berjalan, termasuk konfigurasi hardware, status CPU, memori, disk, partisi, jaringan, dan proses yang sedang berjalan. File di dalamnya bersifat pseudo (tidak benar-benar ada di disk) dan dikelola secara dinamis oleh sistem.
 
-## File Sistem Runtime (/run), Virtual
+### File Sistem Runtime (/run), Virtual
 Direktori `/run` digunakan untuk menyimpan data dari proses yang sedang berjalan. Salah satu subdirektorinya, `/run/media`, digunakan untuk secara otomatis memasang file sistem eksternal seperti pada USB atau CD/DVD. Konten di dalamnya dihapus saat sistem dimatikan.
 
-## File Sistem Sysfs (/sys), Virtual
+### File Sistem Sysfs (/sys), Virtual
 Direktori `/sys` menyimpan informasi tentang perangkat keras, driver, dan fitur kernel. Ini digunakan untuk memuat dukungan perangkat yang diperlukan, membuat node perangkat di `/dev`, dan mengonfigurasi perangkat. File sistem ini juga dikelola secara otomatis oleh sistem.
 
-# Memahami Mekanisme Perintah di Linux
+## Memahami Mekanisme Perintah di Linux
 
 Untuk berlatih perintah yang diberikan dalam bab ini, dapat masuk sebagai user1, menjalankan perintah, dan mengamati output-nya. Namun, karena Anda sedang mempelajari administrasi sistem Linux, penting untuk merasa nyaman bekerja sebagai root di awal. Jika ada yang rusak, server1 dan server2 adalah server lab yang dapat dibangun kembali.
 
-## Sintaks Dasar Perintah Linux
+### Sintaks Dasar Perintah Linux
 
 Sintaks dasar perintah Linux adalah:
 
@@ -217,7 +217,7 @@ Sintaks dasar perintah Linux adalah:
 - `# ls -l directory_name`  
   Satu opsi, satu argumen eksplisit.
 
-# Perintah `ls` di Linux
+## Perintah `ls` di Linux
 
 Perintah `ls` digunakan untuk menampilkan daftar file dan direktori di Linux. Berikut adalah beberapa opsi yang sering digunakan:
 
