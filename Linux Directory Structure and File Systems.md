@@ -318,3 +318,4 @@ Berikut adalah beberapa perintah yang dapat digunakan dalam `info` dan `pinfo` u
 - **s**: Mencari string ke depan.
 - **{ / }**: Mencari kemunculan string sebelumnya / selanjutnya.
 
+Terakhir Di halaman 122
