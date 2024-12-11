@@ -163,4 +163,57 @@ Direktori ini berisi direktori yang menyimpan pekerjaan yang antre, seperti:
 ## `/var/tmp`
 Direktori ini menyimpan file sementara yang lebih besar atau file sementara yang perlu ada untuk waktu yang lebih lama daripada yang biasanya diizinkan di direktori sementara lain seperti `/tmp`. File-file ini akan bertahan setelah reboot sistem dan akan dihapus secara otomatis jika tidak diakses atau dimodifikasi dalam periode 30 hari.
 
+# Penjelasan Sistem File Virtual di Linux
+
+## Direktori Temporary (/tmp)
+Direktori ini digunakan untuk menyimpan file sementara yang dibuat oleh berbagai program saat runtime atau instalasi. File ini akan bertahan meskipun sistem melakukan reboot dan akan dihapus otomatis jika tidak diakses atau dimodifikasi dalam waktu 10 hari.
+
+## File Sistem Perangkat (/dev), Virtual
+Direktori `/dev` menyimpan file perangkat untuk perangkat keras fisik dan perangkat virtual. Kernel Linux berkomunikasi dengan perangkat ini melalui node perangkat yang ada di direktori ini. Node perangkat dikelola oleh layanan `udevd`.
+
+Terdapat dua jenis file perangkat:
+- **Perangkat Karakter (Character devices)**: Diakses secara serial, contoh seperti keyboard, printer, dan terminal.
+- **Perangkat Blok (Block devices)**: Diakses secara paralel, contoh seperti hard disk, optical drives, dan printer paralel.
+
+## File Sistem Procfs (/proc), Virtual
+Direktori `/proc` menyimpan informasi tentang status kernel yang sedang berjalan, termasuk konfigurasi hardware, status CPU, memori, disk, partisi, jaringan, dan proses yang sedang berjalan. File di dalamnya bersifat pseudo (tidak benar-benar ada di disk) dan dikelola secara dinamis oleh sistem.
+
+## File Sistem Runtime (/run), Virtual
+Direktori `/run` digunakan untuk menyimpan data dari proses yang sedang berjalan. Salah satu subdirektorinya, `/run/media`, digunakan untuk secara otomatis memasang file sistem eksternal seperti pada USB atau CD/DVD. Konten di dalamnya dihapus saat sistem dimatikan.
+
+## File Sistem Sysfs (/sys), Virtual
+Direktori `/sys` menyimpan informasi tentang perangkat keras, driver, dan fitur kernel. Ini digunakan untuk memuat dukungan perangkat yang diperlukan, membuat node perangkat di `/dev`, dan mengonfigurasi perangkat. File sistem ini juga dikelola secara otomatis oleh sistem.
+
+# Memahami Mekanisme Perintah di Linux
+
+Untuk berlatih perintah yang diberikan dalam bab ini, dapat masuk sebagai user1, menjalankan perintah, dan mengamati output-nya. Namun, karena Anda sedang mempelajari administrasi sistem Linux, penting untuk merasa nyaman bekerja sebagai root di awal. Jika ada yang rusak, server1 dan server2 adalah server lab yang dapat dibangun kembali.
+
+## Sintaks Dasar Perintah Linux
+
+Sintaks dasar perintah Linux adalah:
+
+- **Opsi (switch atau flag)** adalah opsional. dapat menentukan nol atau lebih opsi dengan sebuah perintah. 
+- **Argumen**, sebaliknya, bisa opsional atau wajib tergantung pada perintah dan penggunaannya. Banyak perintah memiliki opsi dan argumen default yang sudah diprakekkan, jadi Anda tidak perlu menyebutkannya. Perintah lain mengharuskan setidaknya satu opsi atau argumen agar berfungsi.
+- **Opsi** mengubah perilaku perintah. **Argumen** adalah target untuk menjalankan aksi perintah.
+
+### Format Opsi
+- **Format pendek** opsi dimulai dengan satu tanda hubung (-), seperti `-la` yang berarti dua opsi (`l` dan `a`).
+- **Format panjang** opsi dimulai dengan dua tanda hubung (--), seperti `--all` yang merupakan satu opsi.
+
+### Contoh Perintah dan Penjelasan
+
+- `# ls`  
+  Tanpa opsi dan argumen eksplisit; argumen default adalah direktori saat ini.
+  
+- `# ls -l`  
+  Satu opsi, tanpa argumen eksplisit; argumen default adalah direktori saat ini.
+  
+- `# ls -al`  
+  Dua opsi, tanpa argumen eksplisit; argumen default adalah direktori saat ini.
+  
+- `# ls --all`  
+  Satu opsi, tanpa argumen eksplisit; argumen default adalah direktori saat ini.
+  
+- `# ls -l directory_name`  
+  Satu opsi, satu argumen eksplisit.
 
