@@ -88,4 +88,23 @@ Sistem file ini bersifat virtual, dibuat secara otomatis saat sistem menyala, da
 - **Sistem File Linux**: Terdiri dari tiga jenis utama yaitu berbasis disk, jaringan, dan memori.
 
 
-## The Root File System (/), Disk-Based
+# Sistem File Root (/)
+
+Sistem File Root (/) adalah direktori tingkat atas dalam Filesystem Hierarchy Standard (FHS) yang berisi direktori utama untuk menyimpan informasi tertentu. Berikut beberapa direktori penting:
+
+## Direktori Penting
+
+- **/etc**: Berisi file konfigurasi sistem, termasuk subdirektori seperti:
+  - `systemd`: Untuk konfigurasi layanan sistem.
+  - `sysconfig`: Konfigurasi sistem lainnya.
+  - `lvm`: *Logical Volume Manager*.
+  - `skel`: Template *startup* untuk pengguna.
+
+- **/root**: Direktori *home* default untuk pengguna root.
+
+- **/mnt**: Digunakan untuk memasang (*mount*) sistem file sementara.
+
+## Ukuran Sistem File Root
+
+Ukuran sistem file root biasanya ditentukan otomatis oleh program installer berdasarkan ruang disk yang tersedia. Namun, ukuran ini dapat diubah sesuai kebutuhan.
+
