@@ -231,4 +231,30 @@ Perintah `ls` digunakan untuk menampilkan daftar file dan direktori di Linux. Be
 | `-ltr` | Mengurutkan file berdasarkan tanggal dan waktu, file terlama di atas (urutan terbalik). |
 | `-R`  | Menampilkan isi direktori dan subdirektorinya secara rekursif. |
 
-Hal 111 Printing
+## Navigasi Direktori di Linux
+
+### Menampilkan Direktori Aktif
+Perintah `pwd` (print working directory) digunakan untuk menampilkan lokasi direktori saat ini. Contoh output yang menunjukkan pengguna root berada di direktori `/root`:
+
+Direktori `/root` adalah direktori home untuk pengguna root. Perintah `pwd` selalu mengembalikan path absolut dari file atau direktori.
+
+## Menavigasi Direktori
+File disimpan dalam berbagai direktori di Linux, dan setiap file atau direktori memiliki path yang unik. Path (atau pathname) adalah cara untuk mengidentifikasi lokasi file atau direktori dalam struktur direktori.
+
+### Path Absolut
+Path absolut (atau path lengkap) menunjuk ke file atau direktori dari root direktori (`/`). Path ini selalu diawali dengan tanda garis miring `/`.
+
+### Path Relatif
+Path relatif menunjuk ke file atau direktori berdasarkan lokasi saat ini. Path ini tidak dimulai dengan `/`. Path relatif bisa menggunakan tanda dua titik (`..`) untuk naik satu level ke direktori induk, atau dengan nama subdirektori tanpa garis miring, misalnya `etc/sysconfig`.
+
+### Contoh Penggunaan `cd` dan `pwd`
+1. Menampilkan direktori saat ini dan pindah satu level ke atas:
+   ```
+   pwd     # Menampilkan direktori saat ini (/root)
+   cd ..   # Pindah satu level ke direktori induk (/)
+   pwd     # Menampilkan direktori baru (/)
+   cd /etc/sysconfig    # Menggunakan path absolut
+   cd sysconfig         # Menggunakan path relatif
+   cd      # Kembali ke direktori home
+   cd ~    # Kembali ke direktori home
+```
