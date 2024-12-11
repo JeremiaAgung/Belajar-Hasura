@@ -82,7 +82,7 @@ Sistem file ini bersifat virtual, dibuat secara otomatis saat sistem menyala, da
 
 ---
 
-# Ringkasan
+### Ringkasan
 - **Direktori Statis**: Berisi file yang tidak berubah seperti file konfigurasi dan program.
 - **Direktori Dinamis**: Berisi file yang selalu diperbarui oleh sistem, seperti log file dan file status.
 - **Sistem File Linux**: Terdiri dari tiga jenis utama yaitu berbasis disk, jaringan, dan memori.
@@ -107,4 +107,60 @@ Sistem File Root (/) adalah direktori tingkat atas dalam Filesystem Hierarchy St
 ## Ukuran Sistem File Root
 
 Ukuran sistem file root biasanya ditentukan otomatis oleh program installer berdasarkan ruang disk yang tersedia. Namun, ukuran ini dapat diubah sesuai kebutuhan.
+
+# File Sistem /boot pada Linux
+
+File sistem **/boot** adalah tempat penyimpanan kernel Linux, file pendukung booting, dan konfigurasi boot. Ukuran file sistem ini secara default ditentukan secara otomatis oleh program installer berdasarkan ruang disk yang tersedia. Namun, ukuran ini dapat diatur ulang baik selama proses instalasi maupun setelah instalasi sesuai kebutuhan.
+
+# Penjelasan Direktori-direktori di Sistem UNIX/Linux
+
+Berikut adalah penjelasan singkat mengenai beberapa direktori di sistem UNIX/Linux:
+
+## Direktori Home (/home)
+Direktori ini digunakan untuk menyimpan direktori home pengguna dan file pribadi mereka. Setiap pengguna memiliki direktori home sendiri untuk menyimpan file dan dapat membatasi akses pengguna lain ke dalamnya.
+
+## Direktori Opsional (/opt)
+Direktori ini digunakan untuk menyimpan perangkat lunak tambahan yang diinstal pada sistem. Setiap perangkat lunak yang diinstal akan memiliki subdirektori tersendiri.
+
+## Direktori Sumber Daya Sistem UNIX (/usr)
+Direktori ini berisi sebagian besar file sistem penting. Beberapa subdirektorinya adalah:
+
+- **/usr/bin:** Menyimpan file eksekusi penting untuk pengguna.
+- **/usr/sbin:** Menyimpan perintah sistem yang memerlukan hak akses root untuk dijalankan.
+- **/usr/lib dan /usr/lib64:** Menyimpan pustaka bersama yang dibutuhkan oleh perintah dan aplikasi lainnya.
+- **/usr/include:** Menyimpan file header untuk bahasa pemrograman C.
+- **/usr/local:** Digunakan oleh administrator untuk menyimpan perangkat lunak yang diunduh atau dikembangkan sendiri.
+- **/usr/share:** Menyimpan dokumentasi, manual, dan file konfigurasi yang dapat dibagikan antar platform Linux.
+- **/usr/src:** Menyimpan kode sumber.
+
+Direktori-direktori ini memiliki fungsi yang berbeda untuk mengelola sistem dan perangkat lunak di dalamnya, serta menyediakan ruang untuk file pengguna dan program sistem yang diperlukan.
+
+# Direktori `/var` dalam Sistem Linux
+
+Direktori `/var` menyimpan data yang sering berubah selama sistem berjalan. File-file dalam direktori ini berisi data yang dinamis seperti log, status, spool, lock, dan lainnya. Beberapa subdirektori umum di bawah `/var` adalah:
+
+## `/var/log`
+Direktori ini menyimpan sebagian besar file log sistem, seperti:
+- Log sistem
+- Log boot
+- Log pengguna
+- Log kegagalan pengguna
+- Log instalasi
+- Log cron
+- Log email
+- Dan banyak lagi.
+
+## `/var/opt`
+Direktori ini menyimpan file log, status, dan data variabel lainnya untuk perangkat lunak tambahan yang diinstal di direktori `/opt`.
+
+## `/var/spool`
+Direktori ini berisi direktori yang menyimpan pekerjaan yang antre, seperti:
+- Pekerjaan cetak
+- Pekerjaan cron
+- Pesan email
+- Dan item yang antre lainnya yang akan dikirim ke tujuan mereka.
+
+## `/var/tmp`
+Direktori ini menyimpan file sementara yang lebih besar atau file sementara yang perlu ada untuk waktu yang lebih lama daripada yang biasanya diizinkan di direktori sementara lain seperti `/tmp`. File-file ini akan bertahan setelah reboot sistem dan akan dihapus secara otomatis jika tidak diakses atau dimodifikasi dalam periode 30 hari.
+
 
