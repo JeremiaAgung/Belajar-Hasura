@@ -248,7 +248,7 @@ Path absolut (atau path lengkap) menunjuk ke file atau direktori dari root direk
 Path relatif menunjuk ke file atau direktori berdasarkan lokasi saat ini. Path ini tidak dimulai dengan `/`. Path relatif bisa menggunakan tanda dua titik (`..`) untuk naik satu level ke direktori induk, atau dengan nama subdirektori tanpa garis miring, misalnya `etc/sysconfig`.
 
 ### Contoh Penggunaan `cd` dan `pwd`
-1. Menampilkan direktori saat ini dan pindah satu level ke atas:
+Menampilkan direktori saat ini dan pindah satu level ke atas:
    ```
    pwd     # Menampilkan direktori saat ini (/root)
    cd ..   # Pindah satu level ke direktori induk (/)
@@ -257,4 +257,39 @@ Path relatif menunjuk ke file atau direktori berdasarkan lokasi saat ini. Path i
    cd sysconfig         # Menggunakan path relatif
    cd      # Kembali ke direktori home
    cd ~    # Kembali ke direktori home
+   ```
+
+### 1. **Mengidentifikasi File Perangkat Terminal**
+Linux menggunakan file perangkat bernomor unik yang disebut pseudo terminal files di direktori `/dev/pts` untuk mewakili sesi terminal pengguna. Perintah `tty` digunakan untuk mengidentifikasi sesi terminal aktif, yang akan menampilkan file perangkat seperti `/dev/pts/0`.
+
+### 2. **Memeriksa Uptime dan Beban Prosesor Sistem**
+Perintah `uptime` digunakan untuk memeriksa waktu sistem saat ini, durasi sistem telah berjalan, jumlah pengguna yang sedang login, dan rata-rata beban CPU selama 1, 5, dan 15 menit terakhir. Beban CPU diukur dengan angka load average, di mana angka lebih besar dari 1 menunjukkan beban berlebih pada sistem.
+
+### 3. **Membersihkan Layar Terminal**
+Perintah `clear` atau shortcut `Ctrl+l` digunakan untuk membersihkan layar terminal, memudahkan Anda untuk menjalankan perintah baru di layar yang bersih.
+
+### 4. **Menentukan Jalur Perintah**
+Untuk mengetahui jalur absolut perintah yang dijalankan, Anda dapat menggunakan perintah `which`, `whereis`, dan `type`. Perintah `which` menunjukkan lokasi file eksekusi, `whereis` memberikan informasi lebih lengkap tentang file biner dan manualnya, dan `type` memberi tahu apakah perintah tersebut adalah built-in shell atau program eksternal beserta jalurnya.
+
+---
+
+## Melihat Informasi Sistem di RHEL
+
+Pada sistem RHEL (Red Hat Enterprise Linux), terdapat berbagai elemen yang dapat menunjukkan informasi mengenai sistem operasi, perangkat keras, kernel, penyimpanan, jaringan, dan lainnya.
+
+## 1. Melihat Informasi Sistem
+
+Perintah `uname` digunakan untuk mengetahui informasi dasar tentang sistem, termasuk nama host.
+
+### Perintah `uname`
+
+- Jika perintah `uname` dijalankan tanpa opsi apapun, hanya nama sistem operasi yang akan ditampilkan.
+- Namun, jika Anda menambahkan opsi `-a`, perintah ini akan menampilkan informasi lebih lengkap tentang sistem.
+
+### Contoh Perintah `uname -a`
+
 ```
+bash $ uname -a
+Linux server1.example.com 4.18.0-80.el8.x86_64 #1 SMP Wed Mar 13 12:02:46 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux
+```
+117
