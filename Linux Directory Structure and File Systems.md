@@ -186,14 +186,14 @@ Direktori `/sys` menyimpan informasi tentang perangkat keras, driver, dan fitur 
 
 ## Memahami Mekanisme Perintah di Linux
 
-Untuk berlatih perintah yang diberikan dalam bab ini, dapat masuk sebagai user1, menjalankan perintah, dan mengamati output-nya. Namun, karena Anda sedang mempelajari administrasi sistem Linux, penting untuk merasa nyaman bekerja sebagai root di awal. Jika ada yang rusak, server1 dan server2 adalah server lab yang dapat dibangun kembali.
+Untuk berlatih perintah yang diberikan dalam bab ini, dapat masuk sebagai user1, menjalankan perintah, dan mengamati output-nya. Namun, karena sedang mempelajari administrasi sistem Linux, penting untuk merasa nyaman bekerja sebagai root di awal. Jika ada yang rusak, server1 dan server2 adalah server lab yang dapat dibangun kembali.
 
 ### Sintaks Dasar Perintah Linux
 
 Sintaks dasar perintah Linux adalah:
 
 - **Opsi (switch atau flag)** adalah opsional. dapat menentukan nol atau lebih opsi dengan sebuah perintah. 
-- **Argumen**, sebaliknya, bisa opsional atau wajib tergantung pada perintah dan penggunaannya. Banyak perintah memiliki opsi dan argumen default yang sudah diprakekkan, jadi Anda tidak perlu menyebutkannya. Perintah lain mengharuskan setidaknya satu opsi atau argumen agar berfungsi.
+- **Argumen**, sebaliknya, bisa opsional atau wajib tergantung pada perintah dan penggunaannya. Banyak perintah memiliki opsi dan argumen default yang sudah diprakekkan, jadi tidak perlu menyebutkannya. Perintah lain mengharuskan setidaknya satu opsi atau argumen agar berfungsi.
 - **Opsi** mengubah perilaku perintah. **Argumen** adalah target untuk menjalankan aksi perintah.
 
 ### Format Opsi
@@ -266,10 +266,10 @@ Linux menggunakan file perangkat bernomor unik yang disebut pseudo terminal file
 Perintah `uptime` digunakan untuk memeriksa waktu sistem saat ini, durasi sistem telah berjalan, jumlah pengguna yang sedang login, dan rata-rata beban CPU selama 1, 5, dan 15 menit terakhir. Beban CPU diukur dengan angka load average, di mana angka lebih besar dari 1 menunjukkan beban berlebih pada sistem.
 
 ### 3. **Membersihkan Layar Terminal**
-Perintah `clear` atau shortcut `Ctrl+l` digunakan untuk membersihkan layar terminal, memudahkan Anda untuk menjalankan perintah baru di layar yang bersih.
+Perintah `clear` atau shortcut `Ctrl+l` digunakan untuk membersihkan layar terminal, memudahkan untuk menjalankan perintah baru di layar yang bersih.
 
 ### 4. **Menentukan Jalur Perintah**
-Untuk mengetahui jalur absolut perintah yang dijalankan, Anda dapat menggunakan perintah `which`, `whereis`, dan `type`. Perintah `which` menunjukkan lokasi file eksekusi, `whereis` memberikan informasi lebih lengkap tentang file biner dan manualnya, dan `type` memberi tahu apakah perintah tersebut adalah built-in shell atau program eksternal beserta jalurnya.
+Untuk mengetahui jalur absolut perintah yang dijalankan, dapat menggunakan perintah `which`, `whereis`, dan `type`. Perintah `which` menunjukkan lokasi file eksekusi, `whereis` memberikan informasi lebih lengkap tentang file biner dan manualnya, dan `type` memberi tahu apakah perintah tersebut adalah built-in shell atau program eksternal beserta jalurnya.
 
 ---
 
@@ -284,7 +284,7 @@ Perintah `uname` digunakan untuk mengetahui informasi dasar tentang sistem, term
 ### Perintah `uname`
 
 - Jika perintah `uname` dijalankan tanpa opsi apapun, hanya nama sistem operasi yang akan ditampilkan.
-- Namun, jika Anda menambahkan opsi `-a`, perintah ini akan menampilkan informasi lebih lengkap tentang sistem.
+- Namun, jika menambahkan opsi `-a`, perintah ini akan menampilkan informasi lebih lengkap tentang sistem.
 
 ### Contoh Perintah `uname -a`
 
