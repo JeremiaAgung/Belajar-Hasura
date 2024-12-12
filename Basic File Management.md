@@ -238,4 +238,68 @@ Vim menyediakan beberapa perintah untuk melakukan operasi penghapusan. Berikut a
 - `D` : Menghapus dari posisi kursor hingga akhir baris saat ini.
 - `:6,12d` : Menghapus baris 6 hingga 12.
 
-Halaman Terakhir 142
+# Perbedaan `less` dan `more` pada Linux
+
+`less` dan `more` adalah perintah yang digunakan untuk menampilkan isi file teks yang panjang satu layar pada satu waktu, dimulai dari bagian awal. Berikut adalah perbedaan utama antara keduanya:
+
+- **`less`** lebih canggih dibandingkan dengan **`more`** karena tidak perlu membaca seluruh file sebelum menampilkan isinya, sehingga lebih cepat.
+- **`more`** hanya mendukung pencarian teks maju (forward), sementara **`less`** mendukung pencarian baik maju maupun mundur (backward).
+
+## Perintah Dasar
+Berikut adalah beberapa tombol navigasi yang dapat digunakan saat melihat file dengan `less` atau `more`:
+
+| Tombol | Tujuan |
+|--------|--------|
+| Spacebar / f | Gulir maju satu layar |
+| Enter | Gulir maju satu baris |
+| b | Gulir mundur satu layar |
+| d | Gulir maju setengah layar |
+| h | Menampilkan bantuan |
+| q | Keluar dan kembali ke prompt perintah |
+| /string | Mencari maju untuk string |
+| ?string | Mencari mundur untuk string (hanya berlaku untuk `less`) |
+| n | Menemukan kemunculan berikutnya dari string |
+| N | Menemukan kemunculan sebelumnya dari string (hanya berlaku untuk `less`) |
+
+# Penggunaan Perintah `head` dan `tail` di Linux
+
+Perintah `head` digunakan untuk menampilkan beberapa baris pertama dari sebuah file teks. Secara default, `head` akan menampilkan 10 baris pertama. Anda juga bisa menentukan jumlah baris yang ingin ditampilkan dengan menambahkan angka setelah perintah. Contohnya:
+
+```bash
+head -n 3 /etc/profile
+```
+Perintah di atas akan menampilkan 3 baris pertama dari file `/etc/profile`.
+
+Sementara itu, perintah tail digunakan untuk menampilkan 10 baris terakhir dari sebuah file. Secara default, tail akan menampilkan 10 baris terakhir. Anda juga bisa mengubah jumlah baris yang ditampilkan dengan menambahkan angka setelah perintah. Contohnya:
+
+`tail -n 3 /var/log/messages`
+
+Perintah tail sangat berguna untuk melihat log yang terus diperbarui. Dengan menambahkan opsi -f (follow), kita dapat melihat update file log secara real-time. Berikut contohnya:
+`tail -f /var/log/messages`
+
+## Menghitung Kata, Baris, dan Karakter dalam File Teks
+
+Perintah `wc` (word count) digunakan untuk menampilkan jumlah baris, kata, dan karakter (atau byte) yang terdapat dalam sebuah file teks atau input yang diberikan. Sebagai contoh, jika Anda menjalankan perintah ini pada file `/etc/profile`, hasil yang akan muncul kira-kira seperti berikut:
+
+```
+85 294 2078 /etc/profile
+```
+
+Di mana:
+- Kolom pertama menunjukkan jumlah **baris** (85) dalam file.
+- Kolom kedua menunjukkan jumlah **kata** (294) dalam file.
+- Kolom ketiga menunjukkan jumlah **karakter** atau **byte** (2078) dalam file.
+- Kolom terakhir adalah nama **file** (`/etc/profile`).
+
+### Opsi yang Tersedia untuk `wc`
+
+Berikut adalah beberapa opsi yang dapat digunakan untuk membatasi output yang ditampilkan oleh perintah `wc`:
+
+| Opsi | Aksi                              |
+|------|-----------------------------------|
+| `-l` | Menampilkan jumlah **baris** dalam file |
+| `-w` | Menampilkan jumlah **kata** dalam file |
+| `-c` | Menampilkan jumlah **byte** dalam file |
+| `-m` | Menampilkan jumlah **karakter** dalam file |
+
+Halaman 160 Terakhir
