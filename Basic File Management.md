@@ -196,3 +196,46 @@ Perintah `tar` (tape archive) digunakan untuk membuat, menambahkan, memperbarui,
 | `-u` | Menambahkan file ke akhir tarball tidak terkompresi yang sudah ada jika file yang ditambahkan lebih baru. |
 | `-v` | Mode verbose. |
 | `-x` | Mengekstrak atau mengembalikan dari tarball. |
+
+# Menyisipkan Teks
+
+Setelah vim dimulai, ada enam perintah yang dapat digunakan untuk masuk ke mode edit. Perintah-perintah ini terdiri dari huruf kecil dan besar i, a, dan o.
+
+| Perintah | Aksi |
+| --- | --- |
+| i | Menyisipkan teks sebelum posisi kursor saat ini |
+| I | Menyisipkan teks di awal baris saat ini |
+| a | Menambahkan teks setelah posisi kursor saat ini |
+| A | Menambahkan teks di akhir baris saat ini |
+| o | Membuka baris baru di bawah baris saat ini |
+| O | Membuka baris baru di atas baris saat ini |
+
+# Navigasi dalam Vim
+
+Navigasi dengan menggunakan tombol-tombol di Vim sangat membantu dalam mengedit file kecil maupun besar. Tombol-tombol ini memungkinkan Anda untuk bergerak dengan cepat di dalam file. Ada berbagai urutan tombol yang tersedia dalam Vim untuk mengontrol pergerakan kursor.
+| Perintah      | Aksi                                                      |
+|---------------|-----------------------------------------------------------|
+| `h`           | Bergerak mundur satu karakter                              |
+| `j`           | Bergerak turun satu baris                                  |
+| `k`           | Bergerak naik satu baris                                   |
+| `l`           | Bergerak maju satu karakter                                |
+| `w`           | Bergerak ke awal kata berikutnya                           |
+| `b`           | Bergerak mundur ke awal kata sebelumnya                    |
+| `e`           | Bergerak ke karakter terakhir kata berikutnya              |
+| `$`           | Bergerak ke akhir baris saat ini                           |
+| `Enter`       | Bergerak ke awal baris berikutnya                          |
+| `Ctrl+f`      | Menggulir ke bawah satu halaman                            |
+| `Ctrl+b`      | Menggulir ke atas satu halaman                             |
+
+## Menghapus Teks di Vim
+
+Vim menyediakan beberapa perintah untuk melakukan operasi penghapusan. Berikut adalah beberapa perintah yang digunakan:
+
+- `x` : Menghapus karakter di posisi kursor.
+- `X` : Menghapus karakter sebelum posisi kursor.
+- `dw` : Menghapus kata atau bagian kata di sebelah kanan kursor.
+- `dd` : Menghapus baris saat ini.
+- `D` : Menghapus dari posisi kursor hingga akhir baris saat ini.
+- `:6,12d` : Menghapus baris 6 hingga 12.
+
+Halaman Terakhir 142
