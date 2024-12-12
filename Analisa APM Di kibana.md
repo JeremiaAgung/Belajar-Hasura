@@ -1,4 +1,4 @@
-# APM
+# APMM
 
 ## **APM (Application Performance Monitoring)** 
 di Kibana adalah modul yang digunakan untuk memantau kinerja aplikasi secara real-time. Dengan APM, dapat melacak permintaan, latensi, error, dan performa aplikasi secara mendalam, sehingga membantu dalam:
