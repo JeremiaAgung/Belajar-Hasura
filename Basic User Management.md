@@ -226,7 +226,7 @@ Perintah `useradd` digunakan untuk menambah akun pengguna baru di sistem Linux. 
 - `-u <UID>`: Menentukan UID unik untuk pengguna.
 
 ### Contoh penggunaan:
-```bash
+```
 useradd -m -s /bin/bash -G admin,developer -c "John Doe" johndoe
 ```
 
