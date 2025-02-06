@@ -4,7 +4,7 @@ Hasura GraphQL dapat berinteraksi dengan sistem keamanan seperti Firewall, DNS, 
 
 ## 1. Firewall
 
-Firewall memainkan peran penting dalam mengamankan Hasura GraphQL Engine dengan membatasi akses yang tidak sah, memblokir serangan berbahaya, dan mengontrol jaringan.
+Firewall memainkan peran penting dalam mengamankan Hasura GraphQL Engine dengan membatasi akses yang tidak sah, memblokir serangan berbahaya, dan mengontrol lalu lintas jaringan.
 
 ### Peran Firewall dalam Keamanan Hasura
 
@@ -85,26 +85,52 @@ iptables -L -n -v
 
 ## 3. DNS (Domain Name System)
 
-DNS memainkan peran penting dalam mengamankan dan mengelola akses ke Hasura GraphQL Engine.
+DNS memainkan peran penting dalam mengamankan dan mengelola akses ke Hasura GraphQL Engine. DNS tidak hanya digunakan untuk mengarahkan domain ke server Hasura, tetapi juga dapat digunakan untuk meningkatkan keamanan, kinerja, dan ketersediaan.
 
 ### Peran DNS dalam Keamanan Hasura
 
 1. **Resolusi Nama Domain**
+   - DNS digunakan untuk memetakan nama domain (misalnya, hasura.example.com) ke alamat IP server tempat Hasura di-host.
+   - Ini memungkinkan pengguna atau aplikasi untuk mengakses Hasura menggunakan nama domain yang mudah diingat, bukan alamat IP.
+
 2. **Mencegah DNS Spoofing**
+   - Menggunakan DNS-over-HTTPS (DoH) dan DNS-over-TLS (DoT) untuk mengenkripsi permintaan DNS agar tidak mudah disadap atau dimanipulasi.
+
 3. **Load Balancing berbasis DNS**
+   - Round Robin DNS
+   - Weighted Routing
+   - Latency-based Routing
+
 4. **Menyembunyikan IP Asli**
+   - Menggunakan Proxy Mode di Cloudflare untuk melindungi server dari serangan langsung.
+
 5. **Rate Limiting**
+   - Cloudflare dapat membatasi jumlah permintaan yang masuk untuk menghindari serangan DDoS.
+
 6. **Resolusi DNS Internal di Kubernetes**
+   - Menggunakan CoreDNS untuk resolusi DNS antar layanan dalam Kubernetes.
 
 ### Konfigurasi DNS untuk Hasura
 
 1. **Tambahkan A Record untuk Domain Hasura**
-2. **Gunakan Proxy Mode di Cloudflare**
-3. **Aktifkan DNS-over-HTTPS (DoH) atau DNS-over-TLS (DoT)**
-4. **Aktifkan Rate Limiting di Cloudflare**
-5. **Load Balancer (Opsional)**
-6. **Konfigurasi CoreDNS untuk Kubernetes**
+   - Nama: hasura.example.com
+   - Tipe: A
+   - Nilai: 203.0.113.10 (IP server Hasura)
+   - TTL: Otomatis
 
+2. **Gunakan Proxy Mode di Cloudflare**
+   - Aktifkan ikon awan oranye untuk menyembunyikan IP asli server.
+
+3. **Aktifkan DNS-over-HTTPS (DoH) atau DNS-over-TLS (DoT)**
+   - Gunakan layanan Cloudflare (1.1.1.1) untuk keamanan tambahan.
+
+4. **Aktifkan Rate Limiting di Cloudflare**
+   - Batasi 100 permintaan per menit dari satu IP.
+
+5. **Load Balancer (Opsional)**
+   - Gunakan AWS Route 53 untuk mendistribusikan lalu lintas ke beberapa server.
+
+6. **Konfigurasi CoreDNS untuk Kubernetes**
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -131,6 +157,8 @@ data:
 ```
 
 ## 4. Network Policy untuk Hasura di Kubernetes
+
+(Network Policy adalah fitur penting di Kubernetes yang memungkinkan Anda mengontrol lalu lintas jaringan antara pod. Ketika Hasura GraphQL Engine di-deploy di Kubernetes, Network Policy dapat digunakan untuk membatasi akses ke Hasura hanya dari layanan atau pod tertentu, sehingga meningkatkan keamanan dan isolasi. Berikut adalah penjelasan detail tentang peran Network Policy dalam mengamankan Hasura dan contoh konfigurasinya:)
 
 ### Contoh Network Policy untuk Hasura di Kubernetes
 
@@ -180,14 +208,10 @@ spec:
 ```
 
 ## Kesimpulan
-
 Dengan konfigurasi Firewall dan DNS yang tepat, Hasura dapat:
 - Membatasi akses hanya dari sumber yang dipercaya.
 - Melindungi dari serangan seperti SQL Injection, XSS, DDoS, dan DNS Spoofing.
 - Mengontrol komunikasi antar pod di Kubernetes.
 - Meningkatkan kinerja dan ketersediaan dengan Load Balancing berbasis DNS.
 
-Network Policy adalah alat yang sangat berguna untuk mengamankan Hasura GraphQL Engine di Kubernetes dengan:
-✅ Membatasi akses ke Hasura hanya dari pod atau layanan tertentu.
-✅ Mencegah serangan lateral di dalam cluster Kubernetes.
-✅ Mengisolasi Hasura dari layanan lain yang tidak memerlukan akses.
+Menggunakan layanan seperti Cloudflare dan AWS Route 53 akan memberikan perlindungan tambahan serta memastikan Hasura tetap aman dan dapat diakses dengan andal.)
