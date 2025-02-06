@@ -158,7 +158,7 @@ data:
 
 ## 4. Network Policy untuk Hasura di Kubernetes
 
-(Network Policy adalah fitur penting di Kubernetes yang memungkinkan Anda mengontrol lalu lintas jaringan antara pod. Ketika Hasura GraphQL Engine di-deploy di Kubernetes, Network Policy dapat digunakan untuk membatasi akses ke Hasura hanya dari layanan atau pod tertentu, sehingga meningkatkan keamanan dan isolasi. Berikut adalah penjelasan detail tentang peran Network Policy dalam mengamankan Hasura dan contoh konfigurasinya:)
+(Network Policy adalah fitur penting di Kubernetes yang memungkinkan mengontrol lalu lintas jaringan antara pod. Ketika Hasura GraphQL Engine di-deploy di Kubernetes, Network Policy dapat digunakan untuk membatasi akses ke Hasura hanya dari layanan atau pod tertentu, sehingga meningkatkan keamanan dan isolasi. Berikut adalah penjelasan detail tentang peran Network Policy dalam mengamankan Hasura dan contoh konfigurasinya:)
 
 ### Contoh Network Policy untuk Hasura di Kubernetes
 
