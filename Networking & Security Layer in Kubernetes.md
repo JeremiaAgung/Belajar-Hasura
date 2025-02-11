@@ -14,13 +14,35 @@ Dalam Kubernetes, komponen **Networking & Security Layer** seperti **CoreDNS, Ne
 - API Server menyimpan dan mengelola informasi DNS dalam **etcd**.
 - CoreDNS membaca perubahan di **etcd** melalui API Server untuk memperbarui resolusi DNS.
 
-### **Dampak jika CoreDNS gagal**
-- Pod tidak dapat menyelesaikan nama layanan internal.
-- API Server tetap berjalan, tetapi aplikasi mungkin mengalami kegagalan komunikasi.
+### **Analisis API Server pada CoreDNS**
+#### **1. Pembahasan Komponen: Pengertian, Fungsi, dan Cara Kerja**
+- **Pengertian:** CoreDNS adalah sistem DNS berbasis plugin yang menangani resolusi nama dalam Kubernetes.
+- **Fungsi:** Memberikan layanan DNS untuk layanan dan pod dalam cluster.
+- **Cara Kerja:** 
+  1. API Server menerima perubahan layanan dan pod di Kubernetes.
+  2. API Server menyimpan informasi layanan di **etcd**.
+  3. CoreDNS membaca data dari **etcd** dan menyediakan resolusi DNS sesuai dengan perubahan yang terjadi.
 
-### **Solusi**
-- Menjalankan **multiple CoreDNS replicas** untuk High Availability (HA).
-- Menggunakan **NodeLocal DNSCache** untuk meningkatkan kinerja DNS.
+#### **2. Analisa Dampak Kegagalan Komponen**
+- Jika CoreDNS gagal:
+  - Resolusi nama layanan akan gagal.
+  - Pod tidak dapat berkomunikasi dengan layanan lain menggunakan nama domain.
+  - Aplikasi yang bergantung pada DNS (misalnya, microservices) mungkin mengalami kegagalan.
+
+#### **3. Analisis Failure Tolerance**
+- Kubernetes memungkinkan menjalankan **multiple CoreDNS pods** untuk redundansi.
+- CoreDNS dapat dikonfigurasi dengan **Autoscaling** agar selalu tersedia meskipun ada peningkatan beban.
+- Jika salah satu pod CoreDNS gagal, pod lain tetap bisa menangani permintaan DNS.
+
+#### **4. Analisis Single Point of Failure**
+- Jika hanya ada satu instance CoreDNS, kegagalan pod akan menyebabkan seluruh layanan DNS dalam cluster terganggu.
+- Ketergantungan pada **etcd** juga menjadi faktor risiko; jika **etcd gagal**, CoreDNS tidak dapat memperbarui informasi layanan.
+
+#### **5. Analisis Solusi**
+- **Gunakan lebih dari satu instance CoreDNS** dengan **ReplicaSet atau DaemonSet**.
+- **Gunakan NodeLocal DNSCache** untuk mengurangi beban CoreDNS.
+- **Pantau CoreDNS dengan Prometheus dan Grafana** untuk mendeteksi masalah lebih awal.
+- **Pastikan etcd HA (High Availability)** untuk menghindari kegagalan data DNS.
 
 ---
 
@@ -33,13 +55,36 @@ Dalam Kubernetes, komponen **Networking & Security Layer** seperti **CoreDNS, Ne
 - API Server menerima, menyimpan, dan mengelola objek **NetworkPolicy** dalam etcd.
 - Network Plugin membaca kebijakan dari API Server untuk menerapkannya di jaringan pod.
 
-### **Dampak jika Network Policy gagal**
-- Potensi gangguan keamanan jika akses tidak dibatasi dengan benar.
-- Pod bisa kehilangan konektivitas ke layanan penting seperti API Server, CoreDNS, atau database.
+### **Analisis API Server pada Network Policy**
+#### **1. Pembahasan Komponen: Pengertian, Fungsi, dan Cara Kerja**
+- **Pengertian:** Network Policy adalah fitur Kubernetes yang memungkinkan administrator mengontrol lalu lintas jaringan antar pod berdasarkan aturan yang telah ditentukan.
+- **Fungsi:** Membantu meningkatkan keamanan jaringan dengan membatasi komunikasi antar pod berdasarkan namespace, label, dan aturan protokol tertentu.
+- **Cara Kerja:**
+  1. Administrator mendefinisikan aturan Network Policy dalam bentuk **YAML manifest**.
+  2. API Server menyimpan dan mengelola aturan tersebut dalam **etcd**.
+  3. CNI Plugin (Calico, Cilium, dll.) membaca aturan dari API Server dan menerapkannya ke jaringan pod.
 
-### **Solusi**
-- Validasi **Network Policy** sebelum diterapkan (`kubectl describe networkpolicy`).
-- Monitoring kebijakan jaringan menggunakan tools seperti **Cilium Hubble**.
+#### **2. Analisa Dampak Kegagalan Komponen**
+- Jika Network Policy gagal:
+  - Semua pod mungkin bisa saling berkomunikasi tanpa batasan keamanan.
+  - Pod yang seharusnya tidak memiliki akses ke layanan tertentu bisa mendapatkan akses, meningkatkan risiko serangan keamanan.
+  - Jika Network Plugin gagal membaca kebijakan dari API Server, perubahan kebijakan tidak akan diterapkan.
+
+#### **3. Analisis Failure Tolerance**
+- Kubernetes memungkinkan **multi-node deployment** dari Network Policy Plugin untuk redundansi.
+- CNI Plugin yang mendukung HA (seperti Calico dan Cilium) dapat memastikan bahwa kebijakan tetap diterapkan meskipun ada kegagalan sebagian.
+- Network Policy bersifat **declarative**, sehingga jika API Server kembali normal, aturan akan tetap diterapkan sesuai konfigurasi yang ada.
+
+#### **4. Analisis Single Point of Failure**
+- Jika API Server gagal, tidak ada perubahan kebijakan baru yang dapat diterapkan.
+- Jika **etcd** gagal, Network Policy tidak dapat diambil atau diperbarui.
+- Jika hanya ada satu instance CNI Plugin, kegagalan pada plugin dapat menyebabkan kebijakan tidak diterapkan atau terjadi konektivitas yang tidak diinginkan.
+
+#### **5. Analisis Solusi**
+- **Gunakan lebih dari satu instance API Server** dengan mode **HA (High Availability)**.
+- **Gunakan CNI Plugin yang mendukung failover**, seperti Calico dengan mode HA atau Cilium.
+- **Pantau Network Policy dengan tools seperti Cilium Hubble** untuk mendeteksi anomali lalu lintas jaringan.
+- **Simpan cadangan konfigurasi Network Policy** agar dapat diterapkan ulang jika terjadi kegagalan.
 
 ---
 
